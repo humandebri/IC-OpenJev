@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "browser": "159.0.8154.6",
+  "viewport": 390,
+  "approved_asset_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
+  "cases": [
+    {
+      "case": "missing",
+      "passed": true,
+      "blocked_before_start": true,
+      "fallback_started": true,
+      "model_requests": 0,
+      "canister_calls": 0
+    },
+    {
+      "case": "network",
+      "passed": true,
+      "blocked_before_start": true,
+      "fallback_started": true,
+      "model_requests": 0,
+      "canister_calls": 0
+    },
+    {
+      "case": "unapproved",
+      "passed": true,
+      "blocked_before_start": true,
+      "fallback_started": true,
+      "model_requests": 0,
+      "canister_calls": 0
+    },
+    {
+      "case": "corrupt",
+      "passed": true,
+      "blocked_before_start": true,
+      "fallback_started": true,
+      "model_requests": 1,
+      "canister_calls": 0
+    },
+    {
+      "case": "approved",
+      "passed": true,
+      "blocked_before_start": false,
+      "fallback_started": false,
+      "model_requests": 1,
+      "canister_calls": 0
+    }
+  ],
+  "source_hashes": {
+    "web/tetris/src/main.tsx": "706d434ddefeca3ac28c0347875b6949d50b56c68fb10d1446b87d043090d718",
+    "web/tetris/src/placement-browser-v2.ts": "9059cd9ed3683f3d67a9ca29346290d2d0e95f1b44ec933fb2a55ad23b3467a5",
+    "web/tetris/scripts/v2-release-guard-ui.ts": "e32a385571dbe69c0a7660a9b7ecf2d219293339c61e709ff016d1bafdf5a3c3"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "complete": true,
+  "review_findings_addressed": [
+    "P1 approved-release SHA binding",
+    "P2 pre-start unavailable-evaluator error and blocking"
+  ],
+  "model_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
+  "model_and_coefficients_unchanged": true,
+  "heldout_games_repeated": false,
+  "frontend_tests": 92,
+  "typecheck": true,
+  "build": true,
+  "markdown_links": true,
+  "ui_result_sha256": "ca57461d9d4b7251a2a270a69289f5e6947f77fa30bb17ce43c050352f3808bd",
+  "gates": {
+    "integrity": "pass",
+    "copy": "pass",
+    "scroll": "pass",
+    "handlers": "pass",
+    "interactions": "pass",
+    "breakpoints": "pass"
+  },
+  "source_hashes": {
+    "web/tetris/src/main.tsx": "706d434ddefeca3ac28c0347875b6949d50b56c68fb10d1446b87d043090d718",
+    "web/tetris/src/placement-browser-v2.ts": "9059cd9ed3683f3d67a9ca29346290d2d0e95f1b44ec933fb2a55ad23b3467a5",
+    "web/tetris/src/placement-browser-assets.test.ts": "9178cb6597f64934920e2ba1302c31cdbb2860dc53859303254c2be4593b1f7f",
+    "web/tetris/scripts/v2-release-guard-ui.ts": "e32a385571dbe69c0a7660a9b7ecf2d219293339c61e709ff016d1bafdf5a3c3",
+    ".github/workflows/ci.yml": "16ffb12f4f7662d4d616cbdb903951aea033dbd50dbb862959901eed35dc6e16",
+    "docs/TETRIS_LIGHTGBM_V2.md": "41a1bff21dda893b206ede52fd721a91e1f92210997e1442b51a3fc58a114d8a",
+    "artifacts/tetris-search/result.md": "e2982778116793cc9ee9b48213ed46ea0948e198d346922d4e06d0f12d790118",
+    "artifacts/tetris-jev-confirmation/result.md": "c94534f847bf62239264a87bea0b5b910bbfebba3a1edabd4ce995a54358e25c"
+  },
+  "original_test_report_sha256": "c6561e64b1cf45b9e233a81ee7d717ae94204a6a5db3e335b121c8ad9c39242d"
+}

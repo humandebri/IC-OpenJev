@@ -92,6 +92,12 @@ node --import ./web/tetris/node_modules/tsx/dist/loader.mjs web/tetris/scripts/v
 
 Use the saved compatible Wasm and model hashes in `data-protocol.json` and each actual-query study protocol. On this Mac, the LightGBM venv uses an existing `libomp` through `DYLD_LIBRARY_PATH`; Chromium uses `PLAYWRIGHT_BROWSERS_PATH=/tmp/openjev-playwright`. These paths are environment setup, not model inputs. A fresh full regeneration should use an isolated checkout and an empty output directory via `TETRIS_V2_DIR`. Preserve the existing v2 asset/manifest before regenerating their outputs: the freeze step deliberately refuses to replace a different existing v2 asset. Keep v1 assets intact. An existing run may only resume matching artifacts; never repeat the held-out cohort for tuning.
 
+## Ordinary-play release guards
+
+When v2 is adopted, browser loading verifies both the fetched manifest and the model bytes against `placement-v2-release.json.model_sha256`. A self-consistent candidate manifest/model pair cannot replace the approved default. An unavailable or rejected evaluator displays its load error and blocks Start/New game for that policy before canister status or inference queries. The user can explicitly select an available alternative; an active game's frozen policy is preserved.
+
+A fresh isolated research checkout must mark its copied v2 release as experimental before publishing new candidate assets for pre-adoption UI checks. The original held-out results and model bytes above are unchanged by these startup guards. Follow-up verification is recorded separately in `ui/release-guard-result.json` and `ui/release-guard-gate-*.json`: six asset/client unit tests plus 390px missing/network/unapproved/corrupt/approved flows, with no canister calls. The frontend suite now contains 92 passing tests.
+
 ## Discarded development attempt
 
 A study-only cache initially returned its board key together with scalar predictions. Spreading that object into a candidate could replace the current landing with the NEXT landing. Those screening/validation results and provisional selections were invalidated before any held-out test access. Their raw evidence is archived under `invalid-cache-attempt-1` and excluded from final aggregates. Initial data generation, fixed-teacher labels, trained forests, and the uncached public browser scorer were unaffected.
