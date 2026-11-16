@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "prior_json_files_scanned": 7737,
+  "prior_seed_metadata_files": 1499,
+  "prior_unique_seed_values": 474,
+  "overlap": {
+    "train": [],
+    "data_valid": [],
+    "game_valid": [],
+    "extra": [],
+    "test": []
+  },
+  "sources_sha256": "09802dbea814845e8d9bf7abf02aed23c662a2405d64d3913f3a0e17ff850e1a",
+  "source_sha256": "e93c7c44c629de4300300875b43c8d42991d675b66429fe34e0810ed5ee288c8"
+}

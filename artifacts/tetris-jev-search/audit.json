@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "games": 160,
+  "turns": 16828,
+  "model_turns": 6868,
+  "candidates_checked": 124569,
+  "distinct_actual_query_replies": 1313,
+  "single_option_model_turns": 22,
+  "max_tokens": 41,
+  "max_instructions": 3650951823,
+  "selected": "top2",
+  "model_role": {
+    "current": {
+      "turns": 3371,
+      "choices_with_two_or_more": 3360,
+      "first_choice": 266,
+      "non_best_score": 540,
+      "differing_from_recommendation": 682,
+      "indistinguishable_descriptions": 57
+    },
+    "top2": {
+      "turns": 3497,
+      "choices_with_two_or_more": 3486,
+      "first_choice": 2256,
+      "non_best_score": 236,
+      "differing_from_recommendation": 236,
+      "indistinguishable_descriptions": 1206
+    }
+  },
+  "comparisons": {
+    "current_Jev": {
+      "mean_line_gain": 3.65625,
+      "paired_bootstrap_95pct": [
+        -3.75,
+        10.84375
+      ],
+      "paired_bootstrap_97_5pct": [
+        -4.96875,
+        11.96875
+      ],
+      "wins": 22,
+      "ties": 1,
+      "losses": 9
+    },
+    "same_candidates_evaluator": {
+      "mean_line_gain": -11,
+      "paired_bootstrap_95pct": [
+        -15.75,
+        -6.3125
+      ],
+      "paired_bootstrap_97_5pct": [
+        -16.375,
+        -5.59375
+      ],
+      "wins": 5,
+      "ties": 4,
+      "losses": 23
+    },
+    "same_candidates_random": {
+      "mean_line_gain": 24.46875,
+      "paired_bootstrap_95pct": [
+        18.875,
+        29.84375
+      ],
+      "paired_bootstrap_97_5pct": [
+        18.0625,
+        30.5
+      ],
+      "wins": 30,
+      "ties": 0,
+      "losses": 2
+    },
+    "full_search": {
+      "mean_line_gain": -11,
+      "paired_bootstrap_95pct": [
+        -15.75,
+        -6.3125
+      ],
+      "paired_bootstrap_97_5pct": [
+        -16.375,
+        -5.59375
+      ],
+      "wins": 5,
+      "ties": 4,
+      "losses": 23
+    }
+  },
+  "protocol_sha256": "0e9ea33f3f857a6128a8543825dd6b132a4ef55b1a09b504ae5d684fc58895f9",
+  "selected_policy_sha256": "991a139d6109eee54c59094009ad2729667b94f86e5dfe5324cf2a45fd2b6bd4",
+  "audit_source_sha256": "a49b4d0bff82d61cccfe72492e15f2c517dfa34801d0d86e55a4c132a6f9a581",
+  "target_wasm_sha256": "584657715086775ff0e785053b175c777d27261abd13029b71bc1aeeb662204e",
+  "model_digest": "0757d774c8c44397d189c5b479853897acef8f1e2b55ebf1f5a46969063225e0"
+}

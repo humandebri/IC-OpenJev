@@ -1,0 +1,34 @@
+{
+  "spec": {
+    "id": "initial-summary-l63-m50-a0p5-b40-jev",
+    "family": "v2",
+    "mode": "jev",
+    "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/initial/summary-l63-m50.json",
+    "bundle_sha256": "35149ff2912c10cf0df4cb9d0a8d00687d6574e5377a7e870ca56e25fa9b4932",
+    "alpha": 0.5,
+    "beta": 40
+  },
+  "validation_complete": true,
+  "validation_eligible": true,
+  "metric": {
+    "id": "initial-summary-l63-m50-a0p5-b40-jev",
+    "games": 64,
+    "mean_lines": 203.078125,
+    "median_lines": 203,
+    "mean_pieces": 512,
+    "median_pieces": 512,
+    "mean_lines128": 49.59375,
+    "median_lines128": 50,
+    "mean_pieces128": 128,
+    "early32_rate": 0,
+    "early128_rate": 0,
+    "cap_rate": 1,
+    "mean_candidate_ms": 2.297048404388545,
+    "max_p95_candidate_ms": 8.064792000019224,
+    "disagreements": 4214,
+    "regret": 1136.3588190452483,
+    "mean_options": 2
+  },
+  "protocol_sha256": "2ce21af139a7964d1efae93a35238b616fb949c520220954f816ed9b6fa7c5f0",
+  "stage": "live-validate-initial"
+}

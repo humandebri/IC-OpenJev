@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "models": 8,
+  "games": 16,
+  "turns": 2048,
+  "all_candidate_checks": 47296,
+  "cache_repeat_and_original_transition": true,
+  "source_sha256": "ae9da557c105670fd69d0d20ad2bd55e05f6fb3343657569ac6187c7697740da",
+  "study_core_sha256": "0116274948c01880fe53c0b9e6093af708911d473332cf83189cbe6b76d55b71"
+}

@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "adopted": true,
+  "test_games": 896,
+  "test_seeds": 128,
+  "model_http_calls": 113409,
+  "final_games_repeated": false,
+  "resumed_steps": [
+    "offline numeric-zero audit",
+    "same-board counterfactual rollouts",
+    "selection diagnosis",
+    "frozen statistical analysis through NumPy-boolean JSON adapter"
+  ],
+  "original_pipeline_stop": "Offline audit distinguished JSON 0 from IEEE -0; only offline verification/output steps were resumed.",
+  "evidence": {
+    "test-summary.json": "8e84375eeb4cf4c8268b70eaceec88f480ce77526e5906e3a2aa557da3249ee7",
+    "test-audit.json": "0015dbd115f7f6bc6118ac608cd66ca50fd12a530f5fccef1982e020eb49e9d1",
+    "test-report.json": "c6561e64b1cf45b9e233a81ee7d717ae94204a6a5db3e335b121c8ad9c39242d",
+    "adoption.json": "05ff20b2df84d32072f0f106725fa74334e576563dea651227af82391d276b95",
+    "audit-zero-correction.json": "fb5b5245a464dc5f47fbe03c51cf658fe47d3400f345594e9004bb15ea802cba",
+    "serialization-compatibility.json": "ed92ee2a32f02447d8f6353fff350e0db9eeec5fd902a5472aba6f2e99ef6ff3"
+  }
+}

@@ -1,0 +1,1570 @@
+{
+  "complete": true,
+  "interpretation": "Same board and same two candidates. Known two clears plus 32 further placements, 8 independent common-random sequences, fixed-search continuation. This is a controlled rollout estimate, not a full Jev continuation.",
+  "metrics": [
+    {
+      "spec": "fixed-jev",
+      "states": 1024,
+      "disagreements": 10,
+      "mean_line_difference": -0.01123046875,
+      "mean_survival_difference": 0.0010986328125,
+      "mean_disagreement_line_difference": -1.15
+    },
+    {
+      "spec": "v1-jev",
+      "states": 1024,
+      "disagreements": 96,
+      "mean_line_difference": -0.007080078125,
+      "mean_survival_difference": -0.010009765625,
+      "mean_disagreement_line_difference": -0.07552083333333333
+    },
+    {
+      "spec": "v2-jev",
+      "states": 1024,
+      "disagreements": 157,
+      "mean_line_difference": -0.0286865234375,
+      "mean_survival_difference": -0.00146484375,
+      "mean_disagreement_line_difference": -0.18710191082802546
+    }
+  ],
+  "protocol_sha256": "a890aa1e66323f0033a53a5af418dc16c561d843169191d34c3363e6b7bbb383",
+  "test_summary_sha256": "8e84375eeb4cf4c8268b70eaceec88f480ce77526e5906e3a2aa557da3249ee7",
+  "sources": [
+    {
+      "path": "episodes/counterfactual/21334492-fixed-jev.json",
+      "sha256": "9417ffe255c52ccf11442ba2c61b1a29c469bb0bf711deac76ea9582c29a08b4"
+    },
+    {
+      "path": "episodes/counterfactual/21334492-v1-jev.json",
+      "sha256": "32c4926e66e2b93c28c178c8a3a3b3ab4f6819c9a5a93ba7984c85b11b17b0ba"
+    },
+    {
+      "path": "episodes/counterfactual/21334492-v2-jev.json",
+      "sha256": "1e973fb1481081ee075f2c383c22c3ec9fd0980d4783d05f767000812be42ad0"
+    },
+    {
+      "path": "episodes/counterfactual/110318859-fixed-jev.json",
+      "sha256": "fe11ff262ddd395fa7c568bb7df9a57357afc8388eebc7c3c3b2af99e88a996c"
+    },
+    {
+      "path": "episodes/counterfactual/110318859-v1-jev.json",
+      "sha256": "93e57c28948aff96976ba7197e3ea4e27495da8f34eba6e9f1baf47d484b8863"
+    },
+    {
+      "path": "episodes/counterfactual/110318859-v2-jev.json",
+      "sha256": "88ed82f4fe1d034b8c3112b4ef393eaf3d24064d5bb70ee1aba342a2b0a393ae"
+    },
+    {
+      "path": "episodes/counterfactual/153885887-fixed-jev.json",
+      "sha256": "865092bf339b6169a798a844f99b8e4866237cc70190572a0c0a29b9848432ce"
+    },
+    {
+      "path": "episodes/counterfactual/153885887-v1-jev.json",
+      "sha256": "74add7e8b4226e49c34fa89e35dd098fa99d4c16fb0b2871e9a19583b6b116b9"
+    },
+    {
+      "path": "episodes/counterfactual/153885887-v2-jev.json",
+      "sha256": "5e2dcd6c7f2e1e860724d79eebbdf276574cde166b430dfd1acb401bf91a96ac"
+    },
+    {
+      "path": "episodes/counterfactual/173207243-fixed-jev.json",
+      "sha256": "8128b4f17900fc53765a77129ef6df8af75d9dfe7af801a98739c520a2760bf9"
+    },
+    {
+      "path": "episodes/counterfactual/173207243-v1-jev.json",
+      "sha256": "3a432669ba23613ec6ed1d0bfb8e4ce36af4413f50c484bc1b9a43884dbbb6a1"
+    },
+    {
+      "path": "episodes/counterfactual/173207243-v2-jev.json",
+      "sha256": "7a25604d5265342c2df24e1c89e6577e910a8f0f0dfb638f7873d00e66309c39"
+    },
+    {
+      "path": "episodes/counterfactual/187136214-fixed-jev.json",
+      "sha256": "881e1fc8482f4195551bd82fe7009b35d48d751bf17f87e3fc3067b1db34ccbb"
+    },
+    {
+      "path": "episodes/counterfactual/187136214-v1-jev.json",
+      "sha256": "b74f4e3531484fb2f186cbc78090b919de6204817e35c2c8e44ec9b15fe14bdf"
+    },
+    {
+      "path": "episodes/counterfactual/187136214-v2-jev.json",
+      "sha256": "7ee42eaa9a1759df086c66a44f0d1498faf7fda98ec794c255ca44de5b9c307c"
+    },
+    {
+      "path": "episodes/counterfactual/205905470-fixed-jev.json",
+      "sha256": "cebabea242a3543ba512bcc674e6a94883d8374758d87445c51eae149ce5cbcf"
+    },
+    {
+      "path": "episodes/counterfactual/205905470-v1-jev.json",
+      "sha256": "6aea6775c0147a3f3f15ba33777003845302d22a49dbde9fcaea376262ea320c"
+    },
+    {
+      "path": "episodes/counterfactual/205905470-v2-jev.json",
+      "sha256": "aa717884bcff3d4594d63e2dd96abd6a6347fcae54d71c104d37d7832fbed2d8"
+    },
+    {
+      "path": "episodes/counterfactual/224490145-fixed-jev.json",
+      "sha256": "1f06d5d967603e03a81c28d0004b1071d25c190aa1f3ec82902a6f49d61f3bfc"
+    },
+    {
+      "path": "episodes/counterfactual/224490145-v1-jev.json",
+      "sha256": "f8ad5a4814bde04988f4076bab1a27bdc42c86bd20e1950efee4cfcb8223fd24"
+    },
+    {
+      "path": "episodes/counterfactual/224490145-v2-jev.json",
+      "sha256": "1360c378bc9650c9a69e40d091e5762a333da48d33ee345815337547072218ff"
+    },
+    {
+      "path": "episodes/counterfactual/232748705-fixed-jev.json",
+      "sha256": "abdde5f7a8ea88d7829657b2d936c2d11077a619e1e8d7a61092e70a358bd2da"
+    },
+    {
+      "path": "episodes/counterfactual/232748705-v1-jev.json",
+      "sha256": "0236f4ec16e6398f75a9eb8d0c967dd86a8e4edb5101244d0d4ebe9463c51fe2"
+    },
+    {
+      "path": "episodes/counterfactual/232748705-v2-jev.json",
+      "sha256": "a17fccf91e1fc08aba9075adbcdf52199ec0cd5bc1c90bbabaa24439c2088662"
+    },
+    {
+      "path": "episodes/counterfactual/254593006-fixed-jev.json",
+      "sha256": "b1b444c9455fb0726a4b9a7c501683a2ff55622fa5c814e4b511e51970c1cddf"
+    },
+    {
+      "path": "episodes/counterfactual/254593006-v1-jev.json",
+      "sha256": "c9330dcada659465952dd0d0bc3a291a2770dff9d0ca2bcd28dd0327edcaccec"
+    },
+    {
+      "path": "episodes/counterfactual/254593006-v2-jev.json",
+      "sha256": "769160666892f2848726d1e913735a239d04eb771a4b72f010173cfe33ade320"
+    },
+    {
+      "path": "episodes/counterfactual/391200612-fixed-jev.json",
+      "sha256": "37fff90ac16f81200fbf763629c8fdf2cc28a63b8b16131c880be4bce698c289"
+    },
+    {
+      "path": "episodes/counterfactual/391200612-v1-jev.json",
+      "sha256": "21fc9760a51c209f296c3a295e7a92856d196959f85ebeec3ead945c065a34b9"
+    },
+    {
+      "path": "episodes/counterfactual/391200612-v2-jev.json",
+      "sha256": "3538724e197f5ad6ed7fa9b2c6e6ed6df983a62352f6999d6c7e742e07a0b84e"
+    },
+    {
+      "path": "episodes/counterfactual/404045447-fixed-jev.json",
+      "sha256": "72af6608100e73d28442245787ebd010f1145d3a262443f63b5f27ac818039fd"
+    },
+    {
+      "path": "episodes/counterfactual/404045447-v1-jev.json",
+      "sha256": "4496f327cbb78eb69b8e61d8ed252f73747dbec3625f5e3663d6604cd41632c5"
+    },
+    {
+      "path": "episodes/counterfactual/404045447-v2-jev.json",
+      "sha256": "926dac8c5d5dd8e57158ef6722cf3cc61460573814933c7a5ee747226419adb9"
+    },
+    {
+      "path": "episodes/counterfactual/455919338-fixed-jev.json",
+      "sha256": "5a6f39de0ab24236c56bb74a98ff46f941c2aaaebe755cb44101d6da382146ab"
+    },
+    {
+      "path": "episodes/counterfactual/455919338-v1-jev.json",
+      "sha256": "899146934672bfca9f86328a9c84ef511b365e69962eb7c3f5d393fa7f95ea6c"
+    },
+    {
+      "path": "episodes/counterfactual/455919338-v2-jev.json",
+      "sha256": "91675e40f4a2d98ae027afc9d449ed6d0ab4cff4f0fdead677e6ae829c182b49"
+    },
+    {
+      "path": "episodes/counterfactual/461675656-fixed-jev.json",
+      "sha256": "7bf149ad0569f9857b3436f3ea08422bd48775305a9cc0a1bf16dc476d828a4f"
+    },
+    {
+      "path": "episodes/counterfactual/461675656-v1-jev.json",
+      "sha256": "e9ca1cba2476adc3436a53be8c47a5be204804e4eafbc4fdf7be75c29efff003"
+    },
+    {
+      "path": "episodes/counterfactual/461675656-v2-jev.json",
+      "sha256": "4a8958ce6e4435760e032707d5e211f0103288bc24f187a4a9ee2cf3cee847d8"
+    },
+    {
+      "path": "episodes/counterfactual/512795073-fixed-jev.json",
+      "sha256": "6ce00434d14813fa75f69509d35684054d6b0860f5bec2180a01df16643691d4"
+    },
+    {
+      "path": "episodes/counterfactual/512795073-v1-jev.json",
+      "sha256": "faf6ea11732c36a3d62c2b19c5f32b2a4374e1f9ff10d0cd60bea04f019639d4"
+    },
+    {
+      "path": "episodes/counterfactual/512795073-v2-jev.json",
+      "sha256": "aea8ece5bdd64aefaa6ce160e7d8544e3541ada517d93b548618001e097488a6"
+    },
+    {
+      "path": "episodes/counterfactual/553746455-fixed-jev.json",
+      "sha256": "808413106f67a9e5ea05ca1117a6b842a5568b796c63cd297f56b884e0c0753a"
+    },
+    {
+      "path": "episodes/counterfactual/553746455-v1-jev.json",
+      "sha256": "0eca407de5f242f4a85b3e977d7962748575bf90d408bcde43b51d837b2a136f"
+    },
+    {
+      "path": "episodes/counterfactual/553746455-v2-jev.json",
+      "sha256": "503e261a5bdb56a8e70884f1d12b2d4969464a0ca7aafa086bc2e7e77c7f87b3"
+    },
+    {
+      "path": "episodes/counterfactual/556381733-fixed-jev.json",
+      "sha256": "0958901e0b390c515f789ef13e165ef3d7fd966884fca7a5088ca169a1994ea1"
+    },
+    {
+      "path": "episodes/counterfactual/556381733-v1-jev.json",
+      "sha256": "975f09353de7fbce779272b92d6cc2607b8621860898d8899f323b8958272f30"
+    },
+    {
+      "path": "episodes/counterfactual/556381733-v2-jev.json",
+      "sha256": "b0fdf865b6967076d85232b7986750b7a86bd8e692fd17bb8899876301b31fc2"
+    },
+    {
+      "path": "episodes/counterfactual/580982278-fixed-jev.json",
+      "sha256": "0aa06137ef3b475ff02b497cd036b679a2756a6a14818dd1c6fa865e31b905da"
+    },
+    {
+      "path": "episodes/counterfactual/580982278-v1-jev.json",
+      "sha256": "b86219f60a1fcba7638297e801548f540177780d6a8cd303de28f0b83eadf103"
+    },
+    {
+      "path": "episodes/counterfactual/580982278-v2-jev.json",
+      "sha256": "e1937b883040d1305f695b590ab79adb80da1ef012fb8e0dceb34c4cc65778e8"
+    },
+    {
+      "path": "episodes/counterfactual/583461094-fixed-jev.json",
+      "sha256": "d51c5bc65417515fc96c3186f24aff0df7371cf1162d43308dd77493c4aa5e00"
+    },
+    {
+      "path": "episodes/counterfactual/583461094-v1-jev.json",
+      "sha256": "56d7215fb98712c64a868dc5ac7a4c0da78aa737e9bb17080b735b1c191d34d2"
+    },
+    {
+      "path": "episodes/counterfactual/583461094-v2-jev.json",
+      "sha256": "5638b5750245d7dc574106f1b0bbdd916dfefd69d672444af8d47bf116c95750"
+    },
+    {
+      "path": "episodes/counterfactual/627814599-fixed-jev.json",
+      "sha256": "ad982dcef1a1599cb64cc0426ae2fe56ab33d1e49015f662fdea62355dfcedd6"
+    },
+    {
+      "path": "episodes/counterfactual/627814599-v1-jev.json",
+      "sha256": "71fa1d6b1f179dfa71d64614eefd06eeebb8ff4c5d8205a7ead9e9b21d1ab87c"
+    },
+    {
+      "path": "episodes/counterfactual/627814599-v2-jev.json",
+      "sha256": "c391b3a6f1bd6e6e1173baf9471b2d6d17f6b60f86dac0bda49fe5f43e58e9e7"
+    },
+    {
+      "path": "episodes/counterfactual/639340664-fixed-jev.json",
+      "sha256": "079f08b27654870ed83e00feb1a9ddf9043635cc58d7e56503b08dac043e4737"
+    },
+    {
+      "path": "episodes/counterfactual/639340664-v1-jev.json",
+      "sha256": "78620999021ee0b3b1ea80ccdf4ed15c2489abccc969328613927f0096cdc117"
+    },
+    {
+      "path": "episodes/counterfactual/639340664-v2-jev.json",
+      "sha256": "4e2c65979953583b44d408393e6c599128a8ae7a907e38edd28fce2bd57453f2"
+    },
+    {
+      "path": "episodes/counterfactual/682532005-fixed-jev.json",
+      "sha256": "35fa24e87619cefc548f990725d702aed17042205dede156b98e0fb34d885408"
+    },
+    {
+      "path": "episodes/counterfactual/682532005-v1-jev.json",
+      "sha256": "5bd401e6b6da9664964b8f9e54776a9ab0bb37270b4d3886351a2f382531e1a4"
+    },
+    {
+      "path": "episodes/counterfactual/682532005-v2-jev.json",
+      "sha256": "fc87f4eccbd1a88c9fb51c26abe0b7989d691aa3db34cb0ae269d4db07515982"
+    },
+    {
+      "path": "episodes/counterfactual/695415476-fixed-jev.json",
+      "sha256": "e4101bc50425c23a60920083df0d69ebd528f0dbb9c94fa82a307432fed15800"
+    },
+    {
+      "path": "episodes/counterfactual/695415476-v1-jev.json",
+      "sha256": "f3e4ff7ad71383432d4a9976b9e2a62c0bbf2b840499688eedfee6a33bcccd16"
+    },
+    {
+      "path": "episodes/counterfactual/695415476-v2-jev.json",
+      "sha256": "383eb83c876b7bf503f9cb8725cdb1af4b3e0cc80e35c50e3304c6d790664d5b"
+    },
+    {
+      "path": "episodes/counterfactual/703039801-fixed-jev.json",
+      "sha256": "01b4425b127988b0aeb5fe308285c6d7d51a8e477c6ef2d625625c009de48fa0"
+    },
+    {
+      "path": "episodes/counterfactual/703039801-v1-jev.json",
+      "sha256": "1197ca2cdb03f53e60a64efb0f09830244c827dad3daa7eeb4177debd9eec4af"
+    },
+    {
+      "path": "episodes/counterfactual/703039801-v2-jev.json",
+      "sha256": "d8593ec792c83e74b03954922c40dfb2b048b6000a6cd0b0f727c4a2379731b9"
+    },
+    {
+      "path": "episodes/counterfactual/741799807-fixed-jev.json",
+      "sha256": "1d96c4ab9f81d10ff71f3159c8f103dcc78ca5eddf99e2847b38cdcc130380c3"
+    },
+    {
+      "path": "episodes/counterfactual/741799807-v1-jev.json",
+      "sha256": "9735cc2fdcbff584cdee53f12f6e62f7b86e302887b5d2483c70ff80f7466c0e"
+    },
+    {
+      "path": "episodes/counterfactual/741799807-v2-jev.json",
+      "sha256": "82bb9a11a4cf46c66e27edbf493f5a05a90a130624e8bbca72ca66cf663297ba"
+    },
+    {
+      "path": "episodes/counterfactual/783738326-fixed-jev.json",
+      "sha256": "581d1becb37bb975c5870d00a909cf980f4b3ecc22a339b1ded819d118c9672e"
+    },
+    {
+      "path": "episodes/counterfactual/783738326-v1-jev.json",
+      "sha256": "bc51b2119aeda4cd210431db43e7f1182e5431c3c1feb4d51fea1591207cf64d"
+    },
+    {
+      "path": "episodes/counterfactual/783738326-v2-jev.json",
+      "sha256": "5abda5b2cd4a137ead3704f19be6f3916da77f70d018fc9121fa7a6ad6099e50"
+    },
+    {
+      "path": "episodes/counterfactual/823231972-fixed-jev.json",
+      "sha256": "6774ad03bb9a078c9252e7d7e53f2ca7d853a33598bad7130f20920fd2586429"
+    },
+    {
+      "path": "episodes/counterfactual/823231972-v1-jev.json",
+      "sha256": "f38468a1cee6b02e69ff00570681ec13661d3027e5e593554f10daa7b8faa661"
+    },
+    {
+      "path": "episodes/counterfactual/823231972-v2-jev.json",
+      "sha256": "03ef9f2be94fb9c91866dd24ae9bd9cd5f71f75623bb1c34afdf7dea42aff35f"
+    },
+    {
+      "path": "episodes/counterfactual/823937508-fixed-jev.json",
+      "sha256": "2d3499007afbc028ff9b8c7f564a49657017b6347d31fd87b1e087d841cd6a2a"
+    },
+    {
+      "path": "episodes/counterfactual/823937508-v1-jev.json",
+      "sha256": "3d98c459f10ae01342379fd2c23961fe2490b3c0355b90c999b7a4cc9c151f67"
+    },
+    {
+      "path": "episodes/counterfactual/823937508-v2-jev.json",
+      "sha256": "1d35c5cdd6160c8ec4c09e0cdc9a76b783340208e8ee9793ca3dc5af9642123f"
+    },
+    {
+      "path": "episodes/counterfactual/825263086-fixed-jev.json",
+      "sha256": "ce3e3cd0c04731b87670c969d812694f80507e816adad984486c43c461b3e70f"
+    },
+    {
+      "path": "episodes/counterfactual/825263086-v1-jev.json",
+      "sha256": "4874ab63d8d680ea0f5f5439e8cedb1f51782faaa510cab8a076b39147c912d1"
+    },
+    {
+      "path": "episodes/counterfactual/825263086-v2-jev.json",
+      "sha256": "12a3703d73ffd3d7e0aef321ada1ae4d0b439522707c9bd6ee2c76a8eb3af621"
+    },
+    {
+      "path": "episodes/counterfactual/854791690-fixed-jev.json",
+      "sha256": "e425abe8546af03d889a6c79ff5c808ddead4696f4f5adb5040d6b66b1b390b8"
+    },
+    {
+      "path": "episodes/counterfactual/854791690-v1-jev.json",
+      "sha256": "15f11e43866c0d9ec17a366d2dfa5d8211bb989037c3ff1325dfdc08b567e997"
+    },
+    {
+      "path": "episodes/counterfactual/854791690-v2-jev.json",
+      "sha256": "a4aef44c17166339ee8abd7aa8b297e3f6ce99d7ce27e64d34fca5ac50b93058"
+    },
+    {
+      "path": "episodes/counterfactual/876622124-fixed-jev.json",
+      "sha256": "ba3c23dd3c4a2683cd6e1fb70434f3c916d9e73fb683036394462ec1ceb4c223"
+    },
+    {
+      "path": "episodes/counterfactual/876622124-v1-jev.json",
+      "sha256": "1243483af43f4993e90f75b75d71028901686a8c3de6514a6470420df9524fe6"
+    },
+    {
+      "path": "episodes/counterfactual/876622124-v2-jev.json",
+      "sha256": "f7eebd73cc48a1548849088b53c8fcfe0ce664078bb9d77af3b186a73ded8040"
+    },
+    {
+      "path": "episodes/counterfactual/878430045-fixed-jev.json",
+      "sha256": "96152246d9a9e079be57071108ce9b7f16fc7b02f007a6143b5a2ee59347be89"
+    },
+    {
+      "path": "episodes/counterfactual/878430045-v1-jev.json",
+      "sha256": "9591ee83ce21e3be352c6d0b666b0f3ae3d69327bc30b6aa19d62c3e405dfd42"
+    },
+    {
+      "path": "episodes/counterfactual/878430045-v2-jev.json",
+      "sha256": "65eb999325e1224e89dc8fd92c5c97e8e417963a6001932fc0daacdae17b2ecd"
+    },
+    {
+      "path": "episodes/counterfactual/950650517-fixed-jev.json",
+      "sha256": "23ba87e62678d7aabeed0cb60dbee4bd07f41bcd86d62b8cdfe957ac849d9e30"
+    },
+    {
+      "path": "episodes/counterfactual/950650517-v1-jev.json",
+      "sha256": "82f03c4247ac817fa31f2380ea0f50c75407dec1328b64d1956f0c87186c4291"
+    },
+    {
+      "path": "episodes/counterfactual/950650517-v2-jev.json",
+      "sha256": "fcebac2148c79fefa19e1d21c9b66aefbaa374414baa5a2481cf5fb36c0588c8"
+    },
+    {
+      "path": "episodes/counterfactual/960635564-fixed-jev.json",
+      "sha256": "29f54d184f2b18a21e937d1c4cae8cbf69405b0dd7e009daf68f6457f8eea797"
+    },
+    {
+      "path": "episodes/counterfactual/960635564-v1-jev.json",
+      "sha256": "7aebae80a3062e7e6ed89e5a58748260d1634ccea6affae9ec9c0480d4a79b23"
+    },
+    {
+      "path": "episodes/counterfactual/960635564-v2-jev.json",
+      "sha256": "c169b564eef89742ee0102be912168c6a3396747ddd5cc5218804fa9fcd6c0e1"
+    },
+    {
+      "path": "episodes/counterfactual/971206793-fixed-jev.json",
+      "sha256": "0a074c6fcad7d795e50cc60ea01738bc3c4f492648596b7a73689bcc52867e85"
+    },
+    {
+      "path": "episodes/counterfactual/971206793-v1-jev.json",
+      "sha256": "340b70ff2f8499ff9ac7e1bbacf97702944d7f5b9821a000529786889ada5e70"
+    },
+    {
+      "path": "episodes/counterfactual/971206793-v2-jev.json",
+      "sha256": "7d4d1298c38a253161692ffe65edd22a214b61816029dc17bcc418e546373e5f"
+    },
+    {
+      "path": "episodes/counterfactual/1064639163-fixed-jev.json",
+      "sha256": "eae92bd7520201c8fbcc0b52959b7f9b3d827f843c835d28ad11e5e4fd6296fa"
+    },
+    {
+      "path": "episodes/counterfactual/1064639163-v1-jev.json",
+      "sha256": "35a2f615e08af30c5967cde2c7fe63fa24d111463aae3b9e51362a944b4a6ca0"
+    },
+    {
+      "path": "episodes/counterfactual/1064639163-v2-jev.json",
+      "sha256": "f047869fc898a22982e8ac76ed34074da1fb5f990a03e93c4454157685029322"
+    },
+    {
+      "path": "episodes/counterfactual/1295709146-fixed-jev.json",
+      "sha256": "98dbde9dd01eb98ee97227d3623bc8b186c8e0e4a0eb2dd47ea1f7e2bf455bba"
+    },
+    {
+      "path": "episodes/counterfactual/1295709146-v1-jev.json",
+      "sha256": "8b9e130fde97a8d0f51845c2d5292569791693acae6a9b90257edd7bcadfc64e"
+    },
+    {
+      "path": "episodes/counterfactual/1295709146-v2-jev.json",
+      "sha256": "07985d95af936b7044fa2fb70cadc7699b8a52ab7b65ed6b2a75a9c6ae756763"
+    },
+    {
+      "path": "episodes/counterfactual/1305250883-fixed-jev.json",
+      "sha256": "479f98fb11f985043aad6e3809b7e0c28c511a86f96b440d7f6fe236bc239895"
+    },
+    {
+      "path": "episodes/counterfactual/1305250883-v1-jev.json",
+      "sha256": "8ff0dc35f11b400ee0ec6ef80d2887a0d187039672e1d369ee42df9d0527c9b4"
+    },
+    {
+      "path": "episodes/counterfactual/1305250883-v2-jev.json",
+      "sha256": "7e3e6c8f02a9fad7c6c1a51c6dd393773c79a29b423e1eacfa4254a18ce12420"
+    },
+    {
+      "path": "episodes/counterfactual/1327322657-fixed-jev.json",
+      "sha256": "7f928b4e7e4e4cf0d43d57aa66bbed4658236ef828f1a7207946695e53ea1bee"
+    },
+    {
+      "path": "episodes/counterfactual/1327322657-v1-jev.json",
+      "sha256": "032b2d552f72cd653075fee056bacae8ab30db3e83f5062341dbc2a7de2e054b"
+    },
+    {
+      "path": "episodes/counterfactual/1327322657-v2-jev.json",
+      "sha256": "9fab6ebb0c9489f3a22263e44492ded374dae37f158195378b8a160c008580b0"
+    },
+    {
+      "path": "episodes/counterfactual/1352725876-fixed-jev.json",
+      "sha256": "234896d8635ec373df826d2ef79b5b2641e5dcebc2f7857d40fa553cf1438731"
+    },
+    {
+      "path": "episodes/counterfactual/1352725876-v1-jev.json",
+      "sha256": "0a574115f162fb3e5d80e0e92d12843488b4b5af6e09f89f3f635ec0d1349809"
+    },
+    {
+      "path": "episodes/counterfactual/1352725876-v2-jev.json",
+      "sha256": "2d96b55f916b47be3f792526d04135679a421fa4b29cf614c5c7ac3cd3eebec6"
+    },
+    {
+      "path": "episodes/counterfactual/1374891569-fixed-jev.json",
+      "sha256": "822cac739232a8ef45ed6f5653aa92646ab6af350d82df1d525fb1197f818f65"
+    },
+    {
+      "path": "episodes/counterfactual/1374891569-v1-jev.json",
+      "sha256": "3e3248bb26b5bf5d127feb93ce140ae451ac2e13a10c4b559e28dda64b8de782"
+    },
+    {
+      "path": "episodes/counterfactual/1374891569-v2-jev.json",
+      "sha256": "27bc9df7cb13e80036c8ddc0ca8d6139cbd70febe3598bd54db4c281ae562542"
+    },
+    {
+      "path": "episodes/counterfactual/1376008571-fixed-jev.json",
+      "sha256": "51132bb043f5767b985d8da9c28dbea75fe37f752493e2556f3ba8a4d7d178f1"
+    },
+    {
+      "path": "episodes/counterfactual/1376008571-v1-jev.json",
+      "sha256": "8f36d55a74eeefde951a9ea5d8023194c6f8dee2964df9a67e5d8d89abafb9f4"
+    },
+    {
+      "path": "episodes/counterfactual/1376008571-v2-jev.json",
+      "sha256": "490b205b0fe53759dea93ffb9dd04c9182e1adc0095162b99ee74e06f770c3f9"
+    },
+    {
+      "path": "episodes/counterfactual/1417948008-fixed-jev.json",
+      "sha256": "051005f5b2f930fb7c4f656968460abbebe381bf609edf1ccccddb214f57ca03"
+    },
+    {
+      "path": "episodes/counterfactual/1417948008-v1-jev.json",
+      "sha256": "1abd8bbe4ddf5170335859f44ab41de80fdb0490d1bbe92dd3cb2600c9593cd3"
+    },
+    {
+      "path": "episodes/counterfactual/1417948008-v2-jev.json",
+      "sha256": "69d21bdf8a0a1fdc5c8bf0a88c866b76dc91ccd4adbc68117cf71fddefc3968a"
+    },
+    {
+      "path": "episodes/counterfactual/1434631745-fixed-jev.json",
+      "sha256": "247c8aaad148f24dac896b233b2177d1e2b69fcb935951f92e2533ec67756bda"
+    },
+    {
+      "path": "episodes/counterfactual/1434631745-v1-jev.json",
+      "sha256": "ce3820f985f9addeeb4160da2aac6671d84a5d2630d0dbb6feefc1da0217edf3"
+    },
+    {
+      "path": "episodes/counterfactual/1434631745-v2-jev.json",
+      "sha256": "8dd0fef16af1a6e85b29d7e385c8d16033131facef394989c48787849da62f35"
+    },
+    {
+      "path": "episodes/counterfactual/1435384037-fixed-jev.json",
+      "sha256": "20e39e2c67bca21f4ff7f7d41aacee0bec7712bdfc7e7cfa3c3ae1b329ca5152"
+    },
+    {
+      "path": "episodes/counterfactual/1435384037-v1-jev.json",
+      "sha256": "eb980aef0c5f6ac31d9b9cf402d351725ff9d96890fcc75583b2683ea00d21c7"
+    },
+    {
+      "path": "episodes/counterfactual/1435384037-v2-jev.json",
+      "sha256": "419a44e6e14e7a10a38906051d5353cd6c6f740e193b821be371ab13c15c05ac"
+    },
+    {
+      "path": "episodes/counterfactual/1441112122-fixed-jev.json",
+      "sha256": "88304821a2ced3d023f10ec75e1cf6b48a7e75fab0d6f299ff5d14c9c1273481"
+    },
+    {
+      "path": "episodes/counterfactual/1441112122-v1-jev.json",
+      "sha256": "413a88fca69eafac52c48bc82e18b7c216e833c7e58bd48cb520fd5049dc4ea6"
+    },
+    {
+      "path": "episodes/counterfactual/1441112122-v2-jev.json",
+      "sha256": "4b39a4a67185f7c6fdbd2011b8602774dcc79ecbebf8e31c4c6efe71422d8ced"
+    },
+    {
+      "path": "episodes/counterfactual/1463132706-fixed-jev.json",
+      "sha256": "315b9f0ada719fae25819c11cf4523aef2e5251d4e1ce442cfeae1d1d66b9768"
+    },
+    {
+      "path": "episodes/counterfactual/1463132706-v1-jev.json",
+      "sha256": "29d400a1ddd45eba6468aa8bdd4032baa8a9cf346d9cbbe1d538f40be0dc93b7"
+    },
+    {
+      "path": "episodes/counterfactual/1463132706-v2-jev.json",
+      "sha256": "14d61403a81acc6805f1b11e9e8c9ca48a19c5697fa1f91ffb6c9467e603037d"
+    },
+    {
+      "path": "episodes/counterfactual/1604806872-fixed-jev.json",
+      "sha256": "edf1b324838538818b8549176f092fdef327b72b4618ea3603f6b0ac4765bfbe"
+    },
+    {
+      "path": "episodes/counterfactual/1604806872-v1-jev.json",
+      "sha256": "51e029ed4a89cdfb5431d5f4b3aa540ae3e69994ebc1382fb6943afc2fcc10df"
+    },
+    {
+      "path": "episodes/counterfactual/1604806872-v2-jev.json",
+      "sha256": "9641fab0bcb847e25b29a72211336fd4394b74252bc812acc6ad697afff76337"
+    },
+    {
+      "path": "episodes/counterfactual/1713208477-fixed-jev.json",
+      "sha256": "b5729c3d0a572f43b3f29182d123b32cd788b200c28a0f04ba81513901f1b5b8"
+    },
+    {
+      "path": "episodes/counterfactual/1713208477-v1-jev.json",
+      "sha256": "ee398ede5b8570dc101f18fcd4101548a518098321c148e0d9a89c9b45d2e1b0"
+    },
+    {
+      "path": "episodes/counterfactual/1713208477-v2-jev.json",
+      "sha256": "ed68b5c84ca1857ba83515b8c2fc2506b0ffb4ee38d1a4e71e5a72aa598c146b"
+    },
+    {
+      "path": "episodes/counterfactual/1726040144-fixed-jev.json",
+      "sha256": "6ad291dcb48e293ef1684582bee3d1267f7961121a875e49bd5b9bc0dcffa365"
+    },
+    {
+      "path": "episodes/counterfactual/1726040144-v1-jev.json",
+      "sha256": "7be25c757853c6d149ef55d4c901b128cc4b90dd5c0d9459793a2b32791ceb9d"
+    },
+    {
+      "path": "episodes/counterfactual/1726040144-v2-jev.json",
+      "sha256": "4bf7bc552f85c9907d3e0e45034a9009d59d6b79f6f62bf6ddd412d1cb8c72bc"
+    },
+    {
+      "path": "episodes/counterfactual/1780118383-fixed-jev.json",
+      "sha256": "52c21851bb5858192cc37aef247cc06334fba435a9cdff9464dc96e2c7b0be11"
+    },
+    {
+      "path": "episodes/counterfactual/1780118383-v1-jev.json",
+      "sha256": "d120005153db3e3ecd1090c7d50585986a32b6aba68ec818da5308711fdf2791"
+    },
+    {
+      "path": "episodes/counterfactual/1780118383-v2-jev.json",
+      "sha256": "dcdeee3cf168d33ed9be321248f7a373870b7b5db4963024985a6e90e8b06d78"
+    },
+    {
+      "path": "episodes/counterfactual/1782427377-fixed-jev.json",
+      "sha256": "4415966eb804ce67a70c08e22d4ac45ea48b7d553eb22065c7186d87a660bb27"
+    },
+    {
+      "path": "episodes/counterfactual/1782427377-v1-jev.json",
+      "sha256": "84a4006b0b6422c9ab45def1e7091c43a16ec224325d2a592d8bcc7c4c43e3e5"
+    },
+    {
+      "path": "episodes/counterfactual/1782427377-v2-jev.json",
+      "sha256": "79763ea52431e065bb79deba1ec46609b275136a5eea86b5439cbe87383255f1"
+    },
+    {
+      "path": "episodes/counterfactual/1783982548-fixed-jev.json",
+      "sha256": "faae7bb9215208fa0c6a2f93feb9cbf5c6bcde1871cc9886eb62c9479061a7fb"
+    },
+    {
+      "path": "episodes/counterfactual/1783982548-v1-jev.json",
+      "sha256": "974d17a87d2d22eeb703e561ebf84f48be29433c9cac80f7b213f0b2cdb9a1a2"
+    },
+    {
+      "path": "episodes/counterfactual/1783982548-v2-jev.json",
+      "sha256": "445f007911ef8b5557c4a8b35644acc29e90858b2932ee43081386671ef67577"
+    },
+    {
+      "path": "episodes/counterfactual/1893381899-fixed-jev.json",
+      "sha256": "fd71324e7e83d5edcecbd45feaa7a7a52fa2d90af2d5dfbf68e59654ffb84909"
+    },
+    {
+      "path": "episodes/counterfactual/1893381899-v1-jev.json",
+      "sha256": "5406f223ce6fd6c7aa815c1f6c1d51931c29e47ec7519860b3a3ac764aab35ae"
+    },
+    {
+      "path": "episodes/counterfactual/1893381899-v2-jev.json",
+      "sha256": "ae43d2b6254b8cdaa89f40a07a12431fcb5addc2417a15e65b7ea247a44f18d0"
+    },
+    {
+      "path": "episodes/counterfactual/1926789012-fixed-jev.json",
+      "sha256": "1d713c68cab4df5e018b72f140d27fdff30ead36af8530ff593b71df16c0b9d7"
+    },
+    {
+      "path": "episodes/counterfactual/1926789012-v1-jev.json",
+      "sha256": "7f70fae2d5499d35659ec687b6215f4cea44f12ecbf3b2634684fca68f746cdd"
+    },
+    {
+      "path": "episodes/counterfactual/1926789012-v2-jev.json",
+      "sha256": "ee1c2ac2e7486f63ead1afe6baeb61345eb338d74fee96d361d813492edc3243"
+    },
+    {
+      "path": "episodes/counterfactual/1941695749-fixed-jev.json",
+      "sha256": "6a92340b69430805b7521506c72aa94054d88f0a8dfc7ee90be37310d85eb43e"
+    },
+    {
+      "path": "episodes/counterfactual/1941695749-v1-jev.json",
+      "sha256": "2e14004865e5be5399d7ad278931e27b163980a6b0e51a6c60ddeaf67c0907f9"
+    },
+    {
+      "path": "episodes/counterfactual/1941695749-v2-jev.json",
+      "sha256": "4b51b2766eeb85f06e7da7d56f48df30824b1c494d474cf0ced8b75e41a38ff8"
+    },
+    {
+      "path": "episodes/counterfactual/1943819135-fixed-jev.json",
+      "sha256": "ad973a139d6b64ab72ccaf88658f84ce47b7010fec3de4c52b3a155bf87150c8"
+    },
+    {
+      "path": "episodes/counterfactual/1943819135-v1-jev.json",
+      "sha256": "700a8e811c55476ea2c0993e232857a8aeed953b61ceaa2f49aff2e3571b467a"
+    },
+    {
+      "path": "episodes/counterfactual/1943819135-v2-jev.json",
+      "sha256": "46155d862365332243b8260c77f2f89e41e3cf1fb08bb442f69c22419bf45d60"
+    },
+    {
+      "path": "episodes/counterfactual/1996262776-fixed-jev.json",
+      "sha256": "05a34fbf0804f331f055956ff3a8d85749ff67758bee523e097416298090dab5"
+    },
+    {
+      "path": "episodes/counterfactual/1996262776-v1-jev.json",
+      "sha256": "45290b9b7724a08450e2d2b0c998c4b466de8611edfe735f58d61e866de9be1f"
+    },
+    {
+      "path": "episodes/counterfactual/1996262776-v2-jev.json",
+      "sha256": "71c9246217cb5ba2ea0f0626ac48ffe412077f415e6f73f511a33c8128b3f6a8"
+    },
+    {
+      "path": "episodes/counterfactual/2017421158-fixed-jev.json",
+      "sha256": "71a163c44e4441d5d03e176efdd9f1155bd180a366baef33e951a7df3473f105"
+    },
+    {
+      "path": "episodes/counterfactual/2017421158-v1-jev.json",
+      "sha256": "d261b7997ca2929f54dbb7b31c17d99d25379755051e071c5740c59ce04d9018"
+    },
+    {
+      "path": "episodes/counterfactual/2017421158-v2-jev.json",
+      "sha256": "49f34adddd49637a8a7b9462199d8b73cb0fb5654a88dccb9125256e939025b6"
+    },
+    {
+      "path": "episodes/counterfactual/2078154408-fixed-jev.json",
+      "sha256": "d22add594229bd738242cc18943c65ba0a0356698fb7ae73692267533d1d604c"
+    },
+    {
+      "path": "episodes/counterfactual/2078154408-v1-jev.json",
+      "sha256": "b36018e76a662bb8fa2d1a3861a63275b77e167c56019f0810203f40997da820"
+    },
+    {
+      "path": "episodes/counterfactual/2078154408-v2-jev.json",
+      "sha256": "e1b84b1b289318794ca8034c745b64a367708623e8cfb027a3a2eb088c9ed76f"
+    },
+    {
+      "path": "episodes/counterfactual/2097449245-fixed-jev.json",
+      "sha256": "7bb6537a96c126501bf54428294820f48e4b30c24b11f70dd3a639ea74dbd6c2"
+    },
+    {
+      "path": "episodes/counterfactual/2097449245-v1-jev.json",
+      "sha256": "1060a9ca73253be75294b9ae04964818a417349280bc77898fde16b4e10ca67d"
+    },
+    {
+      "path": "episodes/counterfactual/2097449245-v2-jev.json",
+      "sha256": "8e8479f35127d56f7c24034ac1007b54cce3daec7be9ecf100eec47cba8b20e9"
+    },
+    {
+      "path": "episodes/counterfactual/2127792863-fixed-jev.json",
+      "sha256": "1579085b15c4acfcc11cdb371d034e733ab640bafda71f78a5c4ed5a68ba66e3"
+    },
+    {
+      "path": "episodes/counterfactual/2127792863-v1-jev.json",
+      "sha256": "db8afa3f090c6c9407a541fd927373ab046d738653cc27c9612ca46268811eb2"
+    },
+    {
+      "path": "episodes/counterfactual/2127792863-v2-jev.json",
+      "sha256": "1e1a77efb69d9662bd38eb2b2245dd911cc5a9fb1094c7addda23c76bb4a3485"
+    },
+    {
+      "path": "episodes/counterfactual/2129236438-fixed-jev.json",
+      "sha256": "05502330c9d996dba418df2a5673ece1c0869061515aedb2a6179ee5fd331bd3"
+    },
+    {
+      "path": "episodes/counterfactual/2129236438-v1-jev.json",
+      "sha256": "3abd8a3ccc62c63ca7f3c63a4258dd6982341e11ba4dc0a20122d01c4d12cd1f"
+    },
+    {
+      "path": "episodes/counterfactual/2129236438-v2-jev.json",
+      "sha256": "6b359fbc618efdfc7fb143767c0c78cd49054e58807342500da117e9c7e190a0"
+    },
+    {
+      "path": "episodes/counterfactual/2138272565-fixed-jev.json",
+      "sha256": "270eb527d14fc9ac24913c0862a56c76e3b11c9d2dffb9e052c773c757644156"
+    },
+    {
+      "path": "episodes/counterfactual/2138272565-v1-jev.json",
+      "sha256": "6843338d314c979dae784c8da808db18d51833a33ec5fc4000b0597f61767685"
+    },
+    {
+      "path": "episodes/counterfactual/2138272565-v2-jev.json",
+      "sha256": "e36245d1246b033ebf2890bfd0521b21d8d9147b1828a078a1a93551c488d954"
+    },
+    {
+      "path": "episodes/counterfactual/2144364853-fixed-jev.json",
+      "sha256": "4d5922ee57f274b6ec7b42ad90d49949569640a37db0a26ddc2152c594df412f"
+    },
+    {
+      "path": "episodes/counterfactual/2144364853-v1-jev.json",
+      "sha256": "7218c3fa7c5bbb8e17ac0e0218244b5551896d2212cfa6cc16b733a9a8888b1f"
+    },
+    {
+      "path": "episodes/counterfactual/2144364853-v2-jev.json",
+      "sha256": "96669ed6d49533dc06549788a46fe488ddae89f7a3b48f29ff3b25744ebe7cea"
+    },
+    {
+      "path": "episodes/counterfactual/2156920413-fixed-jev.json",
+      "sha256": "50952bf41ed78eeb099d0febace9d1e1aec31c22a0076b383b466301c8f06daa"
+    },
+    {
+      "path": "episodes/counterfactual/2156920413-v1-jev.json",
+      "sha256": "b981643e012b8de4018a0a8a1ffffebf9e730e69f2ecf6f1684932b080a4a6f9"
+    },
+    {
+      "path": "episodes/counterfactual/2156920413-v2-jev.json",
+      "sha256": "91221ac80793d9abd28df3b82306a8938bfa76febc3e763576f6c02bf6a351c1"
+    },
+    {
+      "path": "episodes/counterfactual/2235311137-fixed-jev.json",
+      "sha256": "8b287e19709f7db9f8ce25fd88d89ca38ccf247fe99f332c53efead1663636a8"
+    },
+    {
+      "path": "episodes/counterfactual/2235311137-v1-jev.json",
+      "sha256": "6fb91dfe385d3de5cd839b2856ac07153835754a80bac001774f6f4b11bfd378"
+    },
+    {
+      "path": "episodes/counterfactual/2235311137-v2-jev.json",
+      "sha256": "39e543315b24a35f452a2b33ad0ba024b828ddb19114e2b17c99247715cf134a"
+    },
+    {
+      "path": "episodes/counterfactual/2285752782-fixed-jev.json",
+      "sha256": "4f4215fd46f18db17f17e6e39b959837c91a3d96db1f6c1f789934ded3ef8d46"
+    },
+    {
+      "path": "episodes/counterfactual/2285752782-v1-jev.json",
+      "sha256": "e41cea83695302e0dd6a9c00dbc41919bcfc85dcf84c39dacf87dd2915961e51"
+    },
+    {
+      "path": "episodes/counterfactual/2285752782-v2-jev.json",
+      "sha256": "4a7f02649a11bb3c92c465526ad34eaa5290acbfaf5c142b5f0dd8323676754e"
+    },
+    {
+      "path": "episodes/counterfactual/2397745002-fixed-jev.json",
+      "sha256": "2105bdad1006360dd3e7d8840e3dc5f4a667bd57d7bd3745c1e83ca09d95f2a0"
+    },
+    {
+      "path": "episodes/counterfactual/2397745002-v1-jev.json",
+      "sha256": "cddcbd041ec451582cfc0761ed3752dca4470112c74f4a6db72cbd44fc13310a"
+    },
+    {
+      "path": "episodes/counterfactual/2397745002-v2-jev.json",
+      "sha256": "748e2e28b8c1e67cf0ff1633fc2a2499fc7d94613b5eab673cb3b507586d34d3"
+    },
+    {
+      "path": "episodes/counterfactual/2415065012-fixed-jev.json",
+      "sha256": "2bc1e8741b11cacb64da2f31b1a19b5d77b5da67ac684da45bef843f46e19d3a"
+    },
+    {
+      "path": "episodes/counterfactual/2415065012-v1-jev.json",
+      "sha256": "ed774ec5001f0985d413083eb6b7be2c77c6d133ccfc543af8b79f6245f88f9c"
+    },
+    {
+      "path": "episodes/counterfactual/2415065012-v2-jev.json",
+      "sha256": "4b3ffb47cfc8d6ade497f02a02d66d12f617bdfed152e98912889cbbedcf37c5"
+    },
+    {
+      "path": "episodes/counterfactual/2429165501-fixed-jev.json",
+      "sha256": "7fe52214b1cf717b3be5aaf711748c0985e04870bd5f5b96c6e8c9feead999c2"
+    },
+    {
+      "path": "episodes/counterfactual/2429165501-v1-jev.json",
+      "sha256": "7bc8465b6eb2a9fca233e107f19982ca79343fbf670133cc8bebd91e1350e118"
+    },
+    {
+      "path": "episodes/counterfactual/2429165501-v2-jev.json",
+      "sha256": "069f88cbf3803da693bb70a6d131238bdc89965d2c2d6fc03f237831458af729"
+    },
+    {
+      "path": "episodes/counterfactual/2490692181-fixed-jev.json",
+      "sha256": "8c709dbdcc0a361b5909fabeaaa16d3cd21d3e336628c7ae3f61a516cc65fc8f"
+    },
+    {
+      "path": "episodes/counterfactual/2490692181-v1-jev.json",
+      "sha256": "48185082fecd9131a160ba13410be68fd3e46fdc2469b7105efed6044f23e17a"
+    },
+    {
+      "path": "episodes/counterfactual/2490692181-v2-jev.json",
+      "sha256": "bced92ce38d4b39fbf60248b5257d2e72840cc6c00f814a500b5b03678222571"
+    },
+    {
+      "path": "episodes/counterfactual/2493489582-fixed-jev.json",
+      "sha256": "c6e2050418925a5f5b68c0c733ad0bcfa184471035e9145120262695a17fe2cb"
+    },
+    {
+      "path": "episodes/counterfactual/2493489582-v1-jev.json",
+      "sha256": "6e59f23b81c54206c35efb552306c094169499aa8bc2110b16a10c4daa39ebe0"
+    },
+    {
+      "path": "episodes/counterfactual/2493489582-v2-jev.json",
+      "sha256": "e6c0eb67b1964049e383fd942d5aa269c719477e1ca15d62635ac658f18818df"
+    },
+    {
+      "path": "episodes/counterfactual/2572203804-fixed-jev.json",
+      "sha256": "b9a38fa375da43230c6a2228fdd029b0c21afda6b9efab3e8a165c42587a933c"
+    },
+    {
+      "path": "episodes/counterfactual/2572203804-v1-jev.json",
+      "sha256": "48c2618b1eeae11332b4b0652354183b7a8ac533569f4cd958e66943e80ff2da"
+    },
+    {
+      "path": "episodes/counterfactual/2572203804-v2-jev.json",
+      "sha256": "90b005acd17f14ed8fd4814b6e501652455754155e15cab34bb2f2ec31766ed0"
+    },
+    {
+      "path": "episodes/counterfactual/2614015403-fixed-jev.json",
+      "sha256": "f39b279e0f975b9c201d8d1e3fa06a5a1435adb538291d8b8a9dea4c8def0b68"
+    },
+    {
+      "path": "episodes/counterfactual/2614015403-v1-jev.json",
+      "sha256": "d395736f8503ff9b3ac0c8a31c2a865a42a5001541ffee888e980bcc27edbbf0"
+    },
+    {
+      "path": "episodes/counterfactual/2614015403-v2-jev.json",
+      "sha256": "3cdb5c2263dfa8fe10e87d5553cf5792594fae46f2b7f6a3dfcbd50e6183dd5f"
+    },
+    {
+      "path": "episodes/counterfactual/2668994670-fixed-jev.json",
+      "sha256": "f4b569cbb3d60c216f23fac647e4c6fac621be93eaf26e87cbff0f5eeb45d8bf"
+    },
+    {
+      "path": "episodes/counterfactual/2668994670-v1-jev.json",
+      "sha256": "bcaf6f4b5c73e109745da44d7c2242a792c5e33d36b53c4a8de825478c20eb78"
+    },
+    {
+      "path": "episodes/counterfactual/2668994670-v2-jev.json",
+      "sha256": "35837292c90c419d0d3d940d9597d47f6773c4d3bb11fb2276543361dbc27d92"
+    },
+    {
+      "path": "episodes/counterfactual/2693970049-fixed-jev.json",
+      "sha256": "810932e3475d0d76bc36bffc964f6cfed7672072ace4a6113d71a4b107057d83"
+    },
+    {
+      "path": "episodes/counterfactual/2693970049-v1-jev.json",
+      "sha256": "876aa2b773dd55ef54fde2dc26fd8c9c63b3e4b6732ddcbd68f10a60831034ec"
+    },
+    {
+      "path": "episodes/counterfactual/2693970049-v2-jev.json",
+      "sha256": "8872a2f5d88ac1c3c3f0adafd1ce3d1ffc3746e054f506a2e346cea4c69351d8"
+    },
+    {
+      "path": "episodes/counterfactual/2730207860-fixed-jev.json",
+      "sha256": "39bac30df81e715c8edc9047f7af6d1198685c2fa44c37345e3fc17839e94be1"
+    },
+    {
+      "path": "episodes/counterfactual/2730207860-v1-jev.json",
+      "sha256": "63576536cf0d79c9018ea0a8b6200d69261f3184a84a7704a27edbfa5be54341"
+    },
+    {
+      "path": "episodes/counterfactual/2730207860-v2-jev.json",
+      "sha256": "fc3ffd9b1871ea75fb10d276e868d69f3f9f1c5e7465e59655672521ef65d144"
+    },
+    {
+      "path": "episodes/counterfactual/2748084990-fixed-jev.json",
+      "sha256": "42adeb688de14ce5b8ede67e00b6decd34c203025ba075cf7b6261e31c9831f3"
+    },
+    {
+      "path": "episodes/counterfactual/2748084990-v1-jev.json",
+      "sha256": "06b6c6fec0cd5564c63537b5340e05c7f66cd8fff8c319b85f1e7d03a6fc2e8b"
+    },
+    {
+      "path": "episodes/counterfactual/2748084990-v2-jev.json",
+      "sha256": "0288fecc58d8974b673406243573579509681e2a4353c4aa754f19286feaa970"
+    },
+    {
+      "path": "episodes/counterfactual/2859691660-fixed-jev.json",
+      "sha256": "5f9b75f90ab664b124cb7e36733ffd9988d5de29c2bebe0e9df48c3a0c7fe576"
+    },
+    {
+      "path": "episodes/counterfactual/2859691660-v1-jev.json",
+      "sha256": "ace35760cf89c19a99b5252a0da28a7be38117a0d0740a2c4981be0c9c9956f3"
+    },
+    {
+      "path": "episodes/counterfactual/2859691660-v2-jev.json",
+      "sha256": "c1a18f61fb79b714557e9a8d6e3e333a5454cac1658c9b2712b438ba9ca52491"
+    },
+    {
+      "path": "episodes/counterfactual/2880809810-fixed-jev.json",
+      "sha256": "09be7ab5e101c6fcf77a1c58d999c69fbc5ceb20d026d7e3be0fcf107805cb6e"
+    },
+    {
+      "path": "episodes/counterfactual/2880809810-v1-jev.json",
+      "sha256": "ea5c2181eff5ae8f22fa40b82c2e2db18694572d248af3ee9d04a95248993de6"
+    },
+    {
+      "path": "episodes/counterfactual/2880809810-v2-jev.json",
+      "sha256": "73217c26736593dd3eb24b972392ab80048f74f28461237d33cd60b7b5dd4d99"
+    },
+    {
+      "path": "episodes/counterfactual/2903464404-fixed-jev.json",
+      "sha256": "9383405f49794091b77ebefa27d37578398abb82f8b707e59c59e1a5827a3b5d"
+    },
+    {
+      "path": "episodes/counterfactual/2903464404-v1-jev.json",
+      "sha256": "a5329f5dab6cc3e4d8316bee574151fd1f19c615005a3aa0218d2ca70bc4bd97"
+    },
+    {
+      "path": "episodes/counterfactual/2903464404-v2-jev.json",
+      "sha256": "e587a44a67fc5c4b45a884ac2aafc90da01c416c1d77ea9f968cb281b3c94665"
+    },
+    {
+      "path": "episodes/counterfactual/2916315325-fixed-jev.json",
+      "sha256": "491ebe53eb4fe7e09607f98e8d9b61f59d9e832a4613d11606a82e6dd43bcb67"
+    },
+    {
+      "path": "episodes/counterfactual/2916315325-v1-jev.json",
+      "sha256": "5d2772236637b2e86d318b5cbd42ecfe34436b9c44a144a20f60565e7e86dd88"
+    },
+    {
+      "path": "episodes/counterfactual/2916315325-v2-jev.json",
+      "sha256": "658f214f1af6286f9fa16e8ab78fe62327954100917519e55880dfd4b5c981cd"
+    },
+    {
+      "path": "episodes/counterfactual/2948986200-fixed-jev.json",
+      "sha256": "fdd2959b11f117ac8e3de10a36a39348e525dbae950cf207b8dcc942997cf407"
+    },
+    {
+      "path": "episodes/counterfactual/2948986200-v1-jev.json",
+      "sha256": "c4c3e593a34a927fafe28e8cfb31947485aa180980cc4dad64ddddae4bb11fae"
+    },
+    {
+      "path": "episodes/counterfactual/2948986200-v2-jev.json",
+      "sha256": "301acfcfc8fc8dafadedd728b7fd932392ad396f3392b28e19638a02a717126e"
+    },
+    {
+      "path": "episodes/counterfactual/2951591263-fixed-jev.json",
+      "sha256": "b367d5170856ae8eef14076a35dc21f9588197fd6e10f12a66b358a2677c9c20"
+    },
+    {
+      "path": "episodes/counterfactual/2951591263-v1-jev.json",
+      "sha256": "65f4a10ed9023b2ed5215562bcaeb465637ea306729dfff3ee0c94f5714f1bfd"
+    },
+    {
+      "path": "episodes/counterfactual/2951591263-v2-jev.json",
+      "sha256": "9fca64bbf99ff4dcd21da2e5a2d351b40e90b4a216f5b78a175b727f36d187b1"
+    },
+    {
+      "path": "episodes/counterfactual/2970298641-fixed-jev.json",
+      "sha256": "2635ebdef31bd51b3acdbd9da4da504be957f3a75fd1b1cbe2d652773576b46d"
+    },
+    {
+      "path": "episodes/counterfactual/2970298641-v1-jev.json",
+      "sha256": "dc845e2b76b8f65e7cbe4f3b2f57268a348ff70463077bcbff0f8b56f8d2b239"
+    },
+    {
+      "path": "episodes/counterfactual/2970298641-v2-jev.json",
+      "sha256": "466fad7c505c220e1e1341e222806a6a1a8d1bb4f8a77fb40716e089198f2762"
+    },
+    {
+      "path": "episodes/counterfactual/2971860646-fixed-jev.json",
+      "sha256": "cab82ddbeeac1a3e4b2f86e44d43f85b646e0bc661667c3e14313083d4ce5b0a"
+    },
+    {
+      "path": "episodes/counterfactual/2971860646-v1-jev.json",
+      "sha256": "a90b51d623b39e6884053339589fa57d20c00161c29bd5f43c29f41b573806d1"
+    },
+    {
+      "path": "episodes/counterfactual/2971860646-v2-jev.json",
+      "sha256": "6edb73b1f0a456c8af7b28db23230693485699bff1bb4153a1c4efc5b4c91839"
+    },
+    {
+      "path": "episodes/counterfactual/3100903743-fixed-jev.json",
+      "sha256": "21ecc84d27434c6a3ba6f41c89ac68eb425a56054c93ea1cfcd6f72e4fe9dca5"
+    },
+    {
+      "path": "episodes/counterfactual/3100903743-v1-jev.json",
+      "sha256": "9f90e036c5b5db28d66102db0ea1bb0954d2a03b0790ad9f10901bee3a6c00f6"
+    },
+    {
+      "path": "episodes/counterfactual/3100903743-v2-jev.json",
+      "sha256": "93f6f53b9a3035b8ffb631b2394f489f3a16a40f9099ea843f1216d7abdd8af7"
+    },
+    {
+      "path": "episodes/counterfactual/3138123725-fixed-jev.json",
+      "sha256": "905165a36f57dfd22969510337fdb3adb79814e5ff3bd4b0d01c0def222429b3"
+    },
+    {
+      "path": "episodes/counterfactual/3138123725-v1-jev.json",
+      "sha256": "2591fdc48bcc08041ee3f0c3bc6e0e79c2888e602429b58b21c525b9141b89b6"
+    },
+    {
+      "path": "episodes/counterfactual/3138123725-v2-jev.json",
+      "sha256": "44f529464dbbc6e96669f593718ed041c8f4bded37446b33c70edf45390d6ce7"
+    },
+    {
+      "path": "episodes/counterfactual/3169311871-fixed-jev.json",
+      "sha256": "eb3651e90a9fe5782b77fe9ac6bc74e715e35eb688204cc9eb951927dd1b8221"
+    },
+    {
+      "path": "episodes/counterfactual/3169311871-v1-jev.json",
+      "sha256": "a51753b88ad95a1e3b91b2988f11a1d846fac0dd2110e90e35bd3f7932a4b9fd"
+    },
+    {
+      "path": "episodes/counterfactual/3169311871-v2-jev.json",
+      "sha256": "a31803aed9f4ce1899c274b54bd3a648123bb6d761574bc1add942f37242f44d"
+    },
+    {
+      "path": "episodes/counterfactual/3207412602-fixed-jev.json",
+      "sha256": "a1dffe7e5f935fa4825e3173a5296daf82ed22e1ef3460c972523046b25ed118"
+    },
+    {
+      "path": "episodes/counterfactual/3207412602-v1-jev.json",
+      "sha256": "16930d5ab0f97e9fcb1310ca894e0f016123c65a2391dbc77c545f2d2a439e99"
+    },
+    {
+      "path": "episodes/counterfactual/3207412602-v2-jev.json",
+      "sha256": "9e7c6c5959cd3e3275943200b7a0e25748d60473595cd649ca86834246a87983"
+    },
+    {
+      "path": "episodes/counterfactual/3232047400-fixed-jev.json",
+      "sha256": "1e6a0e859a91e5fe2bd0056b923e394f009630432706f8090d17804b2750eb4c"
+    },
+    {
+      "path": "episodes/counterfactual/3232047400-v1-jev.json",
+      "sha256": "6a91aad30e8f488c8da86a99106761146c7776621ee1dc6d43e942f1a0a035c8"
+    },
+    {
+      "path": "episodes/counterfactual/3232047400-v2-jev.json",
+      "sha256": "9c35debb2d4230b9fda5677fb8ee3da1b23720a9599aac7a1379be512f43baba"
+    },
+    {
+      "path": "episodes/counterfactual/3287008200-fixed-jev.json",
+      "sha256": "29885ad322104076d0cb1d950a0888f3bab5d0ef0761758aeaaa843b0855bcf4"
+    },
+    {
+      "path": "episodes/counterfactual/3287008200-v1-jev.json",
+      "sha256": "9ee062c3f334fcff0f15d90de7e52c00ff9f884f51a57c138fbef5153b1dee1e"
+    },
+    {
+      "path": "episodes/counterfactual/3287008200-v2-jev.json",
+      "sha256": "37f710d082d92675a111512f8d81bd6fa1bf59b16820952e5f9c0bcf85982936"
+    },
+    {
+      "path": "episodes/counterfactual/3308584552-fixed-jev.json",
+      "sha256": "de8c506f07e63426e04d032dc08b5fe962fb9489edfe896c3269ea1b8f12ec40"
+    },
+    {
+      "path": "episodes/counterfactual/3308584552-v1-jev.json",
+      "sha256": "a91a50d2e6f19111d1da0d30a09bf93245e395de72f2b99ded8c53cdf737dda5"
+    },
+    {
+      "path": "episodes/counterfactual/3308584552-v2-jev.json",
+      "sha256": "e302aa1a5f594c02de361ccb87e99de695bb153f550597d804630cff37c62ccd"
+    },
+    {
+      "path": "episodes/counterfactual/3315101844-fixed-jev.json",
+      "sha256": "5c81232932e2996672894242be5c0ed2fbef2874f24a8f5e461a4ec1cfe1f1d0"
+    },
+    {
+      "path": "episodes/counterfactual/3315101844-v1-jev.json",
+      "sha256": "52f074aa3e05db9eb4e9d82c43b88422b7868862902c67989b7dd211df6ea0c3"
+    },
+    {
+      "path": "episodes/counterfactual/3315101844-v2-jev.json",
+      "sha256": "ad177ceaa176b2651e878be233fd053655f2923b6f65ccd595797c2716e2ccf9"
+    },
+    {
+      "path": "episodes/counterfactual/3349026319-fixed-jev.json",
+      "sha256": "c134e50cd4545319fb79cee09f02baf2b80ce507268c8977b14d32bdf958f018"
+    },
+    {
+      "path": "episodes/counterfactual/3349026319-v1-jev.json",
+      "sha256": "19d6324e8311151f064a05f9bdc1740ad531eb2d0db3715f8529208e1412a643"
+    },
+    {
+      "path": "episodes/counterfactual/3349026319-v2-jev.json",
+      "sha256": "82a5fc295f69275e561b22bff86852e3fee4408a7a1a377307a655687918658a"
+    },
+    {
+      "path": "episodes/counterfactual/3463802599-fixed-jev.json",
+      "sha256": "e287b085d4f81b524fa1ff9a08ac6f61c34748367382e6266ec319aca2455383"
+    },
+    {
+      "path": "episodes/counterfactual/3463802599-v1-jev.json",
+      "sha256": "04a1843a5d2b36ee1e62f49d648b2b33860583f20bfd5536f7b520d8d8879f32"
+    },
+    {
+      "path": "episodes/counterfactual/3463802599-v2-jev.json",
+      "sha256": "bcc81b7cc546984b78574bd2f7a66883ab4de12d930082420c0985059544f759"
+    },
+    {
+      "path": "episodes/counterfactual/3478210300-fixed-jev.json",
+      "sha256": "57919f2f556b1bf05f3acf172e85e3c8f4d945c915b92df48448174ba6de80ad"
+    },
+    {
+      "path": "episodes/counterfactual/3478210300-v1-jev.json",
+      "sha256": "ca08c4a5e2064a6481a649892fcf3aa2de1b2a91c69cddf3876d5929f96186e9"
+    },
+    {
+      "path": "episodes/counterfactual/3478210300-v2-jev.json",
+      "sha256": "3e5c002762cb3cb4168b1b2f71ac547fe133aacfc8fe79d93e7f60814975ebaa"
+    },
+    {
+      "path": "episodes/counterfactual/3528171009-fixed-jev.json",
+      "sha256": "2e4c0324c398e053fda834763d067f2e23250f9eba96a3e5f9b5f21b5a2f782c"
+    },
+    {
+      "path": "episodes/counterfactual/3528171009-v1-jev.json",
+      "sha256": "36147a31123c2c1bc1c28d9a05eefc298f0744b93041a86df0e70e7dc7d563db"
+    },
+    {
+      "path": "episodes/counterfactual/3528171009-v2-jev.json",
+      "sha256": "1985b53116a306a7a5ebc3eef1227a8f70ff93d54d4abed0c0c5ac30fe5f6103"
+    },
+    {
+      "path": "episodes/counterfactual/3539185281-fixed-jev.json",
+      "sha256": "cf14b372a491a7971aa8eb6395cc791605538a3edae9a018cbf12d816792b8be"
+    },
+    {
+      "path": "episodes/counterfactual/3539185281-v1-jev.json",
+      "sha256": "4c3c7d2ed90c2a303a5298da1f657848ea6db1fc685571d52d6ffec2fc1dc798"
+    },
+    {
+      "path": "episodes/counterfactual/3539185281-v2-jev.json",
+      "sha256": "ef7ae9152f0fb40aac63e450a86ae34d236dcb688180ca63edd173ef244a84d4"
+    },
+    {
+      "path": "episodes/counterfactual/3544405874-fixed-jev.json",
+      "sha256": "8722d5f673e9e319eee513209817439c7205d5459cbae56386a66abbe91ddf5d"
+    },
+    {
+      "path": "episodes/counterfactual/3544405874-v1-jev.json",
+      "sha256": "64123ba611e72e9a179a20be9378f4bafaff45364f60f1df74d1c36cdac3c0d3"
+    },
+    {
+      "path": "episodes/counterfactual/3544405874-v2-jev.json",
+      "sha256": "fe8d065324d0a5f032e009d558368ce4bc939842897c36b2e673c342366565d0"
+    },
+    {
+      "path": "episodes/counterfactual/3564894072-fixed-jev.json",
+      "sha256": "321eb4e4d0d235f9cc3320663a38b41a10eee099d5f8a5b782bd0c34973c57ff"
+    },
+    {
+      "path": "episodes/counterfactual/3564894072-v1-jev.json",
+      "sha256": "73fdb9e0314f0867bd9f4aacadabb0090f2c98b37dc412cfa9e5cc92ef57cf44"
+    },
+    {
+      "path": "episodes/counterfactual/3564894072-v2-jev.json",
+      "sha256": "63df05e749f6c8dd1f6153cc0c296efbfa67bb837795cbe43794b7687a334deb"
+    },
+    {
+      "path": "episodes/counterfactual/3575258340-fixed-jev.json",
+      "sha256": "9488acf9801edaeb2d73552ac038fdd48595af3efad7d42d4163cbf8fffc858f"
+    },
+    {
+      "path": "episodes/counterfactual/3575258340-v1-jev.json",
+      "sha256": "293c3a01df2cf7483fdbfbcb78b89139dbe10d48ef9ebef44b48a247e0d2688f"
+    },
+    {
+      "path": "episodes/counterfactual/3575258340-v2-jev.json",
+      "sha256": "d6398243a80e30b4973042e12f29f104737612f3a0be0cf565b06793cfa0d02e"
+    },
+    {
+      "path": "episodes/counterfactual/3605483479-fixed-jev.json",
+      "sha256": "222f298c3a6cef98b5640cd6e1638fd2de391173c1a10c380614136ce762a1ef"
+    },
+    {
+      "path": "episodes/counterfactual/3605483479-v1-jev.json",
+      "sha256": "88b0171c45820bccc9ea71a01039330a073034632b29e358c08e0f407f9f0b55"
+    },
+    {
+      "path": "episodes/counterfactual/3605483479-v2-jev.json",
+      "sha256": "e266972cfe81c319316f73a5e3bdc9356039e2f3d7d7104ec9d14d8060d9fcdb"
+    },
+    {
+      "path": "episodes/counterfactual/3606360450-fixed-jev.json",
+      "sha256": "e8223d1e10eb0c7fe6b3bfb2aca3a0a9618010b433d8c554788f4d83017dfa50"
+    },
+    {
+      "path": "episodes/counterfactual/3606360450-v1-jev.json",
+      "sha256": "ca45de2fc79ee67388879e09fc770fc1921297cfb3972e66b145a9665bb2fb19"
+    },
+    {
+      "path": "episodes/counterfactual/3606360450-v2-jev.json",
+      "sha256": "17ed805067149e519a1859bf25ed26942047b8d3087b52556c3f028c235e060c"
+    },
+    {
+      "path": "episodes/counterfactual/3615340361-fixed-jev.json",
+      "sha256": "21ce80dbd45f7f4ab355b97e97515decf2de594ba17af31c645ef6d646a5f262"
+    },
+    {
+      "path": "episodes/counterfactual/3615340361-v1-jev.json",
+      "sha256": "d0a6dd4a5568c67f016f8d1d83340bf88f0226228d1a082b81af3164dc985200"
+    },
+    {
+      "path": "episodes/counterfactual/3615340361-v2-jev.json",
+      "sha256": "871238d77426b367aace3b62dddf5fced3cf0ff04eaf74d0b55dec47a4c4e1ee"
+    },
+    {
+      "path": "episodes/counterfactual/3664982965-fixed-jev.json",
+      "sha256": "0cdc43467e7f5bf5f6333552d7128e1117aa27d4e0cf7b99158d5ada94efce38"
+    },
+    {
+      "path": "episodes/counterfactual/3664982965-v1-jev.json",
+      "sha256": "82f0db1d57e66c1deee8fcaf405ba4a18e4da6eb8477f2e16ca8cb3992ad060f"
+    },
+    {
+      "path": "episodes/counterfactual/3664982965-v2-jev.json",
+      "sha256": "b71b93807b32fb3b0ad7ca6a8e5b299404d609f4f44ce212ab80aec7369608c9"
+    },
+    {
+      "path": "episodes/counterfactual/3675387283-fixed-jev.json",
+      "sha256": "43f6326ecb1f2b8b5dfe76d03303a905b29c4393debb4e20880d5273b4c9475b"
+    },
+    {
+      "path": "episodes/counterfactual/3675387283-v1-jev.json",
+      "sha256": "83e3dda26088e1a124fad84ed80251f421f034866e446f4b429d1db41566321a"
+    },
+    {
+      "path": "episodes/counterfactual/3675387283-v2-jev.json",
+      "sha256": "844fae89f259ffeb067a162dbd644cf47def8246deab18613cd7a31a671c4afc"
+    },
+    {
+      "path": "episodes/counterfactual/3677235887-fixed-jev.json",
+      "sha256": "63f5f9397641a3d00ea22c5f01bebdca32c721de6b2e869b4aa4a95ed9733bb3"
+    },
+    {
+      "path": "episodes/counterfactual/3677235887-v1-jev.json",
+      "sha256": "e2411a97b2a09b71726e5e9297bef3ec2caeea28c45ebb0854319131e57d3bce"
+    },
+    {
+      "path": "episodes/counterfactual/3677235887-v2-jev.json",
+      "sha256": "aaffeb18a37167a2d374a056b634c8bb31b078f96fa8e81ca2ea57fb74445121"
+    },
+    {
+      "path": "episodes/counterfactual/3829488054-fixed-jev.json",
+      "sha256": "73f1f71039986bae085cc2cc9d7ceeebf34a3935cd9998d6fde2b504c9ede4d8"
+    },
+    {
+      "path": "episodes/counterfactual/3829488054-v1-jev.json",
+      "sha256": "7892dba8770eae9f37cef4290e84f8402691fe6ab4d6a3817051a09807af4322"
+    },
+    {
+      "path": "episodes/counterfactual/3829488054-v2-jev.json",
+      "sha256": "db709a340594fdab647d034c31c62b6500c46c8c819443cc90261c8f7db51bfe"
+    },
+    {
+      "path": "episodes/counterfactual/3831268587-fixed-jev.json",
+      "sha256": "886d3b95e5b09aaa1897a4aaf4db495430c8fb216ef200697ae982178bc3d28e"
+    },
+    {
+      "path": "episodes/counterfactual/3831268587-v1-jev.json",
+      "sha256": "5a90b94b97d7746b088cc08e710d7e8a7665a29272c403fb638f3f93101afe6d"
+    },
+    {
+      "path": "episodes/counterfactual/3831268587-v2-jev.json",
+      "sha256": "7a460c7083abb03e8728efccc768ff1ec437acc930a9d96d10923ee14b6ac2b2"
+    },
+    {
+      "path": "episodes/counterfactual/3858127520-fixed-jev.json",
+      "sha256": "3616749a8d79288a4c8ab8a2e42b170377deedde122297fa382b257367f74ec4"
+    },
+    {
+      "path": "episodes/counterfactual/3858127520-v1-jev.json",
+      "sha256": "5fb79f67d42e9717954f31e10764134fb3f773246479f52542b1afe50d111681"
+    },
+    {
+      "path": "episodes/counterfactual/3858127520-v2-jev.json",
+      "sha256": "57c1ce2f1474b2e9ab6576cb784b253a6be97d178591f182fb5d95dcbd483e8a"
+    },
+    {
+      "path": "episodes/counterfactual/3865060374-fixed-jev.json",
+      "sha256": "a5d296556ca5d53c1bea9a633c82f7333e6b997edc4fc1cb70279ae7e5ea106a"
+    },
+    {
+      "path": "episodes/counterfactual/3865060374-v1-jev.json",
+      "sha256": "f01f74cbdf08c2c18f96c07df4df0716232ea3c3c4a70b3318a357c069554a22"
+    },
+    {
+      "path": "episodes/counterfactual/3865060374-v2-jev.json",
+      "sha256": "3b0236103d2d0288a11635eace38c9a39385b170dc2d43c507e19c006a403f98"
+    },
+    {
+      "path": "episodes/counterfactual/3887395545-fixed-jev.json",
+      "sha256": "d92b0aa2c15a5b5c2f558537688937079d59432a3462154c12b802e1bdad58bc"
+    },
+    {
+      "path": "episodes/counterfactual/3887395545-v1-jev.json",
+      "sha256": "bdcc1bf84bab56f5f0f5a990af83a9637d29a39edd45d68df1cd5a51d1cb2e5a"
+    },
+    {
+      "path": "episodes/counterfactual/3887395545-v2-jev.json",
+      "sha256": "e4b3e3282957142934f86dde51d87c5205308363dcf8dbf750f492148cf7bbfd"
+    },
+    {
+      "path": "episodes/counterfactual/3959889971-fixed-jev.json",
+      "sha256": "d38a9dc42e405bbf815a76cc7451a41b2d1c76420d56e4bb6221d32aba66006d"
+    },
+    {
+      "path": "episodes/counterfactual/3959889971-v1-jev.json",
+      "sha256": "82971efdd4a5efeb3f504ba62fca8aee21252ce08d5d453d0bb2e9f6046a70c6"
+    },
+    {
+      "path": "episodes/counterfactual/3959889971-v2-jev.json",
+      "sha256": "62bae28386ac346ebf2a39672ebb4ce6416d7ba9073ae99333b75c04e1ab1b0c"
+    },
+    {
+      "path": "episodes/counterfactual/3989761415-fixed-jev.json",
+      "sha256": "5b3b4bd9cd02febe27aa42f1e667c619575ea5d718bfd79d50fb043c0dab54b5"
+    },
+    {
+      "path": "episodes/counterfactual/3989761415-v1-jev.json",
+      "sha256": "ad541be54db0e10b8ef87bd75048e169f2f317ed72e8852a8c3cff164c0fc542"
+    },
+    {
+      "path": "episodes/counterfactual/3989761415-v2-jev.json",
+      "sha256": "3152259859ddda128b8b02456044dac33c134364362999298dbbaca998b58d2c"
+    },
+    {
+      "path": "episodes/counterfactual/4014768549-fixed-jev.json",
+      "sha256": "8d7d3aa561ba50fa4f4dafa44fbce32aa59cb47b40eaee3a89bffd8d8a5f12d8"
+    },
+    {
+      "path": "episodes/counterfactual/4014768549-v1-jev.json",
+      "sha256": "56963b1c50f1afc41943eae7187f2f637eacfa52663c94f568d24bb7d0d31bce"
+    },
+    {
+      "path": "episodes/counterfactual/4014768549-v2-jev.json",
+      "sha256": "3012e2992e180ea9ddbbd9f8be588f32bcb899c47596991953795bbfa2bca8c1"
+    },
+    {
+      "path": "episodes/counterfactual/4017349913-fixed-jev.json",
+      "sha256": "0ba414a7f7266bb5d41ef7afc91d8d960a4373ab88660f46e84b92d25dd242e8"
+    },
+    {
+      "path": "episodes/counterfactual/4017349913-v1-jev.json",
+      "sha256": "3eb5db77bcce1e6b04c50ad2bb8878418a481c88420c64ab6b2b403313196018"
+    },
+    {
+      "path": "episodes/counterfactual/4017349913-v2-jev.json",
+      "sha256": "ff7f94c4a66b9e607715e837dc52993f160366909897d3f12d2cb297f73f6724"
+    },
+    {
+      "path": "episodes/counterfactual/4062370520-fixed-jev.json",
+      "sha256": "f693e6762d1b7f4fb7cec6e5ea0764235a6c8a82669eefb1cd7f5b53ba133020"
+    },
+    {
+      "path": "episodes/counterfactual/4062370520-v1-jev.json",
+      "sha256": "83b1f3602aa64add2a0519bdc35841e8c854185ff2e5ea68ddc81de0acefbaf7"
+    },
+    {
+      "path": "episodes/counterfactual/4062370520-v2-jev.json",
+      "sha256": "7d237f1769857bd1ccd1ef484ea6485d0d9681a3b311f3cd81212d0940602f89"
+    },
+    {
+      "path": "episodes/counterfactual/4064533746-fixed-jev.json",
+      "sha256": "2df0579dad1f4eb5b4c6a565a9cbcd1cb6f69cbf09aa6886d9879bbc2d1901e7"
+    },
+    {
+      "path": "episodes/counterfactual/4064533746-v1-jev.json",
+      "sha256": "f385fe49188813a11b69a11bf59b4de40020e46e5438c94c4913bb07c1bd03d8"
+    },
+    {
+      "path": "episodes/counterfactual/4064533746-v2-jev.json",
+      "sha256": "2f4b5370e0853bf71fac6e9290b46daf4e7f157cdce72b74dbad145238b925c4"
+    },
+    {
+      "path": "episodes/counterfactual/4066378137-fixed-jev.json",
+      "sha256": "b0de9eaf868be376e2e785642505f4e2ce936ebc0ad64619968c86b875af8e70"
+    },
+    {
+      "path": "episodes/counterfactual/4066378137-v1-jev.json",
+      "sha256": "fd83d0d15edf92af0a3231d2d9074f42204db79bf9aefbaa42ca2cf8584c1f7b"
+    },
+    {
+      "path": "episodes/counterfactual/4066378137-v2-jev.json",
+      "sha256": "b61b305a99370b52ce54187c3b346bfc933df37f846a9ff85e8fb62c2b52795e"
+    },
+    {
+      "path": "episodes/counterfactual/4113519186-fixed-jev.json",
+      "sha256": "b16bc800c2277a64eb3f6b12fb9463099e743dc2f23f70fd2e5d63ff840ee9ed"
+    },
+    {
+      "path": "episodes/counterfactual/4113519186-v1-jev.json",
+      "sha256": "beaaaadac35881d2330822bc4ffeb4e120765a5d3f8a6460bf7a63b055d621e8"
+    },
+    {
+      "path": "episodes/counterfactual/4113519186-v2-jev.json",
+      "sha256": "bd1a671fef0d7f2e5cdfe96b5abb77a6beb5399e58bb3117477c5f6bb4931ac1"
+    },
+    {
+      "path": "episodes/counterfactual/4119910455-fixed-jev.json",
+      "sha256": "56f55180a4002cb9c1b4513befa6c8e5158f360c4d0800ed20d061f411ce256e"
+    },
+    {
+      "path": "episodes/counterfactual/4119910455-v1-jev.json",
+      "sha256": "bea175b00750670232dbeeec69ecaa3e439eb7b253faf06f724865b939b685e6"
+    },
+    {
+      "path": "episodes/counterfactual/4119910455-v2-jev.json",
+      "sha256": "a8848b18ce8ee08ae76df06d62d1aba44abf27395a6bd80798761fa05e907de1"
+    },
+    {
+      "path": "episodes/counterfactual/4127561120-fixed-jev.json",
+      "sha256": "3759ba8b8c83e87d90dc8bbfe8b20372c6d04a66017c17976c3a58dac2d33731"
+    },
+    {
+      "path": "episodes/counterfactual/4127561120-v1-jev.json",
+      "sha256": "cef4b01d65e05363d69cf2ab94186abee77b5a3172056c429f44673ddcd1afb4"
+    },
+    {
+      "path": "episodes/counterfactual/4127561120-v2-jev.json",
+      "sha256": "30c202827eb92b6d944ba760dc428b21b75ea570667b6a8b62cac31cec2128e8"
+    },
+    {
+      "path": "episodes/counterfactual/4127807710-fixed-jev.json",
+      "sha256": "3bc1d939f59aaddc44c9de63d6cfe3d61edb2300248bc92df5cfcf3a53f7edbe"
+    },
+    {
+      "path": "episodes/counterfactual/4127807710-v1-jev.json",
+      "sha256": "0506c62f9a4a76f9917d13ef69118ddf5a7ad738a66590d9331bb07e0c264742"
+    },
+    {
+      "path": "episodes/counterfactual/4127807710-v2-jev.json",
+      "sha256": "0b1d7cc0ab9f1e61482213df24abc88bdb6d5cdded0b08a563f5b6f1ca1ab045"
+    },
+    {
+      "path": "episodes/counterfactual/4215817136-fixed-jev.json",
+      "sha256": "db0581e07aba90d344149badf2b4eddfdadb29e64b394e0294a34d418e046dc1"
+    },
+    {
+      "path": "episodes/counterfactual/4215817136-v1-jev.json",
+      "sha256": "0f8ad130e0e9cdcb64f4a7951b85b911db46c5b43394f493ac49322a7bfa1f42"
+    },
+    {
+      "path": "episodes/counterfactual/4215817136-v2-jev.json",
+      "sha256": "5cc8beda171c814a2668887ce0d87fb751900c69980048e3b988e1eb30778f52"
+    },
+    {
+      "path": "episodes/counterfactual/4236486450-fixed-jev.json",
+      "sha256": "c538d08aa1da693ddca4abab1e4764fd40fa1bf6e559712af9cc927a1578a035"
+    },
+    {
+      "path": "episodes/counterfactual/4236486450-v1-jev.json",
+      "sha256": "2bdc3e3be713be811f9fba5c6241d4cdd707da72abe2c6e91926d32528649bb8"
+    },
+    {
+      "path": "episodes/counterfactual/4236486450-v2-jev.json",
+      "sha256": "486fd61c76d7e041eb3e453d01f2eaf24289668f8b0c7cce58350a5a09137ac2"
+    },
+    {
+      "path": "episodes/counterfactual/4238885206-fixed-jev.json",
+      "sha256": "65a566d71498e905e693845b704968cae8aacbabff113cfce34d1fbaac155195"
+    },
+    {
+      "path": "episodes/counterfactual/4238885206-v1-jev.json",
+      "sha256": "38499cc720681d5a5d64ad3c7c69d1a16fa560cd9194aeb007db8f93e66fd3bd"
+    },
+    {
+      "path": "episodes/counterfactual/4238885206-v2-jev.json",
+      "sha256": "cb80cb57ee71109b98b11e622157189dd0f1bb1b8101fcd363d7e340246be245"
+    },
+    {
+      "path": "episodes/counterfactual/4265149568-fixed-jev.json",
+      "sha256": "7fe4a8956f1f742ad2cf500fd72948a3a06102d853cd792241ec5a0f714df8d9"
+    },
+    {
+      "path": "episodes/counterfactual/4265149568-v1-jev.json",
+      "sha256": "c4baee89b83d64099d39f90e168c6afbc8291cc99ca4a7a9164daa85e3da4680"
+    },
+    {
+      "path": "episodes/counterfactual/4265149568-v2-jev.json",
+      "sha256": "a22a2be365c6fc3c9ab66bee25e3d9266eb2898435b84d05d08c40d6a444461d"
+    }
+  ]
+}

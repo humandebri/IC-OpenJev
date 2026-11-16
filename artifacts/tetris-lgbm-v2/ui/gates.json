@@ -1,0 +1,1395 @@
+{
+  "passed": true,
+  "results": {
+    "integrity": {
+      "gate": "check.integrity",
+      "command": "check integrity",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 2,
+        "info": 0
+      },
+      "findings": [
+        {
+          "rule": "low-contrast-text",
+          "severity": "warn",
+          "message": "rgb(83, 104, 89) on rgb(27, 36, 32) is contrast 2.65:1 — below the 3:1 WCAG AA floor for 30px large text. 1 element(s): div.next-empty. First is \"—\".",
+          "selector": "div.next-empty",
+          "viewport": 1280,
+          "evidence": {
+            "ratio": 2.65,
+            "fg": "rgb(83, 104, 89)",
+            "bg": "rgb(27, 36, 32)",
+            "elements": 1,
+            "selectors": [
+              "div.next-empty"
+            ],
+            "floor": 3,
+            "fontSizePx": 30
+          }
+        },
+        {
+          "rule": "low-contrast-text",
+          "severity": "warn",
+          "message": "rgb(118, 136, 121) on rgb(27, 36, 32) is contrast 4.22:1 — below the 4.5:1 WCAG AA floor for 7px body text. 1 element(s): div.chip > small:nth-of-type(1). First is \"PARAMETERSRUNNING ON ICP\".",
+          "selector": "div.chip > small:nth-of-type(1)",
+          "viewport": 1280,
+          "evidence": {
+            "ratio": 4.22,
+            "fg": "rgb(118, 136, 121)",
+            "bg": "rgb(27, 36, 32)",
+            "elements": 1,
+            "selectors": [
+              "div.chip > small:nth-of-type(1)"
+            ],
+            "floor": 4.5,
+            "fontSizePx": 7
+          }
+        }
+      ],
+      "suppressed": [],
+      "retuned": [],
+      "report": {
+        "source": "http://127.0.0.1:5178/",
+        "verdict": "clean",
+        "findings": [
+          {
+            "kind": "low-contrast-text",
+            "severity": "warn",
+            "viewport": 1280,
+            "selector": "div.next-empty",
+            "message": "rgb(83, 104, 89) on rgb(27, 36, 32) is contrast 2.65:1 — below the 3:1 WCAG AA floor for 30px large text. 1 element(s): div.next-empty. First is \"—\".",
+            "evidence": {
+              "ratio": 2.65,
+              "fg": "rgb(83, 104, 89)",
+              "bg": "rgb(27, 36, 32)",
+              "elements": 1,
+              "selectors": [
+                "div.next-empty"
+              ],
+              "floor": 3,
+              "fontSizePx": 30
+            },
+            "viewports": [
+              1280,
+              768,
+              375
+            ]
+          },
+          {
+            "kind": "low-contrast-text",
+            "severity": "warn",
+            "viewport": 1280,
+            "selector": "div.chip > small:nth-of-type(1)",
+            "message": "rgb(118, 136, 121) on rgb(27, 36, 32) is contrast 4.22:1 — below the 4.5:1 WCAG AA floor for 7px body text. 1 element(s): div.chip > small:nth-of-type(1). First is \"PARAMETERSRUNNING ON ICP\".",
+            "evidence": {
+              "ratio": 4.22,
+              "fg": "rgb(118, 136, 121)",
+              "bg": "rgb(27, 36, 32)",
+              "elements": 1,
+              "selectors": [
+                "div.chip > small:nth-of-type(1)"
+              ],
+              "floor": 4.5,
+              "fontSizePx": 7
+            },
+            "viewports": [
+              1280,
+              768,
+              375
+            ]
+          }
+        ],
+        "exempted": [
+          {
+            "kind": "low-contrast-text",
+            "viewport": 1280,
+            "selector": "(page)",
+            "reason": "14 text block(s) skipped: background-image/gradient in the stack — composite-background contrast is not deterministically measurable (Layer B territory)"
+          },
+          {
+            "kind": "low-contrast-text",
+            "viewport": 768,
+            "selector": "(page)",
+            "reason": "14 text block(s) skipped: background-image/gradient in the stack — composite-background contrast is not deterministically measurable (Layer B territory)"
+          },
+          {
+            "kind": "low-contrast-text",
+            "viewport": 375,
+            "selector": "(page)",
+            "reason": "13 text block(s) skipped: background-image/gradient in the stack — composite-background contrast is not deterministically measurable (Layer B territory)"
+          }
+        ],
+        "viewports": [
+          {
+            "width": 1280,
+            "height": 800,
+            "components": 8,
+            "inkRatio": 0.1061,
+            "textBlocks": 30
+          },
+          {
+            "width": 768,
+            "height": 900,
+            "components": 8,
+            "inkRatio": 0.1638,
+            "textBlocks": 30
+          },
+          {
+            "width": 375,
+            "height": 700,
+            "components": 8,
+            "inkRatio": 0.2419,
+            "textBlocks": 30
+          }
+        ],
+        "kickback": [
+          "[low-contrast-text] div.next-empty (viewport 1280,768,375): rgb(83, 104, 89) on rgb(27, 36, 32) is contrast 2.65:1 — below the 3:1 WCAG AA floor for 30px large text. 1 element(s): div.next-empty. First is \"—\".",
+          "[low-contrast-text] div.chip > small:nth-of-type(1) (viewport 1280,768,375): rgb(118, 136, 121) on rgb(27, 36, 32) is contrast 4.22:1 — below the 4.5:1 WCAG AA floor for 7px body text. 1 element(s): div.chip > small:nth-of-type(1). First is \"PARAMETERSRUNNING ON ICP\"."
+        ]
+      }
+    },
+    "copy": {
+      "gate": "check.copy",
+      "command": "check copy",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "suppressed": [],
+      "retuned": [],
+      "report": {
+        "source": "http://127.0.0.1:5178/",
+        "textLength": 693,
+        "manifestLines": 6,
+        "forbidLines": 0,
+        "forbiddenLines": [],
+        "missingLines": [],
+        "revealedLines": [
+          {
+            "line": "Fixed NEXT search and LightGBM v2 offer the best two safe, distinct placements whenever two exist.",
+            "state": "details \"What the code and model do\""
+          },
+          {
+            "line": "They send numeric costs: the rounded, nonnegative difference from the best score (lower is better).",
+            "state": "details \"What the code and model do\""
+          },
+          {
+            "line": "These are browser code and learned assistance, not capabilities of the 151M model.",
+            "state": "details \"What the code and model do\""
+          },
+          {
+            "line": "The old modes above retain their three-feature descriptions.",
+            "state": "details \"What the code and model do\""
+          }
+        ],
+        "invisibleLines": [],
+        "allowedInvisibleLines": [],
+        "statesExplored": 3,
+        "droppedStates": 0,
+        "placeholders": [],
+        "issues": []
+      }
+    },
+    "scroll": {
+      "gate": "check.scroll",
+      "command": "check scroll",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "suppressed": [],
+      "retuned": [],
+      "report": {
+        "source": "http://127.0.0.1:5178/",
+        "pageScrolled": 326,
+        "stickyFixed": [],
+        "snaps": [],
+        "engagedSticky": 0,
+        "issues": []
+      }
+    },
+    "handlers": {
+      "gate": "scan.handlers",
+      "command": "scan handlers",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 2,
+        "info": 0
+      },
+      "findings": [
+        {
+          "rule": "drag-source-not-draggable",
+          "severity": "warn",
+          "message": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\" has a dragstart handler but is not draggable, so the handler can never fire — the browser starts no drag on an element whose `draggable` is false. Add `draggable=\"true\"` (or move the handler to an element that is draggable by default, like an <a href> or <img>).",
+          "evidence": {
+            "element": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\""
+          }
+        },
+        {
+          "rule": "unprobed-handler-types",
+          "severity": "warn",
+          "message": "3 handler type(s) registered and NONE exercised: click, invalid, toggle — this gate is an inventory and presses nothing. A clean result here says the wiring exists, not that it works. Run 'check interactions --handlers' to focus and activate the controls, add '--probe-drag' for the drag surfaces, or drive the rest with a 'verify flow' script.",
+          "evidence": {
+            "element": "(page)"
+          }
+        }
+      ],
+      "suppressed": [],
+      "retuned": [
+        {
+          "finding": {
+            "rule": "drag-source-not-draggable",
+            "severity": "suspect",
+            "message": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\" has a dragstart handler but is not draggable, so the handler can never fire — the browser starts no drag on an element whose `draggable` is false. Add `draggable=\"true\"` (or move the handler to an element that is draggable by default, like an <a href> or <img>).",
+            "evidence": {
+              "element": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\""
+            }
+          },
+          "from": "suspect",
+          "to": "warn",
+          "via": "scan.handlers/drag-source-not-draggable"
+        }
+      ],
+      "report": {
+        "surface": {
+          "source": "http://127.0.0.1:5178/",
+          "elements": [
+            {
+              "ancestorTypes": [],
+              "ix": null,
+              "path": "div#root",
+              "text": "openJevARCADELOCAL CANISTERON-CANISTER I",
+              "types": {
+                "abort": 1,
+                "auxclick": 2,
+                "beforetoggle": 1,
+                "cancel": 1,
+                "canplay": 1,
+                "canplaythrough": 1,
+                "click": 3,
+                "close": 1,
+                "contextmenu": 2,
+                "copy": 2,
+                "cut": 2,
+                "drag": 2,
+                "dragend": 2,
+                "dragenter": 2,
+                "dragexit": 2,
+                "dragleave": 2,
+                "dragover": 2,
+                "dragstart": 2,
+                "drop": 2,
+                "durationchange": 1,
+                "emptied": 1,
+                "encrypted": 1,
+                "ended": 1,
+                "error": 1,
+                "fullscreenchange": 2,
+                "fullscreenerror": 2,
+                "gotpointercapture": 2,
+                "input": 2,
+                "invalid": 1,
+                "keydown": 2,
+                "keypress": 2,
+                "keyup": 2,
+                "load": 1,
+                "loadeddata": 1,
+                "loadedmetadata": 1,
+                "loadstart": 1,
+                "lostpointercapture": 2,
+                "mousedown": 2,
+                "mousemove": 2,
+                "mouseout": 2,
+                "mouseover": 2,
+                "mouseup": 2,
+                "paste": 2,
+                "pause": 1,
+                "play": 1,
+                "playing": 1,
+                "pointercancel": 2,
+                "pointerdown": 2,
+                "pointermove": 2,
+                "pointerout": 2,
+                "pointerover": 2,
+                "pointerup": 2,
+                "progress": 1,
+                "ratechange": 1,
+                "reset": 2,
+                "resize": 1,
+                "seeked": 1,
+                "seeking": 1,
+                "stalled": 1,
+                "submit": 2,
+                "suspend": 1,
+                "timeupdate": 1,
+                "touchcancel": 2,
+                "touchend": 2,
+                "touchstart": 2,
+                "volumechange": 1,
+                "scroll": 1,
+                "toggle": 1,
+                "touchmove": 2,
+                "waiting": 1,
+                "wheel": 2,
+                "scrollend": 1,
+                "animationend": 2,
+                "animationiteration": 2,
+                "animationstart": 2,
+                "dblclick": 2,
+                "focusin": 2,
+                "focusout": 2,
+                "transitionrun": 2,
+                "transitionstart": 2,
+                "transitioncancel": 2,
+                "transitionend": 2,
+                "change": 2,
+                "compositionend": 2,
+                "textInput": 2,
+                "compositionstart": 2,
+                "compositionupdate": 2
+              },
+              "samples": [
+                "function () { [native code] }",
+                "function () { [native code] }",
+                "function () { [native code] }"
+              ],
+              "visible": true,
+              "containsInteractive": true,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "details.settings>div.controls>label>select",
+              "text": "151M model choosesEvaluator only (no mod",
+              "types": {
+                "invalid": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": false,
+              "containsInteractive": false,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "details.settings>div.controls>label>select",
+              "text": "Current candidatesNEXT lookahead assista",
+              "types": {
+                "invalid": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": false,
+              "containsInteractive": false,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "details.settings>div.controls>label>input",
+              "text": "184",
+              "types": {
+                "invalid": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": false,
+              "containsInteractive": false,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "main>div.demo-layout>section.arcade>details.settings",
+              "text": "Comparison mode & seedPolicy 151M model ",
+              "types": {
+                "toggle": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": true,
+              "containsInteractive": true,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "main>div.demo-layout>section.decision>details.note",
+              "text": "What the code and model doCurrent candid",
+              "types": {
+                "toggle": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": true,
+              "containsInteractive": true,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": null,
+              "path": "div#root>main>details.about",
+              "text": "About queries & response logsYour browse",
+              "types": {
+                "toggle": 1
+              },
+              "samples": [
+                "function () { [native code] }"
+              ],
+              "visible": true,
+              "containsInteractive": true,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": false
+            },
+            {
+              "ancestorTypes": [
+                "abort",
+                "auxclick",
+                "beforetoggle",
+                "cancel",
+                "canplay",
+                "canplaythrough",
+                "click",
+                "close",
+                "contextmenu",
+                "copy",
+                "cut",
+                "drag",
+                "dragend",
+                "dragenter",
+                "dragexit",
+                "dragleave",
+                "dragover",
+                "dragstart",
+                "drop",
+                "durationchange",
+                "emptied",
+                "encrypted",
+                "ended",
+                "error",
+                "fullscreenchange",
+                "fullscreenerror",
+                "gotpointercapture",
+                "input",
+                "invalid",
+                "keydown",
+                "keypress",
+                "keyup",
+                "load",
+                "loadeddata",
+                "loadedmetadata",
+                "loadstart",
+                "lostpointercapture",
+                "mousedown",
+                "mousemove",
+                "mouseout",
+                "mouseover",
+                "mouseup",
+                "paste",
+                "pause",
+                "play",
+                "playing",
+                "pointercancel",
+                "pointerdown",
+                "pointermove",
+                "pointerout",
+                "pointerover",
+                "pointerup",
+                "progress",
+                "ratechange",
+                "reset",
+                "resize",
+                "seeked",
+                "seeking",
+                "stalled",
+                "submit",
+                "suspend",
+                "timeupdate",
+                "touchcancel",
+                "touchend",
+                "touchstart",
+                "volumechange",
+                "scroll",
+                "toggle",
+                "touchmove",
+                "waiting",
+                "wheel",
+                "scrollend",
+                "animationend",
+                "animationiteration",
+                "animationstart",
+                "dblclick",
+                "focusin",
+                "focusout",
+                "transitionrun",
+                "transitionstart",
+                "transitioncancel",
+                "transitionend",
+                "change",
+                "compositionend",
+                "textInput",
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "ix": 1,
+              "path": "main>div.demo-layout>section.arcade>button.start",
+              "text": "Start game→",
+              "types": {
+                "click": 1
+              },
+              "samples": [
+                "function noop$1() { }"
+              ],
+              "visible": true,
+              "containsInteractive": false,
+              "insideInteractive": false,
+              "draggable": false,
+              "draggableDescendants": 0,
+              "nativeActivation": true
+            }
+          ],
+          "globals": {
+            "window:beforeunload": 1,
+            "window:test": 1,
+            "document:selectionchange": 1
+          },
+          "totalRegistrations": 156,
+          "visibleControls": 5
+        },
+        "issues": [
+          {
+            "kind": "drag-source-not-draggable",
+            "severity": "suspect",
+            "element": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\"",
+            "message": "div#root \"openJevARCADELOCAL CANISTERON-CANISTER I\" has a dragstart handler but is not draggable, so the handler can never fire — the browser starts no drag on an element whose `draggable` is false. Add `draggable=\"true\"` (or move the handler to an element that is draggable by default, like an <a href> or <img>)."
+          },
+          {
+            "kind": "unprobed-handler-types",
+            "severity": "warn",
+            "element": "(page)",
+            "message": "3 handler type(s) registered and NONE exercised: click, invalid, toggle — this gate is an inventory and presses nothing. A clean result here says the wiring exists, not that it works. Run 'check interactions --handlers' to focus and activate the controls, add '--probe-drag' for the drag surfaces, or drive the rest with a 'verify flow' script.",
+            "types": [
+              "click",
+              "invalid",
+              "toggle"
+            ]
+          }
+        ]
+      }
+    },
+    "interactions": {
+      "gate": "check.interactions",
+      "command": "check interactions",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "suppressed": [],
+      "retuned": [],
+      "report": {
+        "map": {
+          "source": "http://127.0.0.1:5178/",
+          "elements": [
+            {
+              "index": 0,
+              "key": "link|openJevARCADE",
+              "role": "link",
+              "name": "openJevARCADE",
+              "path": "div#root>main>header>a.brand",
+              "hasAriaExpanded": false,
+              "hasPopup": false,
+              "tabReachable": true,
+              "focusIndicator": true
+            },
+            {
+              "index": 1,
+              "key": "button|Start game →",
+              "role": "button",
+              "name": "Start game →",
+              "path": "main>div.demo-layout>section.arcade>button.start",
+              "hasAriaExpanded": false,
+              "hasPopup": false,
+              "tabReachable": true,
+              "focusIndicator": true,
+              "activation": {
+                "key": "Enter",
+                "ariaDelta": {},
+                "controlsBecameVisible": null,
+                "layoutChanged": true,
+                "focusMovedTo": null
+              }
+            },
+            {
+              "index": 2,
+              "key": "button|Comparison mode & seed",
+              "role": "button",
+              "name": "Comparison mode & seed",
+              "path": "div.demo-layout>section.arcade>details.settings>summary",
+              "hasAriaExpanded": false,
+              "hasPopup": false,
+              "tabReachable": true,
+              "focusIndicator": true,
+              "activation": {
+                "key": "Enter",
+                "ariaDelta": {
+                  "open": [
+                    "false",
+                    "true"
+                  ]
+                },
+                "controlsBecameVisible": null,
+                "layoutChanged": true,
+                "focusMovedTo": null
+              }
+            },
+            {
+              "index": 3,
+              "key": "button|What the code and model do",
+              "role": "button",
+              "name": "What the code and model do",
+              "path": "div.demo-layout>section.decision>details.note>summary",
+              "hasAriaExpanded": false,
+              "hasPopup": false,
+              "tabReachable": true,
+              "focusIndicator": true,
+              "activation": {
+                "key": "Enter",
+                "ariaDelta": {
+                  "open": [
+                    "false",
+                    "true"
+                  ]
+                },
+                "controlsBecameVisible": null,
+                "layoutChanged": true,
+                "focusMovedTo": null
+              }
+            },
+            {
+              "index": 4,
+              "key": "button|About queries & response logs",
+              "role": "button",
+              "name": "About queries & response logs",
+              "path": "div#root>main>details.about>summary",
+              "hasAriaExpanded": false,
+              "hasPopup": false,
+              "tabReachable": true,
+              "focusIndicator": true,
+              "activation": {
+                "key": "Enter",
+                "ariaDelta": {
+                  "open": [
+                    "false",
+                    "true"
+                  ]
+                },
+                "controlsBecameVisible": null,
+                "layoutChanged": true,
+                "focusMovedTo": null
+              }
+            }
+          ],
+          "capped": 0
+        },
+        "issues": []
+      }
+    },
+    "breakpoints": {
+      "gate": "check.breakpoints",
+      "command": "check breakpoints",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "suppressed": [],
+      "retuned": [],
+      "report": {
+        "source": "http://127.0.0.1:5178/",
+        "breakpoints": [
+          {
+            "value": 540,
+            "raw": [
+              "(max-width: 540px)"
+            ],
+            "samples": [
+              {
+                "width": 539,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 540,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 541,
+                "horizontalOverflow": 0
+              }
+            ],
+            "spikes": [],
+            "gaps": []
+          },
+          {
+            "value": 541,
+            "raw": [
+              "(min-width: 541px)"
+            ],
+            "samples": [
+              {
+                "width": 540,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 541,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 542,
+                "horizontalOverflow": 0
+              }
+            ],
+            "spikes": [],
+            "gaps": []
+          },
+          {
+            "value": 850,
+            "raw": [
+              "(max-width: 850px)"
+            ],
+            "samples": [
+              {
+                "width": 849,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 850,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 851,
+                "horizontalOverflow": 0
+              }
+            ],
+            "spikes": [],
+            "gaps": []
+          },
+          {
+            "value": 851,
+            "raw": [
+              "(min-width: 851px)"
+            ],
+            "samples": [
+              {
+                "width": 850,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 851,
+                "horizontalOverflow": 0
+              },
+              {
+                "width": 852,
+                "horizontalOverflow": 0
+              }
+            ],
+            "spikes": [],
+            "gaps": []
+          }
+        ],
+        "checkedValues": [
+          540,
+          541,
+          850,
+          851
+        ],
+        "sweep": {
+          "min": 320,
+          "max": 1280,
+          "step": 25,
+          "sampledWidths": 39,
+          "overflowRanges": []
+        },
+        "issues": []
+      }
+    }
+  },
+  "source_hashes": {
+    "web/tetris/src/main.tsx": "04c8eb78ca34c834ab9364a29ac2dbafe5db287024cb8dc25d2886a41adcf153",
+    "web/tetris/src/placement-browser-v2.ts": "123a178f695d902ef995f1d24f126dbe03d9f4811b3b097e3bc3bcc72d3c8e3b",
+    "web/tetris/src/placement-fast.ts": "7b024531384af97e29127e37ace14ee6c138c15c94c92e5dae9f0376cb866ec1",
+    "web/tetris/src/placement-value-v2.ts": "6d0a93d62bfa787a6a568241f79d2a5d7bd1a1766d44e3b68f0ed2880466157c",
+    "web/tetris/src/placement.css": "fd9c89a51ac94cc2d6d19b878bf9dab26a080452d330061f21cf81419d2fcc23",
+    "web/tetris/src/style.css": "b90722bd642610b5e3dc1ee692a328667a2356231d2848c74a51392866ef5651"
+  },
+  "asset_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
+  "retune_reason": "React delegates synthetic dragstart on #root; source has no drag feature. Functional UI is tested separately."
+}

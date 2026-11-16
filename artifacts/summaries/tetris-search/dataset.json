@@ -1,0 +1,46 @@
+{
+  "source": "artifacts/tetris-search/dataset.json",
+  "source_sha256": "1432753124405d3a74ac01679824c385ee8cc9b3ef76e0f75198dc75825238a3",
+  "source_bytes": 2320781,
+  "note": "Derived summary, not full evidence. Omitted details require the local raw source.",
+  "summary": {
+    "feature_names": {
+      "omitted": true,
+      "see_raw_source": true
+    },
+    "train_seeds": {
+      "omitted": true,
+      "see_raw_source": true
+    },
+    "valid_seeds": {
+      "omitted": true,
+      "see_raw_source": true
+    },
+    "records": {
+      "omitted": true,
+      "see_raw_source": true
+    }
+  },
+  "omitted": [
+    {
+      "path": "$.feature_names",
+      "count": 66,
+      "sha256": "37f91ac1c62cd3da3a54ec6a618a647c4a1a47889b0e63f3a7a67df86e2d05ac"
+    },
+    {
+      "path": "$.train_seeds",
+      "count": 256,
+      "sha256": "57b871f9880da13e250a5ecec0e301ddbff110c6dd13f5fc714228eb76c6316c"
+    },
+    {
+      "path": "$.valid_seeds",
+      "count": 64,
+      "sha256": "278a3eb6343e8a3d44b2ed0893c1cb75c0bb2a58bda8aa6e1c55a2fea49a287f"
+    },
+    {
+      "path": "$.records",
+      "count": 10225,
+      "sha256": "bae493da690cb3010b967bb48b611d583d74d63a8e6d81d251992c32a5a46fa3"
+    }
+  ]
+}

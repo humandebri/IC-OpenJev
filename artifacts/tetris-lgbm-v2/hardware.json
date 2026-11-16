@@ -1,0 +1,9 @@
+{
+  "platform": "darwin",
+  "architecture": "arm64",
+  "release": "27.0.0",
+  "cpu_model": "Apple M6",
+  "logical_cpus": 12,
+  "total_memory_bytes": 34359738368,
+  "node": "v24.22.1"
+}

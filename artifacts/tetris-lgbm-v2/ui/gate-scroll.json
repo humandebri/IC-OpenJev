@@ -1,0 +1,4 @@
+{
+  "code": 0,
+  "output": "{\n  \"gate\": \"check.scroll\",\n  \"command\": \"check scroll\",\n  \"verdict\": \"pass\",\n  \"counts\": {\n    \"suspect\": 0,\n    \"warn\": 0,\n    \"info\": 0\n  },\n  \"findings\": [],\n  \"suppressed\": [],\n  \"retuned\": [],\n  \"report\": {\n    \"source\": \"http://127.0.0.1:5178/\",\n    \"pageScrolled\": 326,\n    \"stickyFixed\": [],\n    \"snaps\": [],\n    \"engagedSticky\": 0,\n    \"issues\": []\n  }\n}\n"
+}

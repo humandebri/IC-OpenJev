@@ -1,0 +1,846 @@
+{
+  "phase": "screen",
+  "round": "extra",
+  "stage": "screen-extra",
+  "seeds": [
+    2836128068,
+    1920992033,
+    3053147396,
+    2142472163,
+    608337975,
+    1803779114,
+    1693260719,
+    2518050971,
+    130761922,
+    3014456485,
+    2098990766,
+    1577542014,
+    868626519,
+    1309738339,
+    2847171490,
+    2577132833
+  ],
+  "specs": [
+    {
+      "id": "fixed-jev",
+      "family": "fixed",
+      "mode": "jev"
+    },
+    {
+      "id": "v1-jev",
+      "family": "v1",
+      "mode": "jev"
+    },
+    {
+      "id": "extra-summary-l31-m50-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m50-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m50-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m50-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m50-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m50-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m50.json",
+      "bundle_sha256": "5da4be8286fb8d7373cb2adb5c407d4fd5bbf433c87298e794058f521068fd48",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m200-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m200-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m200-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l31-m200-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l31-m200-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l31-m200-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+      "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m50-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m50-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m50-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m50-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m50-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m50-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+      "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m200-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m200-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m200-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-summary-l63-m200-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-summary-l63-m200-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-summary-l63-m200-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m200.json",
+      "bundle_sha256": "de483c9192435f6060175a32c2e15c182b550833381899dd97f4d5bb98a6509d",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m50-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m50-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m50-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m50-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m50-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m50-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m50-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m50-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m50-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m50-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m50-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m50.json",
+      "bundle_sha256": "76dfe51b91ccf27911c844c75d877d07c53fe1165288b1ad70e57235db49774e",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m200-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m200-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m200-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m200-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m200-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m200-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m200-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m200-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l31-m200-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l31-m200-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l31-m200-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l31-m200.json",
+      "bundle_sha256": "bf695578f0ec720d51243f2561032f47754b39206065b6cfe6fd80c6476a963a",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m50-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m50-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m50-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m50-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m50-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m50-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m50-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m50-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m50-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m50-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m50-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+      "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+      "alpha": 1,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m200-a0-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m200-a0-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m200-a0p25-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.25,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m200-a0p25-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.25,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m200-a0p25-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.25,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m200-a0p5-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.5,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m200-a0p5-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.5,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m200-a0p5-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 0.5,
+      "beta": 40
+    },
+    {
+      "id": "extra-board-l63-m200-a1-b0-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 1,
+      "beta": 0
+    },
+    {
+      "id": "extra-board-l63-m200-a1-b10-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 1,
+      "beta": 10
+    },
+    {
+      "id": "extra-board-l63-m200-a1-b40-jev",
+      "family": "v2",
+      "mode": "jev",
+      "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m200.json",
+      "bundle_sha256": "3611354009e20aca4506724bf600eca37cf8fb76a2123589cf69bde86a51f13b",
+      "alpha": 1,
+      "beta": 40
+    }
+  ],
+  "source_hashes": {
+    "web/tetris/src/placement-fast.ts": "7b024531384af97e29127e37ace14ee6c138c15c94c92e5dae9f0376cb866ec1",
+    "web/tetris/src/placement-value-v2.ts": "6d0a93d62bfa787a6a568241f79d2a5d7bd1a1766d44e3b68f0ed2880466157c",
+    "web/tetris/src/placement-local.ts": "1cb26bd6d0e4027ec3924e4e07bde40e42b5698c8187078514b8c1e2e5312ac1",
+    "web/tetris/src/placement-search.ts": "281821805fd6481b7d159cd26af7cc9e3936e032fd6842218f1d12342cb61808",
+    "web/tetris/src/placement-query-api.ts": "43bd3f2bd76ee544bc6b113fc592f7f378c8a7c1f226a9284132a56eb7cbeea0",
+    "web/tetris/scripts/v2-common.ts": "91b87be3cf9772fd97a742b2c87bff1536ee433829569fd121090d29fb05fd7d",
+    "web/tetris/scripts/v2-oracle.ts": "0162dc8ef59c7f88dffee69616655cad9e4fdcfc996716a24956eac6ddf55075",
+    "web/tetris/scripts/v2-query.ts": "2da075c2e169b0f33642a7636778d3739a547ba2654a6b340e928bf6b5c30f6d",
+    "web/tetris/scripts/v2-study-core.ts": "0116274948c01880fe53c0b9e6093af708911d473332cf83189cbe6b76d55b71",
+    "web/tetris/scripts/v2-study.ts": "e9bb69578ad30d0af565b4e3c94bab9e98bef14207207257d1c5cc418c04601b"
+  },
+  "data_protocol_sha256": "06bc293d106c4bde65d6a5bdbebb95c60897e52cc5dd720fec3eca023e50d7b6",
+  "v1_sha256": "6bfe215d92e19520c4992b4b214ea1433f7f9e9c5127a520d2a1319b4aaa2266",
+  "checkpoint_sha256": "c70f28d115880a30ba02416ba318d67f293b00451a9f73e25993c13ac9787815",
+  "model_digest": "0757d774c8c44397d189c5b479853897acef8f1e2b55ebf1f5a46969063225e0",
+  "cap": 512,
+  "snapshot": 128,
+  "selection": "Jev mean lines, mean pieces, 128 lines, model bytes, ID; evaluator point estimate >=95% fixed baseline for validation eligibility"
+}

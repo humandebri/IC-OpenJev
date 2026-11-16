@@ -1,0 +1,7 @@
+{
+  "invalid": true,
+  "reason": "Study-only prediction-cache entry included its board key; object spread replaced the current landing with the NEXT landing on a cache hit. Initial dataset, teacher rollouts, trained models and public browser scorer are unaffected. All game-based model selections are discarded before any held-out evaluation.",
+  "initial_data_valid": true,
+  "test_cohort_accessed": false,
+  "budget_reset": false
+}

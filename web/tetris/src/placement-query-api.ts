@@ -1,13 +1,14 @@
 import {Actor,HttpAgent} from '@icp-sdk/core/agent';
 import {IDL} from '@icp-sdk/core/candid';
-import type {Candidate,Game} from './placement-api';
-import {MAX_TURNS,RULES,landed,placements,prepareTurn,renderPrompt} from './placement-local';
+import type {Candidate,Game,PlacementPolicy} from './placement-api';
+import {MAX_TURNS,landed,placements,prepareTurn,renderPrompt} from './placement-local';
+import type {Evaluator} from './placement-search';
 export type {Game,Pose} from './placement-api';
 
 type Request=ReturnType<typeof prepareTurn>['request'];
 export type ModelReply={ids:string[];selected:string;probabilities:number[];logits:number[];model:number[]|Uint8Array;confidence:number;input_tokens:number;measured_instructions:bigint};
 export type Status={enabled:boolean;warmed:boolean;model:number[]|Uint8Array;max_tokens:number};
-export type Decision={id:number;game:number;seed:number;mode:number;turn:number;piece:number;next:number;before:number[];after:number[];total_lines:number;over:boolean;legal_count:number;candidates:Candidate[];recommended:number;selected:number;logits:number[];scores:number[];model:number[];prompt:string;model_request:Request|null;input_tokens:number;inference_instructions:string;rules:string;model_candidates:number[];rounds:{model_candidates:number[];selected:number;input_tokens:number}[];query_count:number};
+export type Decision={id:number;game:number;seed:number;mode:number;turn:number;piece:number;next:number;before:number[];after:number[];total_lines:number;over:boolean;legal_count:number;candidates:Candidate[];recommended:number;selected:number;logits:number[];scores:number[];model:number[];prompt:string;model_request:Request|null;input_tokens:number;inference_instructions:string;rules:string;model_candidates:number[];rounds:{model_candidates:number[];selected:number;input_tokens:number}[];query_count:number;policy:PlacementPolicy;evaluator_hash:string|null;candidate_ms:number};
 const errors=Object.fromEntries(['Unauthorized','Storage','Capacity','Numeric','TooLong','Transition','BindingMismatch','NonceGap','IdConflict','Expired','NotFound','Uncalibrated','Busy','NonceConsumed','OperationUsed','Budget','Stale','ReportOnly','LiveDisabled','OutcomeUnknown'].map(k=>[k,IDL.Null]));
 const ErrorType=IDL.Variant({...errors,Invalid:IDL.Text,ModelUnavailable:IDL.Text,Denied:IDL.Text});
 export const queryIdl=()=>IDL.Service({
@@ -32,8 +33,10 @@ export function validateReply(reply:ModelReply,request:Request,status:Status):nu
   ||Math.abs(reply.confidence-reply.probabilities[selected])>0.001)throw new Error('Invalid model response');
  return selected;
 }
-export async function choosePlacement(game:Game,status:Status,query:(request:Request)=>Promise<ModelReply>):Promise<Decision>{
- const turn=prepareTurn(game),{candidates,request}=turn;
+export async function choosePlacement(game:Game,status:Status,query:(request:Request)=>Promise<ModelReply>,evaluator?:Evaluator):Promise<Decision>{
+ const began=performance.now();
+ const turn=prepareTurn(game,evaluator),{candidates,request}=turn;
+ const candidate_ms=performance.now()-began;
  let selected=turn.recommended,reply:ModelReply|undefined;
  if(game.mode===0){
   if(!status.enabled)throw new Error('Model unavailable');
@@ -47,10 +50,10 @@ export async function choosePlacement(game:Game,status:Status,query:(request:Req
   before:game.board.slice(),after:result.board,total_lines:game.lines+result.lines,over,legal_count:turn.legal_count,
   candidates,recommended:turn.recommended,selected,logits:reply?Array.from(reply.logits):[],scores:reply?Array.from(reply.probabilities):[],
   model:Array.from(reply?.model??status.model),prompt:reply?renderPrompt(request):'',model_request:reply?request:null,
-  input_tokens:reply?.input_tokens??0,inference_instructions:reply?.measured_instructions.toString()??'0',rules:RULES,
+  input_tokens:reply?.input_tokens??0,inference_instructions:reply?.measured_instructions.toString()??'0',rules:turn.rules,policy:turn.policy,evaluator_hash:turn.policy==='learned'?evaluator!.hash:null,candidate_ms,
   model_candidates,rounds:reply?[{model_candidates,selected,input_tokens:reply.input_tokens}]:[],query_count:reply?1:0};
 }
-export async function connectQuery(host:string,canisterId:string){
+export async function connectQuery(host:string,canisterId:string,evaluator?:Evaluator){
  const local=['localhost','127.0.0.1','[::1]'].includes(new URL(host).hostname);
  const createActor=async()=>{
   if(!canisterId)throw new Error('Canister ID is not configured');
@@ -81,9 +84,9 @@ export async function connectQuery(host:string,canisterId:string){
   if(!r.Ok)throw new Error(`Model query failed: ${JSON.stringify(r.Err)}`);
   return r.Ok;
  };
- return {local,status,start:(seed:number,mode:number):Game=>({id:0,seed,mode,board:Array(200).fill(0),turn:0,lines:0,over:false}),
+ return {local,status,query,start:(seed:number,mode:number,policy:PlacementPolicy='legacy'):Game=>({id:0,seed,mode,policy,board:Array(200).fill(0),turn:0,lines:0,over:false}),
   step:async(game:Game)=>{
-   try{return await choosePlacement(game,game.mode===0?await status():{enabled:false,warmed:false,model:[],max_tokens:0},query);}
+   try{return await choosePlacement(game,game.mode===0?await status():{enabled:false,warmed:false,model:[],max_tokens:0},query,evaluator);}
    catch(error){if(game.mode===0)cachedStatus=undefined;throw error;}
   }};
 }

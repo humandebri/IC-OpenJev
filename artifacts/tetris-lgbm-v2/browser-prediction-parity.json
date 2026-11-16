@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "max_error": 5.551115123125783e-17,
+  "rows": 129,
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+  "asset_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
+  "fixture_sha256": "b224da79ebe4bfb6b82b8fccbc2ac12d4c24beb204287cb04c09f672c3abe155",
+  "source_sha256": "034793338ffb85ed299a5cc0c19b5b45a7c55e5fb53a96517205b3c70b7d3f48"
+}

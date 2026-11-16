@@ -1,0 +1,6 @@
+{
+  "reason": "The preregistered analysis produced numpy.bool_ criteria which Python JSON cannot encode by default. The adapter converts only numpy.bool_ to Python bool during serialization. Models, games, coefficients, thresholds, resampling indices and the original analysis source are unchanged.",
+  "analysis_sha256": "42f39301af1df4f599207760fb8a8ae25972c5108fcfb949846bddc67e243cc2",
+  "adapter_sha256": "007ac82db118b2d1647e8bc21d5dd441df93bed35ed4d796992c2a1ffcc03831",
+  "scope": "JSON serialization only; no additional model queries or games"
+}

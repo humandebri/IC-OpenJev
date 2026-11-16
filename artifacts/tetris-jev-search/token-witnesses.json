@@ -1,0 +1,6 @@
+{
+  "witnesses": 80,
+  "max_tokens": 41,
+  "relative_prior_exhaustive_check": "artifacts/tetris-search/token-check.json",
+  "note": "New numeric domains additionally checked per actual request; witness scan alone is not an exhaustive bound."
+}

@@ -1,0 +1,41 @@
+{
+  "spec": {
+    "id": "extra-board-l63-m50-a0p5-b0-jev",
+    "family": "v2",
+    "mode": "jev",
+    "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+    "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+    "alpha": 0.5,
+    "beta": 0
+  },
+  "validation_complete": true,
+  "validation_eligible": true,
+  "metric": {
+    "id": "extra-board-l63-m50-a0p5-b0-jev",
+    "games": 64,
+    "mean_lines": 203.265625,
+    "median_lines": 203,
+    "mean_pieces": 512,
+    "median_pieces": 512,
+    "mean_lines128": 49.421875,
+    "median_lines128": 50,
+    "mean_pieces128": 128,
+    "early32_rate": 0,
+    "early128_rate": 0,
+    "cap_rate": 1,
+    "mean_candidate_ms": 2.0015163219604335,
+    "max_p95_candidate_ms": 7.3160420000203885,
+    "disagreements": 4443,
+    "regret": 1166.9480040551146,
+    "mean_options": 2
+  },
+  "protocol_sha256": "e06b3ef1d0be3ee1ec7898184d4f1ced3a243edd84282415b5e4f3618631bf63",
+  "stage": "live-validate-extra",
+  "chosen_round": "extra",
+  "validation_summary_sha256": "293ccb1bd31ddda8f2e12d5c9e2cfa04cfaa09849288100f82dea9a678a2cf14",
+  "browser_evidence_sha256": "ccdf6d6e4c676e7a914d729a82868ce895fa78495a685113b62ffb970a3cee83",
+  "source_sha256": "792ebe1c21e8bd39cfadc8c0983127637900b10ce97db6cc5a4d62c0573e68bf",
+  "analysis_source_sha256": "42f39301af1df4f599207760fb8a8ae25972c5108fcfb949846bddc67e243cc2",
+  "counterfactual_protocol_sha256": "a890aa1e66323f0033a53a5af418dc16c561d843169191d34c3363e6b7bbb383",
+  "frozen_before_heldout": true
+}

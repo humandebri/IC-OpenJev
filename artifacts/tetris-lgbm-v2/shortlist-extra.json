@@ -1,0 +1,29 @@
+[
+  {
+    "id": "extra-board-l63-m50-a0p5-b0-jev",
+    "family": "v2",
+    "mode": "jev",
+    "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/board-l63-m50.json",
+    "bundle_sha256": "86a9450b7791e936c5f34ba38842399acef0555c301920a46362c2ab7aa838bd",
+    "alpha": 0.5,
+    "beta": 0
+  },
+  {
+    "id": "extra-summary-l63-m50-a0p25-b0-jev",
+    "family": "v2",
+    "mode": "jev",
+    "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l63-m50.json",
+    "bundle_sha256": "51ddf6b9de97e6585f8d81b9f0aa72cd90f1df4776a0959b446dca5e8d9a75fd",
+    "alpha": 0.25,
+    "beta": 0
+  },
+  {
+    "id": "extra-summary-l31-m200-a0p5-b0-jev",
+    "family": "v2",
+    "mode": "jev",
+    "bundle": "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/tetris-lgbm-v2/model-candidates/extra/summary-l31-m200.json",
+    "bundle_sha256": "bb17a469d09af4b01e053c88a2e9d45f9ecb9897effed83306c257c3a49ef3aa",
+    "alpha": 0.5,
+    "beta": 0
+  }
+]

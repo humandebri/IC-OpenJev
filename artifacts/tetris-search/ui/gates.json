@@ -1,0 +1,141 @@
+{
+  "vlmkit": "0.23.0",
+  "browser": "Playwright Chromium 159",
+  "results": {
+    "integrity": {
+      "gate": "check.integrity",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 2,
+        "info": 0
+      },
+      "findings": [
+        {
+          "rule": "low-contrast-text",
+          "severity": "warn",
+          "message": "rgb(83, 104, 89) on rgb(27, 36, 32) is contrast 2.65:1 \u2014 below the 3:1 WCAG AA floor for 30px large text. 1 element(s): div.next-empty. First is \"\u2014\".",
+          "selector": "div.next-empty",
+          "viewport": 1280,
+          "evidence": {
+            "ratio": 2.65,
+            "fg": "rgb(83, 104, 89)",
+            "bg": "rgb(27, 36, 32)",
+            "elements": 1,
+            "selectors": [
+              "div.next-empty"
+            ],
+            "floor": 3,
+            "fontSizePx": 30
+          }
+        },
+        {
+          "rule": "low-contrast-text",
+          "severity": "warn",
+          "message": "rgb(118, 136, 121) on rgb(27, 36, 32) is contrast 4.22:1 \u2014 below the 4.5:1 WCAG AA floor for 7px body text. 1 element(s): div.chip > small:nth-of-type(1). First is \"PARAMETERSRUNNING ON ICP\".",
+          "selector": "div.chip > small:nth-of-type(1)",
+          "viewport": 1280,
+          "evidence": {
+            "ratio": 4.22,
+            "fg": "rgb(118, 136, 121)",
+            "bg": "rgb(27, 36, 32)",
+            "elements": 1,
+            "selectors": [
+              "div.chip > small:nth-of-type(1)"
+            ],
+            "floor": 4.5,
+            "fontSizePx": 7
+          }
+        }
+      ],
+      "retuned": []
+    },
+    "copy": {
+      "gate": "check.copy",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "retuned": []
+    },
+    "scroll": {
+      "gate": "scan.scroll",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "retuned": []
+    },
+    "handlers": {
+      "gate": "scan.handlers",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 2,
+        "info": 0
+      },
+      "findings": [
+        {
+          "rule": "drag-source-not-draggable",
+          "severity": "warn",
+          "message": "div#root \"openJevARCADEICP CANISTERON-CANISTER INF\" has a dragstart handler but is not draggable, so the handler can never fire \u2014 the browser starts no drag on an element whose `draggable` is false. Add `draggable=\"true\"` (or move the handler to an element that is draggable by default, like an <a href> or <img>).",
+          "evidence": {
+            "element": "div#root \"openJevARCADEICP CANISTERON-CANISTER INF\""
+          }
+        },
+        {
+          "rule": "unprobed-handler-types",
+          "severity": "warn",
+          "message": "3 handler type(s) registered and NONE exercised: click, invalid, toggle \u2014 this gate is an inventory and presses nothing. A clean result here says the wiring exists, not that it works. Run 'check interactions --handlers' to focus and activate the controls, add '--probe-drag' for the drag surfaces, or drive the rest with a 'verify flow' script.",
+          "evidence": {
+            "element": "(page)"
+          }
+        }
+      ],
+      "retuned": [
+        {
+          "finding": {
+            "rule": "drag-source-not-draggable",
+            "severity": "suspect",
+            "message": "div#root \"openJevARCADEICP CANISTERON-CANISTER INF\" has a dragstart handler but is not draggable, so the handler can never fire \u2014 the browser starts no drag on an element whose `draggable` is false. Add `draggable=\"true\"` (or move the handler to an element that is draggable by default, like an <a href> or <img>).",
+            "evidence": {
+              "element": "div#root \"openJevARCADEICP CANISTERON-CANISTER INF\""
+            }
+          },
+          "from": "suspect",
+          "to": "warn",
+          "via": "scan.handlers/drag-source-not-draggable"
+        }
+      ]
+    },
+    "interactions": {
+      "gate": "check.interactions",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "retuned": []
+    },
+    "breakpoints": {
+      "gate": "check.breakpoints",
+      "verdict": "pass",
+      "counts": {
+        "suspect": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "findings": [],
+      "retuned": []
+    }
+  },
+  "retune_reason": "React delegates synthetic dragstart on #root; application source has no drag handlers. Real controls are exercised by placement-ui-check.ts."
+}

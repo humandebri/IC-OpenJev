@@ -1,0 +1,1 @@
+{"dataset_sha256":"1412bd4b29fec39f31220de7de7f5ba12b72a74d492801e344d5ba58a5675518","source_sha256":"c0f0f9b8dddc055499a7869e8490e4fdacdd13f0d8deac2007f09fc3e27e07ac","feature_sets":["summary","board"],"leaves":[31,63],"min_data":[50,200],"max_trees":600,"patience":50}

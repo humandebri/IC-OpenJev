@@ -1,0 +1,7 @@
+{
+  "sampling": "up to 8 equally spaced midpoint states per game, before conditioning on disagreement",
+  "horizon": 32,
+  "rollouts": 8,
+  "teacher": "fixed two-ply",
+  "source_sha256": "e83bcb97d5936a5279f2f037348ba63dc66f1c99ee3910892d2fd9d6ee9568ed"
+}

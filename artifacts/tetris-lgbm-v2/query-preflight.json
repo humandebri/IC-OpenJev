@@ -1,0 +1,7 @@
+{
+  "http_queries": 100,
+  "concurrency": 4,
+  "elapsed_seconds": 0.547956416,
+  "tokens": 11,
+  "instructions": "1076807240"
+}

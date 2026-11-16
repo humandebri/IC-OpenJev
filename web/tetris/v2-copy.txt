@@ -1,0 +1,6 @@
+Jev makes the final choice
+Browser assistance
+Fixed NEXT search and LightGBM v2 offer the best two safe, distinct placements whenever two exist.
+They send numeric costs: the rounded, nonnegative difference from the best score (lower is better).
+These are browser code and learned assistance, not capabilities of the 151M model.
+The old modes above retain their three-feature descriptions.

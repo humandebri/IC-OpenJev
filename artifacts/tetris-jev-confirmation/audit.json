@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "games": 192,
+  "turns": 20993,
+  "model_turns": 11149,
+  "candidates_checked": 131948,
+  "distinct_actual_query_replies": 1446,
+  "single_option_model_turns": 9,
+  "max_tokens": 41,
+  "max_instructions": 3650951823,
+  "selected": "top2-cost",
+  "model_role": {
+    "current": {
+      "turns": 3472,
+      "choices_with_two_or_more": 3468,
+      "first_choice": 279,
+      "non_best_score": 492,
+      "differing_from_recommendation": 646,
+      "indistinguishable_descriptions": 67
+    },
+    "top2": {
+      "turns": 3779,
+      "choices_with_two_or_more": 3777,
+      "first_choice": 2409,
+      "non_best_score": 269,
+      "differing_from_recommendation": 269,
+      "indistinguishable_descriptions": 1331
+    },
+    "top2-cost": {
+      "turns": 3898,
+      "choices_with_two_or_more": 3895,
+      "first_choice": 2361,
+      "non_best_score": 33,
+      "differing_from_recommendation": 33,
+      "indistinguishable_descriptions": 1347
+    }
+  },
+  "comparisons": {
+    "current_Jev": {
+      "mean_line_gain": 10.46875,
+      "paired_bootstrap_95pct": [
+        4.53125,
+        16.4375
+      ],
+      "paired_bootstrap_97_5pct": [
+        3.625,
+        17.34375
+      ],
+      "wins": 23,
+      "ties": 0,
+      "losses": 9
+    },
+    "same_candidates_evaluator": {
+      "mean_line_gain": -2,
+      "paired_bootstrap_95pct": [
+        -5.46875,
+        1.03125
+      ],
+      "paired_bootstrap_97_5pct": [
+        -6.03125,
+        1.4375
+      ],
+      "wins": 5,
+      "ties": 18,
+      "losses": 9
+    },
+    "same_candidates_random": {
+      "mean_line_gain": 32.8125,
+      "paired_bootstrap_95pct": [
+        27.4375,
+        37.40625
+      ],
+      "paired_bootstrap_97_5pct": [
+        26.6875,
+        38.0625
+      ],
+      "wins": 30,
+      "ties": 1,
+      "losses": 1
+    },
+    "full_search": {
+      "mean_line_gain": -2,
+      "paired_bootstrap_95pct": [
+        -5.46875,
+        1.03125
+      ],
+      "paired_bootstrap_97_5pct": [
+        -6.03125,
+        1.4375
+      ],
+      "wins": 5,
+      "ties": 18,
+      "losses": 9
+    },
+    "relative_top2_Jev": {
+      "mean_line_gain": 2.15625,
+      "paired_bootstrap_95pct": [
+        -3.6875,
+        7.96875
+      ],
+      "paired_bootstrap_97_5pct": [
+        -4.40625,
+        8.71875
+      ],
+      "wins": 17,
+      "ties": 1,
+      "losses": 14
+    }
+  },
+  "protocol_sha256": "441dfb8fa64d29b6ec385155c2a3983a87de7e466940064fb6a5f6ed5da58337",
+  "selected_policy_sha256": "3eba00148d03715dfa79fbb944ea479d7692b5d474061cbf379f63c68952cb59",
+  "audit_source_sha256": "a49b4d0bff82d61cccfe72492e15f2c517dfa34801d0d86e55a4c132a6f9a581",
+  "target_wasm_sha256": "584657715086775ff0e785053b175c777d27261abd13029b71bc1aeeb662204e",
+  "model_digest": "0757d774c8c44397d189c5b479853897acef8f1e2b55ebf1f5a46969063225e0"
+}
