@@ -103,6 +103,11 @@ test-results/
 /artifacts/tetris-outcome-gate/responses.json
 
 # Placement study: reproducible large raw outputs; small summaries/models are tracked.
+/artifacts/summaries/tetris-search/
+/artifacts/tetris-search/
+/artifacts/tetris-jev-search/
+/artifacts/tetris-jev-confirmation/
+/artifacts/tetris-lgbm-v2/
 /artifacts/tetris-search/data/
 /artifacts/tetris-search/dataset.json
 /artifacts/tetris-search/query-cache/

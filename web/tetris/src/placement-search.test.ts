@@ -66,8 +66,8 @@ it('keeps partitions separate and adoption closed without authoritative evidence
  summary['legacy-model'].games=31;expect(adoption(summary,true).default_policy).toBe('legacy');
 });
 it('matches Python predictions from the actual trained model',()=>{
- const root=new URL('../../../artifacts/tetris-search/',import.meta.url),path=new URL('../public/tetris-evaluator.json',import.meta.url);
- const model=JSON.parse(readFileSync(path,'utf8')),fixtures=JSON.parse(readFileSync(new URL('prediction-fixtures.json',root),'utf8'));
+ const path=new URL('../public/tetris-evaluator.json',import.meta.url);
+ const model=JSON.parse(readFileSync(path,'utf8')),fixtures=JSON.parse(readFileSync(new URL('./fixtures/tetris-evaluator-predictions.json',import.meta.url),'utf8'));
  const evaluator=createEvaluator(model,hash(readFileSync(path)));expect(evaluator.hash).toHaveLength(64);
  for(let i=0;i<fixtures.features.length;i++)expect(treePredict(model,fixtures.features[i])).toBeCloseTo(fixtures.predictions[i],9);
 });

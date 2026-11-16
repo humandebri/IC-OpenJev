@@ -7,7 +7,7 @@ const leaf=(v:number)=>({trees:[[[-1,v,0,0]]],link:'identity' as const});
 const bundle=(alpha=0,beta=0):ValueBundle=>({version:2,geometry:true,feature_names:featureNames(true),residual:leaf(12),risk:{...leaf(0),link:'sigmoid'},alpha,beta,horizon:32,metadata:{}});
 it('matches Python predictions from the selected shipped residual and probability models',()=>{
  const model=JSON.parse(readFileSync(new URL('../public/tetris-value-v2.json',import.meta.url),'utf8')) as ValueBundle;
- const fixture=JSON.parse(readFileSync(new URL('../../../artifacts/tetris-lgbm-v2/selected-predictions.json',import.meta.url),'utf8'));validateBundle(model);
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/tetris-value-v2-predictions.json',import.meta.url),'utf8'));validateBundle(model);
  for(let i=0;i<fixture.features.length;i++){
   expect(forestPredict(model.residual,fixture.features[i])).toBeCloseTo(fixture.residual[i],9);
   expect(forestPredict(model.risk,fixture.features[i])).toBeCloseTo(fixture.risk[i],9);

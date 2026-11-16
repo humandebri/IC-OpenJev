@@ -1,8 +1,0 @@
-{
-  "passed": true,
-  "cases": 128,
-  "scope": "Selected asset and browser candidate/cost/score path vs authoritative study, validation frames only",
-  "asset_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
-  "selection_sha256": "5c40526813221985990e8c29610d1419052caec065731653cb84e029fecc6e7b",
-  "source_sha256": "d3bd5958169bdbe5c1c2b9cd2e7f67fcfee392f95dc1f4cf6adf93bc7d6152b0"
-}

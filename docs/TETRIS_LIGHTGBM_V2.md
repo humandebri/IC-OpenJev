@@ -58,7 +58,7 @@ A separate preregistered counterfactual audit samples up to eight equally spaced
 
 The run enforces a 24-hour total budget, 14 hours for data, six hours from initial training for training/selection (including optional retraining), and four hours for final evaluation/audit. At most four simulation processes run concurrently. Completed state groups are the unit of data truncation. Resumption checks source, model, data, protocol, and per-file hashes. `budget.json` retains original deadlines; restarting does not renew the budget.
 
-Large raw groups, label rows, query records, model candidates, and episode traces stay in ignored subdirectories of `artifacts/tetris-lgbm-v2`. Small protocols, manifests, aggregate results, parity checks, and the selected public bundle/manifest are retained. The old v1 assets and historical experiments are preserved. Native screening and actual-query validation/final evaluation use a disposable local PocketIC canister with a pinned, previously compatible Wasm; no production canister is upgraded or funded.
+Experiment output under `artifacts/tetris-lgbm-v2` stays local and is excluded from Git. The selected public bundle and its manifest are retained. Native screening and actual-query validation/final evaluation use a disposable local PocketIC canister with a pinned, previously compatible Wasm; no production canister is upgraded or funded.
 
 The local inference target needs the saved compatible Wasm at `build/compat-model-query/verdict-engine.wasm`, the unchanged model pack, and PocketIC 15. In a separate terminal, start the disposable target and leave it running until all queries finish:
 
@@ -132,4 +132,4 @@ Jev versus the same new evaluator without Jev changed full-game lines by 0.117, 
 
 **Adoption: passed; ordinary local browser play defaults to LightGBM v2 assistance.** All preregistered performance, size, latency, query, audit, and frontend gates passed. Normal UI runs remain capped at 128 placements. Total local elapsed time was 2.73 hours; final evaluation, audit, and UI gates took 0.27 hours. There was no production deployment.
 
-Machine-readable evidence is under `artifacts/tetris-lgbm-v2`: `test-report.json`, `adoption.json`, `selection-final.json`, dataset/protocol hashes, prediction parity, independent audits, per-seed aggregates, and UI/build results. Large raw evidence remains local in ignored subdirectories. The selected public asset and its manifest are separate from v1.
+The measured results above are retained in this document. Machine-readable evidence is generated locally under `artifacts/tetris-lgbm-v2` and is excluded from Git. The selected public asset and its manifest are separate from v1.

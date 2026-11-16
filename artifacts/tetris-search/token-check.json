@@ -1,7 +1,0 @@
-{
-  "labels": 64,
-  "checks": 640,
-  "max_tokens": 41,
-  "longest_label": "min holes,min height,min missed",
-  "format_unchanged": true
-}

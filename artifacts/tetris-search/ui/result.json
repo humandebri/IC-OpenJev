@@ -1,9 +1,0 @@
-{
-  "browser": "Playwright Chromium",
-  "narrow_width": 390,
-  "policy_frozen": true,
-  "learned_hash_displayed": true,
-  "evaluator_only_api_calls": 0,
-  "page_errors": [],
-  "horizontal_overflow": false
-}

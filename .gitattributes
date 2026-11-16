@@ -1,8 +1,4 @@
-# Keep generated experiment evidence and trained JSON models collapsible in PRs.
-artifacts/summaries/tetris-search/** linguist-generated=true
-artifacts/tetris-search/** linguist-generated=true
-artifacts/tetris-jev-search/** linguist-generated=true
-artifacts/tetris-jev-confirmation/** linguist-generated=true
-artifacts/tetris-lgbm-v2/** linguist-generated=true
+# Keep generated trained JSON models and test fixtures collapsible in PRs.
+web/tetris/src/fixtures/** linguist-generated=true
 web/tetris/public/tetris-evaluator.json linguist-generated=true
 web/tetris/public/tetris-value-v2.json linguist-generated=true

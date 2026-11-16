@@ -1,6 +1,0 @@
-{
-  "reason": "JSON serializes negative zero as zero; strict Object.is comparison treated mathematically equal V0 values as different. Audit uses numeric equality. No game, model, coefficient, request, analysis method or test seed changed.",
-  "before_sha256": "51d8a4effb5c705dd7c8d29596f3b84d9036efc05f61e3b4abee2f883d8c2841",
-  "after_sha256": "c7e606817d8250d2ee716c6e44ee8c342280bf5a19eb7af12176fc2c052fd63b",
-  "scope": "offline audit of the original frozen final logs only"
-}
