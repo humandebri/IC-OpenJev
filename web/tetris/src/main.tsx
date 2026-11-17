@@ -109,11 +109,6 @@ function App(){
    <span className={`net ${activeMode===1?'off':''}`}><i/>{network}</span>
   </header>
   <main>
-   <section className="hero">
-    <p className="eyebrow">LightGBM in your browser · 151M model on the Internet Computer</p>
-    <h1>One more <em>block.</em></h1>
-    <p className="lede">Your browser looks two pieces ahead and shortlists the two best moves. A 151M-parameter model running inside an ICP canister reads their costs and makes the call.</p>
-   </section>
 
    <div className="stage">
     <section className="cabinet" aria-label="Game">
@@ -122,12 +117,14 @@ function App(){
       {!game&&<div className="overlay"><strong>Press start</strong><span>{MAX_TURNS} pieces · seed {seed}</span></div>}
       {game?.over&&phase==='idle'&&<div className="overlay"><strong>{game.lines} lines</strong><span>{game.turn} pieces placed</span></div>}
      </div>
+     <div className="rail">
      <aside className="hud">
       <div><h2>Next</h2><div className="next">{nextPiece!==null?<PieceIcon piece={nextPiece}/>:<span className="dash">—</span>}</div></div>
       <div><h2>Lines</h2><strong className="big">{game?.lines??0}</strong></div>
       <div><h2>Piece</h2><strong className="mid">{game?.turn??0}<small>/{MAX_TURNS}</small></strong></div>
       {activeMode===0&&tally.contested>0&&<div className="agree" title="Moves where the two options had different costs, and how often Jev picked the cheaper one"><h2>Cheaper pick</h2><strong className="mid">{tally.cheaper}<small>/{tally.contested}</small></strong></div>}
      </aside>
+     <div className="actions">
      <div className="controls">
       <button className="primary" disabled={(busy&&!auto)||!client||(needsStart&&!!policyError)} onClick={needsStart?start:()=>setAuto(!auto)}>
        {needsStart?(game?'Play again':'Start game'):auto?'Pause':'Resume'}{auto&&!needsStart?<Icon d="M7 5v14M17 5v14"/>:<Icon d="M5 12h14M13 6l6 6-6 6"/>}
@@ -160,9 +157,18 @@ function App(){
       <p className="hint">Applies to the next game. Same seed, same pieces.</p>
       {!usesNumericCosts(policy)&&<p className="hint">This retained policy offers up to four placements and sends hole, height and missed-clear descriptions.</p>}
      </details>
+     </div>
+     </div>
     </section>
 
-    <DecisionPanel decision={decision} phase={phase} game={game} mode={activeMode} policy={activePolicy} elapsed={elapsed}/>
+    <div className="side">
+     <section className="hero">
+      <p className="eyebrow">LightGBM in your browser · 151M model on the Internet Computer</p>
+      <h1>One more <em>block.</em></h1>
+      <p className="lede">Your browser looks two pieces ahead and shortlists the two best moves. A 151M-parameter model running inside an ICP canister reads their costs and makes the call.</p>
+     </section>
+     <DecisionPanel decision={decision} phase={phase} game={game} mode={activeMode} policy={activePolicy} elapsed={elapsed}/>
+    </div>
    </div>
 
    <Results/>
