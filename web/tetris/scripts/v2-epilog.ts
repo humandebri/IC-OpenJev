@@ -3,6 +3,7 @@ import {spawn} from 'node:child_process';
 import {existsSync,openSync,closeSync,readFileSync,readdirSync} from 'node:fs';
 import {chromium} from 'playwright';
 import {ROOT,OUT,read,atomic,sha,now} from './v2-common';
+import {POLICY_NAMES} from '../src/placement-policy-ui';
 process.chdir(ROOT);
 while(!existsSync(`${OUT}/test-report.json`)||!existsSync(`${OUT}/ui/tests-build.json`)){
  if(now()>=read(`${OUT}/budget.json`).overall_deadline_ms)throw new Error('Budget exhausted before completed gates');await new Promise(r=>setTimeout(r,2000));
@@ -16,8 +17,8 @@ const node=(script:string)=>['--import',`${ROOT}/web/tetris/node_modules/tsx/dis
 await run(node('v2-adopt.ts'),'adoption');
 const release=read(`${ROOT}/web/tetris/src/placement-v2-release.json`),browser=await chromium.launch({headless:true});
 try{
- const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto('http://127.0.0.1:5178/');await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);await page.getByText('Settings',{exact:true}).click();
- assert.equal(await page.getByLabel('Shortlist',{exact:true}).inputValue(),release.default_policy);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto('http://127.0.0.1:5178/');await page.waitForFunction(()=>!(document.querySelector('.primary') as HTMLButtonElement)?.disabled);await page.getByText('Settings',{exact:true}).click();
+ assert.equal(await page.getByLabel('Shortlist',{exact:true}).count(),0);assert.equal(await page.getByLabel('Seed',{exact:true}).count(),0);assert((await page.locator('.pipeline').innerText()).includes(`${POLICY_NAMES[release.default_policy as keyof typeof POLICY_NAMES]} shortlists`));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.screenshot({path:`${OUT}/ui/default-390.png`,fullPage:true});atomic(`${OUT}/ui/default-policy.json`,{passed:true,default_policy:release.default_policy,adopted:release.adopted,release_sha256:sha(readFileSync(`${ROOT}/web/tetris/src/placement-v2-release.json`))});
 }finally{await browser.close();}
 await run(['node_modules/typescript/bin/tsc','--noEmit'],'final-typecheck',`${ROOT}/web/tetris`);

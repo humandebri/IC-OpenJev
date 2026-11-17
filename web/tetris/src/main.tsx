@@ -26,7 +26,7 @@ type Tally={contested:number;cheaper:number};
 
 function friendlyError(e:unknown){
  const text=String(e instanceof Error?e.message:e).replace(/^Error:\s*/,'');
- if(/LightGBM v2 unavailable/.test(text))return 'LightGBM v2 unavailable — the evaluator could not be verified. Switch the shortlist to “Fixed search” in Settings to play without it.';
+ if(/LightGBM v2 unavailable/.test(text))return 'LightGBM v2 unavailable — the evaluator could not be verified. Reload the page to try loading it again.';
  if(/Model unavailable|token limit/.test(text))return 'The model on the canister is not available right now. Try “Evaluator only” in Settings to play without it.';
  if(/frozen Jev/.test(text))return 'The canister is serving a different model than this demo was validated with.';
  if(/frozen|top up|out of cycles/i.test(text))return 'The canister is paused (out of cycles), so the model can’t be asked right now. Choose “Evaluator only” in Settings to keep playing in your browser.';
@@ -48,9 +48,9 @@ function App(){
  const [error,setError]=useState('');
  const [elapsed,setElapsed]=useState(0);
  const [tally,setTally]=useState<Tally>({contested:0,cheaper:0});
- const [seed,setSeed]=useState(184);
+ const seed=184;
  const [mode,setMode]=useState(0);
- const [policy,setPolicy]=useState<PlacementPolicy>(DEFAULT_POLICY);
+ const policy=DEFAULT_POLICY;
  const host=import.meta.env.VITE_IC_HOST||'https://icp-api.io';
  const canister=import.meta.env.VITE_CANISTER_ID||'';
  const busy=phase!=='idle';
@@ -109,11 +109,6 @@ function App(){
    <span className={`net ${activeMode===1?'off':''}`}><i/>{network}</span>
   </header>
   <main>
-   <section className="hero">
-    <p className="eyebrow">LightGBM in your browser · 151M model on the Internet Computer</p>
-    <h1>One more <em>block.</em></h1>
-    <p className="lede">Your browser looks two pieces ahead and shortlists the two best moves. A 151M-parameter model running inside an ICP canister reads their costs and makes the call.</p>
-   </section>
 
    <div className="stage">
     <section className="cabinet" aria-label="Game">
@@ -122,12 +117,14 @@ function App(){
       {!game&&<div className="overlay"><strong>Press start</strong><span>{MAX_TURNS} pieces · seed {seed}</span></div>}
       {game?.over&&phase==='idle'&&<div className="overlay"><strong>{game.lines} lines</strong><span>{game.turn} pieces placed</span></div>}
      </div>
+     <div className="rail">
      <aside className="hud">
       <div><h2>Next</h2><div className="next">{nextPiece!==null?<PieceIcon piece={nextPiece}/>:<span className="dash">—</span>}</div></div>
       <div><h2>Lines</h2><strong className="big">{game?.lines??0}</strong></div>
       <div><h2>Piece</h2><strong className="mid">{game?.turn??0}<small>/{MAX_TURNS}</small></strong></div>
       {activeMode===0&&tally.contested>0&&<div className="agree" title="Moves where the two options had different costs, and how often Jev picked the cheaper one"><h2>Cheaper pick</h2><strong className="mid">{tally.cheaper}<small>/{tally.contested}</small></strong></div>}
      </aside>
+     <div className="actions">
      <div className="controls">
       <button className="primary" disabled={(busy&&!auto)||!client||(needsStart&&!!policyError)} onClick={needsStart?start:()=>setAuto(!auto)}>
        {needsStart?(game?'Play again':'Start game'):auto?'Pause':'Resume'}{auto&&!needsStart?<Icon d="M7 5v14M17 5v14"/>:<Icon d="M5 12h14M13 6l6 6-6 6"/>}
@@ -138,7 +135,7 @@ function App(){
      <details className="settings">
       <summary>Settings</summary>
       <div className="fields">
-       <fieldset><legend>Who decides</legend>
+       <fieldset><legend>Who decides · Next game</legend>
         <div className="seg" role="radiogroup" aria-label="Who decides" onKeyDown={e=>{
          if(busy||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;
          e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?1:1-mode;setMode(next);
@@ -148,21 +145,20 @@ function App(){
          <button role="radio" tabIndex={mode===1?0:-1} aria-checked={mode===1} disabled={busy} onClick={()=>setMode(1)}>Evaluator only</button>
         </div>
        </fieldset>
-       <label>Shortlist<select aria-label="Shortlist" value={policy} disabled={busy} onChange={e=>setPolicy(e.target.value as PlacementPolicy)}>
-        <option value="value-v2" disabled={!!client&&!client.availability.v2}>LightGBM v2</option>
-        <option value="fixed-cost">Fixed search (baseline)</option>
-        <option value="lookahead">Lookahead search (four candidates)</option>
-        <option value="learned" disabled={!!client&&!client.availability.v1}>LightGBM v1 (experimental)</option>
-        <option value="legacy">Legacy heuristic</option>
-       </select></label>
-       <label>Seed<input aria-label="Seed" type="number" inputMode="numeric" value={seed} disabled={busy} onChange={e=>setSeed(Number(e.target.value))}/></label>
       </div>
-      <p className="hint">Applies to the next game. Same seed, same pieces.</p>
-      {!usesNumericCosts(policy)&&<p className="hint">This retained policy offers up to four placements and sends hole, height and missed-clear descriptions.</p>}
      </details>
+     </div>
+     </div>
     </section>
 
-    <DecisionPanel decision={decision} phase={phase} game={game} mode={activeMode} policy={activePolicy} elapsed={elapsed}/>
+    <div className="side">
+     <section className="hero">
+      <p className="eyebrow">LightGBM in your browser · 151M model on the Internet Computer</p>
+      <h1>One more <em>block.</em></h1>
+      <p className="lede">Your browser looks two pieces ahead and shortlists the two best moves. A 151M-parameter model running inside an ICP canister reads their costs and makes the call.</p>
+     </section>
+     <DecisionPanel decision={decision} phase={phase} game={game} mode={activeMode} policy={activePolicy} elapsed={elapsed}/>
+    </div>
    </div>
 
    <Results/>
