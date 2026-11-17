@@ -96,7 +96,9 @@ Use the saved compatible Wasm and model hashes in `data-protocol.json` and each 
 
 When v2 is adopted, browser loading verifies both the fetched manifest and the model bytes against `placement-v2-release.json.model_sha256`. A self-consistent candidate manifest/model pair cannot replace the approved default. An unavailable or rejected evaluator displays its load error and blocks Start/New game for that policy before canister status or inference queries. The user can explicitly select an available alternative; an active game's frozen policy is preserved.
 
-A fresh isolated research checkout must mark its copied v2 release as experimental before publishing new candidate assets for pre-adoption UI checks. The original held-out results and model bytes above are unchanged by these startup guards. Follow-up verification is recorded separately in `ui/release-guard-result.json` and `ui/release-guard-gate-*.json`: six asset/client unit tests plus 390px missing/network/unapproved/corrupt/approved flows, with no canister calls. The frontend suite now contains 92 passing tests.
+A fresh isolated research checkout must mark its copied v2 release as experimental before publishing new candidate assets for pre-adoption UI checks. The original held-out results and model bytes above are unchanged by these startup guards. Each evaluator load has a 30-second deadline covering headers and response bodies; a stalled optional evaluator therefore cannot block all policies indefinitely. Timed-out transfers are aborted, and another available policy can be selected. Approval hashes must be 64 lowercase hexadecimal characters; only explicit `null` disables release pinning for experiments.
+
+Follow-up verification is recorded locally in `ui/release-guard-result.json` and `ui/release-guard-gate-*.json`: thirteen asset/client unit tests plus 390px missing/network/stalled/unapproved/corrupt/approved flows, with no canister calls. The frontend suite now contains 99 passing tests.
 
 ## Discarded development attempt
 

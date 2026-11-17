@@ -5,20 +5,22 @@ import {loadBrowserEvaluator} from './placement-evaluator';
 import {fastChoices,fastPlacements,masks,maskFeatures} from './placement-fast';
 import {costRequest,topTwo,v2Score,validateBundle,type ValueBundle} from './placement-value-v2';
 import valueRelease from './placement-v2-release.json';
+import {loadAssetWithin} from './placement-asset-load';
 export type {Pose} from './placement-api';
 export type PlacementPolicy=OldPolicy|'fixed-cost'|'value-v2';
 export type Game=Omit<OldGame,'policy'>&{policy?:PlacementPolicy};
 export type Decision=Omit<OldDecision,'policy'>&{policy:PlacementPolicy;value_v2?:{version:2;residual:number;risk:number;alpha:number;beta:number;known_lines:number;terminal:number[]|null}[]};
 export type BrowserBundle={bundle:ValueBundle;hash:string};
 export const FROZEN_JEV='0757d774c8c44397d189c5b479853897acef8f1e2b55ebf1f5a46969063225e0';
-export async function loadValueBundle(base=import.meta.env.BASE_URL,expectedHash:string|null=valueRelease.adopted?valueRelease.model_sha256:null):Promise<BrowserBundle>{
- const manifestResponse=await fetch(`${base}tetris-value-v2-manifest.json`);if(!manifestResponse.ok)throw new Error('v2 manifest unavailable');
+export async function loadValueBundle(base=import.meta.env.BASE_URL,expectedHash:string|null=valueRelease.adopted?valueRelease.model_sha256:null,signal?:AbortSignal):Promise<BrowserBundle>{
+ if(expectedHash!==null&&!/^[a-f0-9]{64}$/.test(expectedHash))throw new Error('Invalid approved release hash');
+ const manifestResponse=await fetch(`${base}tetris-value-v2-manifest.json`,{signal});if(!manifestResponse.ok)throw new Error('v2 manifest unavailable');
  const manifest=await manifestResponse.json() as {sha256:string;bytes:number};if(manifest.bytes>8*1024*1024)throw new Error('v2 exceeds 8 MiB');
- if(expectedHash&&manifest.sha256!==expectedHash)throw new Error('v2 evaluator does not match the approved release');
- const response=await fetch(`${base}tetris-value-v2.json`);if(!response.ok)throw new Error('v2 model unavailable');
+ if(expectedHash!==null&&manifest.sha256!==expectedHash)throw new Error('v2 evaluator does not match the approved release');
+ const response=await fetch(`${base}tetris-value-v2.json`,{signal});if(!response.ok)throw new Error('v2 model unavailable');
  const bytes=await response.arrayBuffer();if(bytes.byteLength>8*1024*1024||bytes.byteLength!==manifest.bytes)throw new Error('v2 size mismatch');
  const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
- if(hash!==manifest.sha256)throw new Error('v2 hash mismatch');if(expectedHash&&hash!==expectedHash)throw new Error('v2 evaluator does not match the approved release');const bundle=JSON.parse(new TextDecoder().decode(bytes)) as ValueBundle;validateBundle(bundle);return {bundle,hash};
+ if(hash!==manifest.sha256)throw new Error('v2 hash mismatch');if(expectedHash!==null&&hash!==expectedHash)throw new Error('v2 evaluator does not match the approved release');const bundle=JSON.parse(new TextDecoder().decode(bytes)) as ValueBundle;validateBundle(bundle);return {bundle,hash};
 }
 export function prepareAssisted(game:Game,value?:BrowserBundle){
  if(game.over||game.turn>=MAX_TURNS)throw new Error('Run complete');
@@ -47,8 +49,11 @@ export async function chooseAssisted(game:Game,status:Status,query:(r:ReturnType
   rounds:reply?[{model_candidates,selected,input_tokens:reply.input_tokens}]:[],query_count:reply?1:0,
   value_v2:game.policy==='value-v2'?turn.choices.map(c=>({version:2,residual:c.residual,risk:c.risk,alpha:value!.bundle.alpha,beta:value!.bundle.beta,known_lines:c.total_lines,terminal:c.next?Array.from(c.next.board):null})):undefined};
 }
-export async function connectBrowserQuery(host:string,canister:string){
- const [v1,v2]=await Promise.allSettled([loadBrowserEvaluator(),loadValueBundle()]);
+export async function connectBrowserQuery(host:string,canister:string,assetTimeoutMs=30_000){
+ const [v1,v2]=await Promise.allSettled([
+  loadAssetWithin(signal=>loadBrowserEvaluator(undefined,signal),assetTimeoutMs),
+  loadAssetWithin(signal=>loadValueBundle(undefined,undefined,signal),assetTimeoutMs),
+ ]);
  const old=await connectQuery(host,canister,v1.status==='fulfilled'?v1.value:undefined),value=v2.status==='fulfilled'?v2.value:undefined;
  const errors={v1:v1.status==='rejected'?`LightGBM v1 unavailable: ${String(v1.reason)}`:null,v2:v2.status==='rejected'?`LightGBM v2 unavailable: ${String(v2.reason)}`:null};
  const availabilityError=(policy:PlacementPolicy)=>policy==='value-v2'?errors.v2:policy==='learned'?errors.v1:null;

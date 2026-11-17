@@ -7,16 +7,20 @@ const approved=read(`${ROOT}/web/tetris/src/placement-v2-release.json`),bytes=re
 const other=Buffer.from(JSON.stringify(candidate)+'\n'),corrupt=Buffer.from(bytes);corrupt[corrupt.indexOf(Buffer.from('"version":2'))+10]=51;
 const browser=await chromium.launch({headless:true}),results=[];
 try{
- for(const failure of ['missing','network','unapproved','corrupt','approved']){
+ for(const failure of ['missing','network','stalled','unapproved','corrupt','approved']){
   const page=await browser.newPage({viewport:{width:390,height:844}}),errors:string[]=[],api:string[]=[];let modelRequests=0;
   page.on('pageerror',e=>errors.push(String(e)));await page.route('**/api/**',route=>{api.push(route.request().url());return route.abort();});
+  if(failure==='stalled')await page.clock.install();
+  let stalledRequest:()=>void=()=>{};const stalledStarted=new Promise<void>(resolve=>{stalledRequest=resolve;});
   if(failure!=='approved')await page.route('**/tetris-value-v2-manifest.json',route=>{
+   if(failure==='stalled'){stalledRequest();return;}
    if(failure==='network')return route.abort('failed');
    if(failure==='missing')return route.fulfill({status:404,body:'Unavailable'});
    const body=failure==='unapproved'?other:bytes;return route.fulfill({contentType:'application/json',body:JSON.stringify({sha256:sha(body),bytes:body.length})});
   });
   await page.route('**/tetris-value-v2.json',route=>{modelRequests++;return route.fulfill({contentType:'application/json',body:failure==='unapproved'?other:failure==='corrupt'?corrupt:bytes});});
   await page.goto(process.env.UI_URL||'http://127.0.0.1:5179/');
+  if(failure==='stalled'){await stalledStarted;await page.clock.fastForward(30_000);}
   const start=page.getByRole('button',{name:'Start game',exact:false});
   if(failure==='approved'){
    await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);assert(await start.isEnabled());

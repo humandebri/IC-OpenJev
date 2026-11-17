@@ -9,7 +9,26 @@ const fixture=()=>{
  const bytes=new TextEncoder().encode(JSON.stringify(bundle)),hash=createHash('sha256').update(bytes).digest('hex');return {bundle,bytes,hash};
 };
 const assetFetch=(bytes:Uint8Array,hash:string)=>vi.fn().mockResolvedValueOnce({ok:true,json:async()=>({sha256:hash,bytes:bytes.byteLength})}).mockResolvedValueOnce({ok:true,arrayBuffer:async()=>bytes.buffer});
-afterEach(()=>vi.unstubAllGlobals());
+afterEach(()=>{vi.unstubAllGlobals();vi.useRealTimers();});
+it.each(['','invalid','A'.repeat(64)])('rejects malformed approval metadata: %j',async hash=>{
+ const fetch=vi.fn();vi.stubGlobal('fetch',fetch);
+ await expect(loadValueBundle('/assets/',hash)).rejects.toThrow('Invalid approved release hash');expect(fetch).not.toHaveBeenCalled();
+});
+it.each(['v1 headers','v1 body','v2 headers','v2 body'])('bounds stalled %s and preserves unassisted play',async stalled=>{
+ vi.useFakeTimers();const signals:AbortSignal[]=[];
+ vi.stubGlobal('fetch',vi.fn(async(path:string,options:{signal:AbortSignal})=>{
+  signals.push(options.signal);const version=path.includes('tetris-value')?'v2':'v1';
+  if(version!==stalled.slice(0,2))return {ok:false};
+  if(stalled.endsWith('headers'))return new Promise(()=>{});
+  if(path.includes('manifest'))return {ok:true,json:async()=>({sha256:release.model_sha256,bytes:1})};
+  return {ok:true,arrayBuffer:()=>new Promise(()=>{})};
+ }));
+ const pending=connectBrowserQuery('http://localhost','',100);
+ await vi.advanceTimersByTimeAsync(100);const client=await pending;
+ expect(client.availabilityError(stalled.startsWith('v1')?'learned':'value-v2')).toContain('timed out');
+ expect(signals.every(signal=>signal.aborted)).toBe(true);expect(vi.getTimerCount()).toBe(0);
+ const game=client.start(184,1,'fixed-cost');expect((await client.step(game)).query_count).toBe(0);
+});
 it('rejects a self-consistent candidate manifest that differs from the adopted release',async()=>{
  const {bytes,hash}=fixture();expect(hash).not.toBe(release.model_sha256);const fetch=assetFetch(bytes,hash);vi.stubGlobal('fetch',fetch);
  await expect(loadValueBundle('/assets/')).rejects.toThrow('approved release');expect(fetch).toHaveBeenCalledTimes(1);
