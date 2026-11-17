@@ -98,7 +98,11 @@ When v2 is adopted, browser loading verifies both the fetched manifest and the m
 
 A fresh isolated research checkout must mark its copied v2 release as experimental before publishing new candidate assets for pre-adoption UI checks. The original held-out results and model bytes above are unchanged by these startup guards. Each evaluator load has a 30-second deadline covering headers and response bodies; a stalled optional evaluator therefore cannot block all policies indefinitely. Timed-out transfers are aborted, and another available policy can be selected. Approval hashes must be 64 lowercase hexadecimal characters; only explicit `null` disables release pinning for experiments.
 
-Follow-up verification is recorded locally in `ui/release-guard-result.json` and `ui/release-guard-gate-*.json`: thirteen asset/client unit tests plus 390px missing/network/stalled/unapproved/corrupt/approved flows, with no canister calls. The frontend suite now contains 99 passing tests.
+Follow-up verification is recorded locally in `ui/release-guard-result.json` and `ui/release-guard-gate-*.json`: thirteen asset/client unit tests plus 390px missing/network/stalled/unapproved/corrupt/approved flows, with no canister calls.
+
+The refreshed UI shows candidate boards, current-piece and NEXT overlays, rounded costs, the selected move, and the separate browser/canister stages. Settings offer the adopted v2 shortlist or fixed-search baseline, with Jev or evaluator-only selection; changes apply to the next game. Fixed search is labeled explicitly and has no learned-evaluator hash. The results caption distinguishes browser-assistance gains from Jev's statistically unestablished incremental gain.
+
+UI-review evidence is retained locally under `ui-review-20261117/ui/`: the fixed-Wasm local PocketIC query, error/retry board preservation, radio-keyboard navigation, policy freezing, exported-cost parity, fixed-search labels/hash, 390px/1280px screenshots, six release-error flows, and six UI quality gates. The frontend suite contains 103 passing tests; typecheck and production build pass. The trained assets and original held-out results are unchanged.
 
 ## Discarded development attempt
 

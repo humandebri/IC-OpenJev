@@ -16,8 +16,8 @@ const node=(script:string)=>['--import',`${ROOT}/web/tetris/node_modules/tsx/dis
 await run(node('v2-adopt.ts'),'adoption');
 const release=read(`${ROOT}/web/tetris/src/placement-v2-release.json`),browser=await chromium.launch({headless:true});
 try{
- const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto('http://127.0.0.1:5178/');await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);await page.getByText('Comparison mode & seed',{exact:true}).click();
- assert.equal(await page.getByLabel('Browser assistance',{exact:true}).inputValue(),release.default_policy);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto('http://127.0.0.1:5178/');await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);await page.getByText('Settings',{exact:true}).click();
+ assert.equal(await page.getByLabel('Shortlist',{exact:true}).inputValue(),release.default_policy);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.screenshot({path:`${OUT}/ui/default-390.png`,fullPage:true});atomic(`${OUT}/ui/default-policy.json`,{passed:true,default_policy:release.default_policy,adopted:release.adopted,release_sha256:sha(readFileSync(`${ROOT}/web/tetris/src/placement-v2-release.json`))});
 }finally{await browser.close();}
 await run(['node_modules/typescript/bin/tsc','--noEmit'],'final-typecheck',`${ROOT}/web/tetris`);

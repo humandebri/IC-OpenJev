@@ -1,6 +1,16 @@
-Jev makes the final choice
-Browser assistance
-Fixed NEXT search and LightGBM v2 offer the best two safe, distinct placements whenever two exist.
-They send numeric costs: the rounded, nonnegative difference from the best score (lower is better).
-These are browser code and learned assistance, not capabilities of the 151M model.
-The old modes above retain their three-feature descriptions.
+LightGBM in your browser · 151M model on the Internet Computer
+One more block.
+Your browser looks two pieces ahead and shortlists the two best moves. A 151M-parameter model running inside an ICP canister reads their costs and makes the call.
+Settings
+Who decides
+Jev on ICP
+Evaluator only
+Shortlist
+Seed
+Applies to the next game. Same seed, same pieces.
+How a move is made
+Reduce to costs
+Each option becomes a single number — how far it trails the best one. The model never sees the board, the scores, or upcoming pieces.
+Verify this run
+The board, candidate search and LightGBM run entirely in your browser. Only the short cost labels reach the canister, as a query call. The exported log is a local record of input and output, not a consensus-certified receipt.
+LightGBM alone scores 203.0. Jev’s additional gain over that evaluator was not statistically established.

@@ -2,7 +2,7 @@ import {spawn} from 'node:child_process';
 import {existsSync,readFileSync,mkdirSync} from 'node:fs';
 import {ROOT,OUT,read,atomic,hashes,sha,now} from './v2-common';
 process.chdir(ROOT);const directory=`${OUT}/ui`;mkdirSync(directory,{recursive:true});
-const SOURCE=['web/tetris/src/main.tsx','web/tetris/src/placement-browser-v2.ts','web/tetris/src/placement-fast.ts','web/tetris/src/placement-value-v2.ts','web/tetris/src/placement.css','web/tetris/src/style.css'];
+const SOURCE=['web/tetris/src/main.tsx','web/tetris/src/placement-browser-v2.ts','web/tetris/src/placement-fast.ts','web/tetris/src/placement-value-v2.ts','web/tetris/src/move-preview.ts','web/tetris/src/app.css'];
 while(!existsSync(`${OUT}/selection-final.json`)||!existsSync(`${ROOT}/web/tetris/public/tetris-value-v2.json`)){
  if(now()>read(`${OUT}/budget.json`).overall_deadline_ms)throw new Error('Budget exhausted before final asset');await new Promise(r=>setTimeout(r,2000));
 }

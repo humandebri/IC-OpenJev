@@ -26,16 +26,16 @@ try{
    await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);assert(await start.isEnabled());
   }else{
    await page.getByRole('alert').waitFor();assert.match(await page.getByRole('alert').innerText(),/LightGBM v2 unavailable/);assert(await start.isDisabled());
-   assert.equal(await page.locator('.play-actions').count(),0);if(failure==='unapproved')assert.equal(modelRequests,0);
+   assert.equal(await page.locator('.secondary').count(),0);if(failure==='unapproved')assert.equal(modelRequests,0);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
    await page.screenshot({path:`${directory}/release-guard-${failure}-390.png`,fullPage:true});
   }
-  await page.getByText('Comparison mode & seed',{exact:true}).click();await page.getByLabel('Policy',{exact:true}).selectOption('1');
-  if(failure!=='approved')await page.getByLabel('Browser assistance',{exact:true}).selectOption('fixed-cost');
+  await page.getByText('Settings',{exact:true}).click();await page.getByRole('radio',{name:'Evaluator only',exact:true}).click();
+  if(failure!=='approved')await page.getByLabel('Shortlist',{exact:true}).selectOption('fixed-cost');
   assert(await start.isEnabled());assert.equal(await page.getByRole('alert').count(),0);await start.click();await page.getByRole('button',{name:'Pause',exact:false}).click();
-  await page.getByRole('button',{name:'Step once',exact:true}).click();await page.waitForFunction(()=>!(document.querySelector('.play-actions button') as HTMLButtonElement)?.disabled);
-  await page.locator('.turn-details').getByText(failure==='approved'?'value-v2':'fixed-cost',{exact:true}).waitFor();
-  if(failure==='approved')assert.equal(await page.locator('.model-hash').innerText(),approved.model_sha256);
+  await page.getByRole('button',{name:'Step once',exact:true}).click();await page.waitForFunction(()=>!(document.querySelector('.secondary button') as HTMLButtonElement)?.disabled);
+  await page.locator('.pipeline').getByText(new RegExp(`^${failure==='approved'?'LightGBM v2':'Fixed search'} ·`)).waitFor();
+  if(failure==='approved'){await page.getByText('Verify this run',{exact:true}).click();assert.equal(await page.locator('.model-hash').innerText(),approved.model_sha256);}
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(errors,[]);assert.equal(api.length,0);
   results.push({case:failure,passed:true,blocked_before_start:failure!=='approved',fallback_started:failure!=='approved',model_requests:modelRequests,canister_calls:api.length});await page.close();
  }
