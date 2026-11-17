@@ -135,7 +135,7 @@ function App(){
      <details className="settings">
       <summary>Settings</summary>
       <div className="fields">
-       <fieldset><legend>Who decides</legend>
+       <fieldset><legend>Who decides · Next game</legend>
         <div className="seg" role="radiogroup" aria-label="Who decides" onKeyDown={e=>{
          if(busy||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;
          e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?1:1-mode;setMode(next);
