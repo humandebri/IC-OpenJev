@@ -35,6 +35,7 @@ fn serve_tetris_search_model() {
     assert!(warmed);
     Decode!(&call("set_cost_model", Encode!(&170_000_000u64,&92_000_000u64,&40_000_000_000u64).unwrap()),Result<()>).unwrap().unwrap();
     let host=pic.make_live(None).to_string();
+    fs::create_dir_all(root.join("artifacts/tetris-search")).unwrap();
     fs::write(root.join("artifacts/tetris-search/local-target.json"),serde_json::to_vec_pretty(&serde_json::json!({"host":host,"canister":id.to_text(),"wasm_sha256":"584657715086775ff0e785053b175c777d27261abd13029b71bc1aeeb662204e","replica":"PocketIC 15, application subnet, disposable instance","model_pack_sha256":ic_laya_core::hash(&manifest)})).unwrap()).unwrap();
     println!("READY: {host} / {id}; close stdin to remove the disposable instance");
     let (send, receive)=std::sync::mpsc::channel();

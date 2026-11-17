@@ -5,12 +5,14 @@ import {rotations} from './game';
 import {pieceAt,MAX_TURNS} from './placement-local';
 import {costs,cropTop,expectedLines,movePreview,type Preview} from './move-preview';
 import valueRelease from './placement-v2-release.json';
+import previousRelease from './placement-release.json';
+import {releasePolicy,POLICY_NAMES,usesNumericCosts,optionLabels} from './placement-policy-ui';
 import './app.css';
 
 const COLORS=['transparent','#46d5ed','#efd55a','#b697ff','#65df99','#f48392','#639bff','#f9b367'];
 const LETTERS=['A','B','C','D'];
 const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
-const DEFAULT_POLICY:PlacementPolicy=valueRelease.adopted?'value-v2':'fixed-cost';
+const DEFAULT_POLICY=releasePolicy(valueRelease,previousRelease);
 
 // Held-out evaluation, docs/TETRIS_LIGHTGBM_V2.md (128 unseen seeds, 512 pieces each).
 const RESULTS=[
@@ -72,7 +74,7 @@ function App(){
   try{
    const began=performance.now();const r=await client.step(game);setElapsed(performance.now()-began);
    setDecision(r);setBoard(r.before);setPhase('reveal');
-   const c=costs(r);if(r.mode===0&&new Set(c).size>1)setTally(t=>({contested:t.contested+1,cheaper:t.cheaper+(c[r.selected]===0?1:0)}));
+   const c=costs(r);if(r.mode===0&&usesNumericCosts(r.policy)&&new Set(c).size>1)setTally(t=>({contested:t.contested+1,cheaper:t.cheaper+(c[r.selected]===0?1:0)}));
    await sleep(700);setPhase('placing');
    for(const p of r.candidates[r.selected].path){setMoving(rotations(r.piece)[p.r].map(([x,y])=>[x+p.x,y+p.y]));await sleep(30);}
    setMoving([]);setBoard(r.after);setGame({...game,board:r.after,turn:r.turn+1,lines:r.total_lines,over:r.over});
@@ -149,10 +151,14 @@ function App(){
        <label>Shortlist<select aria-label="Shortlist" value={policy} disabled={busy} onChange={e=>setPolicy(e.target.value as PlacementPolicy)}>
         <option value="value-v2" disabled={!!client&&!client.availability.v2}>LightGBM v2</option>
         <option value="fixed-cost">Fixed search (baseline)</option>
+        <option value="lookahead">Lookahead search (four candidates)</option>
+        <option value="learned" disabled={!!client&&!client.availability.v1}>LightGBM v1 (experimental)</option>
+        <option value="legacy">Legacy heuristic</option>
        </select></label>
        <label>Seed<input aria-label="Seed" type="number" inputMode="numeric" value={seed} disabled={busy} onChange={e=>setSeed(Number(e.target.value))}/></label>
       </div>
       <p className="hint">Applies to the next game. Same seed, same pieces.</p>
+      {!usesNumericCosts(policy)&&<p className="hint">This retained policy offers up to four placements and sends hole, height and missed-clear descriptions.</p>}
      </details>
     </section>
 
@@ -176,7 +182,7 @@ function App(){
      <dt>Canister</dt><dd>{canister||'not configured'}</dd>
      <dt>Endpoint</dt><dd>{host}</dd>
      {decision&&decision.model.length>0&&<><dt>Model hash</dt><dd className="hash">{decision.model.map(v=>v.toString(16).padStart(2,'0')).join('')}</dd></>}
-     <dt>Evaluator SHA-256</dt><dd className="hash model-hash">{decision?decision.evaluator_hash??'None — fixed search':activePolicy==='value-v2'&&valueRelease.adopted?valueRelease.model_sha256:'None — fixed search'}</dd>
+     <dt>Evaluator SHA-256</dt><dd className="hash model-hash">{decision?decision.evaluator_hash??`None — ${POLICY_NAMES[decision.policy].toLowerCase()}`:activePolicy==='value-v2'?valueRelease.model_sha256:activePolicy==='learned'?previousRelease.evaluator_hash:`None — ${POLICY_NAMES[activePolicy].toLowerCase()}`}</dd>
     </dl>
     <p>The board, candidate search and LightGBM run entirely in your browser. Only the short cost labels reach the canister, as a query call. The exported log is a local record of input and output, not a consensus-certified receipt.</p>
     <button disabled={!decision} onClick={saveLog}>Download this turn (JSON)</button>
@@ -224,30 +230,30 @@ function DecisionPanel({decision,phase,game,mode,policy,elapsed}:{decision?:Deci
  const view=useMemo(()=>{
   if(!decision)return null;
   const previews=decision.candidates.map(c=>{const s=(c as {search?:{next_pose:{r:number;x:number;y:number}|null}}).search;return movePreview(decision.before,decision.piece,c.cells,decision.next,s?.next_pose??null);});
-  return {previews,top:cropTop(previews),cost:costs(decision)};
+  return {previews,top:cropTop(previews),cost:costs(decision),labels:optionLabels(decision)};
  },[decision]);
  const thinking=phase==='thinking';
  const jevMode=(decision?.mode??mode)===0;
- const evaluatorName=(decision?.policy??policy)==='value-v2'?'LightGBM':'Fixed search';
+ const evaluatorName=POLICY_NAMES[decision?.policy??policy],numeric=usesNumericCosts(decision?.policy??policy);
 
  if(!decision||!view)return <section className="panel empty" aria-live="polite">
   <div className="panel-head"><h2>This move</h2></div>
   <div className="pipeline">
-   <Stage n="1" where="Your browser" what={`${evaluatorName} shortlists up to two moves`} state={thinking&&mode!==0?'active':'wait'}/>
+   <Stage n="1" where="Your browser" what={`${evaluatorName} shortlists up to ${numeric?'two':'four'} moves`} state={thinking&&mode!==0?'active':'wait'}/>
    <Stage n="2" where="ICP canister" what={mode===0?'Jev 151M picks one':'Skipped — evaluator only'} state={mode!==0?'skip':thinking?'active':'wait'}/>
   </div>
-  <p className="empty-copy">{game?(mode===0?'Asking the model for the first move. The first call can take a few seconds while the canister warms up.':'Choosing the first move…'):'Start a game to watch each move: the two options LightGBM found, what the model was told, and what it chose.'}</p>
+  <p className="empty-copy">{game?(mode===0?'Asking the model for the first move. The first call can take a few seconds while the canister warms up.':'Choosing the first move…'):'Start a game to watch the shortlisted placements, what the model was told, and what it chose.'}</p>
  </section>;
 
  const n=decision.candidates.length,picked=LETTERS[decision.selected],tie=n>1&&view.cost.every(c=>c===0);
- const headline=n===1?'Only one available move':!jevMode?`${evaluatorName} placed ${picked}`:tie?`Same rounded cost — Jev took ${picked}`:view.cost[decision.selected]===0?`Jev took the cheaper move, ${picked}`:`Jev took ${picked}, the costlier move`;
+ const headline=n===1?'Only one available move':!jevMode?`${evaluatorName} placed ${picked}`:!numeric?`Jev chose ${picked}`:tie?`Same rounded cost — Jev took ${picked}`:view.cost[decision.selected]===0?`Jev took the cheaper move, ${picked}`:`Jev took ${picked}, the costlier move`;
  const v2=decision.value_v2;
 
  return <section className={`panel ${thinking?'is-thinking':''}`} aria-live="polite">
   <div className="panel-head"><h2>Move {decision.turn+1}</h2>{thinking?<span className="headline pending">{jevMode?'Asking Jev for the next move…':'Scoring the next move…'}</span>:<span className="headline">{headline}</span>}</div>
   <div className="pipeline">
-   <Stage n="1" where="Your browser" what={`${decision.policy==='value-v2'?'LightGBM v2':'Fixed search'} · ${n} of ${decision.legal_count} moves`} meta={`${decision.candidate_ms.toFixed(1)} ms`} state={thinking&&!jevMode?'active':'done'}/>
-   <Stage n="2" where="ICP canister" what={jevMode?<>Jev read <code>{view.cost.map((c,i)=>`${n>1?LETTERS[i]+' ':''}cost ${c}`).join(' · ')}</code></>:'Skipped — evaluator only'}
+   <Stage n="1" where="Your browser" what={`${evaluatorName} · ${n} of ${decision.legal_count} moves`} meta={`${decision.candidate_ms.toFixed(1)} ms`} state={thinking&&!jevMode?'active':'done'}/>
+   <Stage n="2" where="ICP canister" what={jevMode?<>Jev read <code>{view.labels.map((label,i)=>`${n>1?LETTERS[i]+' ':''}${label}`).join(' · ')}</code></>:'Skipped — evaluator only'}
     meta={jevMode?`${(elapsed/1000).toFixed(2)} s · ${decision.input_tokens} tokens · ${(Number(decision.inference_instructions)/1e9).toFixed(2)}B instructions`:undefined} state={!jevMode?'skip':thinking?'active':'done'}/>
   </div>
   <div className={`options n${n}`}>
@@ -255,7 +261,7 @@ function DecisionPanel({decision,phase,game,mode,policy,elapsed}:{decision?:Deci
     const value=v2?.[i],future=value?expectedLines(value):null,search=(c as {search?:{holes:number;height:number;total_lines:number}}).search;
     const chosen=i===decision.selected,top=i===decision.recommended;
     return <article key={i} className={`option ${chosen?'chosen':''}`} aria-label={`Option ${LETTERS[i]}${chosen?', chosen':''}`}>
-     <header><span className="letter">{n>1?LETTERS[i]:'Only move'}</span><span className="cost">cost {view.cost[i]}</span></header>
+     <header><span className="letter">{n>1?LETTERS[i]:'Only move'}</span><span className="cost">{view.labels[i]}</span></header>
      <MiniBoard preview={view.previews[i]} top={view.top}/>
      <dl>
       {future!==null?<><dt title="Expected lines in the 32 pieces after the current piece and NEXT">Forecast after NEXT</dt><dd>{future.toFixed(1)} lines</dd></>:search&&<><dt>After NEXT</dt><dd>{search.holes} {search.holes===1?'hole':'holes'} · h{search.height}</dd></>}
@@ -266,7 +272,7 @@ function DecisionPanel({decision,phase,game,mode,policy,elapsed}:{decision?:Deci
     </article>;
    })}
   </div>
-  <p className="legend"><i className="lg-cur"/>this piece<i className="lg-next"/>best reply for NEXT{decision.policy==='value-v2'&&<span>· forecast by LightGBM v2</span>}</p>
+  <p className="legend"><i className="lg-cur"/>this piece{view.previews.some(p=>p.cells.some(c=>c.next))&&<><i className="lg-next"/>best reply for NEXT</>}{decision.policy==='value-v2'&&<span>· forecast by LightGBM v2</span>}</p>
  </section>;
 }
 

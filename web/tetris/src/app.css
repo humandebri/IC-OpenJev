@@ -115,9 +115,9 @@ details:not([open])>:not(summary){display:none}
 .options.n1{grid-template-columns:minmax(0,260px)}
 .option{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;background:var(--surface-2);transition:border-color .2s,box-shadow .2s}
 .option.chosen{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
-.option header{display:flex;justify-content:space-between;align-items:center}
+.option header{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .letter{font:600 18px var(--display)}
-.cost{font:500 12px var(--mono);color:var(--muted);background:var(--inset);border-radius:6px;padding:3px 8px}
+.cost{font:500 12px var(--mono);color:var(--muted);background:var(--inset);border-radius:6px;padding:3px 8px;overflow-wrap:anywhere;min-width:0}
 .option.chosen .cost{color:var(--accent)}
 .mini{display:block;width:100%;max-width:190px;margin:auto;height:auto}
 .mini-empty{fill:#ffffff06}
