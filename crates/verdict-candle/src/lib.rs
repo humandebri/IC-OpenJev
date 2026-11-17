@@ -112,7 +112,7 @@ fn quantized(m:&BTreeMap<String,Tensor>,name:&str)->Result<modernbert_candle::Qu
     let (out_features,in_features)=t.dims2().map_err(|e|Error::Invalid(e.to_string()))?;
     let flat=t.flatten_all().and_then(|x|x.to_vec1::<f32>()).map_err(|e|Error::ModelUnavailable(e.to_string()))?;
     let block_size=in_features;let (w,scales)=verdict_simd::quantize_rows_i8(&flat,out_features,in_features);
-    Ok(modernbert_candle::QuantWeight{w,scales,out_features,in_features,block_size})
+    Ok(modernbert_candle::QuantWeight{stable:None,w,scales,out_features,in_features,block_size})
 }
 /// Every two-dimensional model parameter is carried as INT8 in the production pack.
 #[must_use]
@@ -190,7 +190,7 @@ impl VerdictModel {
             ));
         }
         let e=q.remove("embeddings.weight").ok_or_else(||Error::Invalid("missing quantised embeddings.weight".into()))?;
-        let embedding=QuantEmbedding::new(e.w,e.scales,e.out_features,e.in_features,e.block_size)
+        let embedding=QuantEmbedding::from_weight(e)
             .map_err(|x|Error::ModelUnavailable(x.to_string()))?;
         let encoder=ModernBert::new(embedding,norm(&m,"embeddings.norm",c.norm_eps)?,layers,norm(&m,"final_norm",c.norm_eps)?);
         Ok(Self{text_1:linear_biased(&m,&mut q,"text_projector.linear_1")?,text_2:linear_biased(&m,&mut q,"text_projector.linear_2")?,
@@ -202,6 +202,7 @@ impl VerdictModel {
         ids.iter().enumerate().filter(|(_,id)|**id==self.config.class_token_id).map(|(i,_)|i as u32).collect()
     }
     fn hidden(&self,ids:&[u32])->Result<Tensor>{
+        modernbert_candle::weights::begin_forward();
         if ids.is_empty() || ids.len()>MAX_SEQUENCE {return Err(Error::Invalid("token input".into()));}
         if ids.iter().any(|&v|v as usize>=self.config.vocab_size){return Err(Error::Invalid("token id".into()));}
         self.encoder.forward(ids).map_err(|e|Error::ModelUnavailable(e.to_string()))
@@ -254,6 +255,7 @@ impl VerdictModel {
     /// `detailed` additionally marks the sub-phases of every encoder layer, which
     /// repeat once per layer; callers aggregate by name.
     pub fn logits_profiled(&self,ids:&[u32],mark:&mut dyn FnMut(&'static str),detailed:bool)->Result<Vec<f32>>{
+        modernbert_candle::weights::begin_forward();
         let positions=self.class_positions(ids);
         self.config.check_class_count(positions.len())?;
         if ids.is_empty() || ids.len()>MAX_SEQUENCE {return Err(Error::Invalid("token input".into()));}

@@ -5,6 +5,7 @@
 //! backend. The Laya decision head and its pack format were removed when that model was
 //! dropped (see docs/VERDICT_ENGINE.md).
 #![forbid(unsafe_code)]
+pub mod weights;
 use candle_core::{Device,Storage,Tensor,D};
 use serde::{Deserialize,Serialize};
 
@@ -12,9 +13,9 @@ type CResult<T> = candle_core::Result<T>;
 #[derive(Debug,Clone,Copy,Serialize,Deserialize)]
 pub enum Activation { Relu, Gelu }
 #[derive(Clone)]
-pub struct QuantWeight { pub w:Vec<i8>,pub scales:Vec<f32>,pub out_features:usize,pub in_features:usize,pub block_size:usize }
+pub struct QuantWeight { pub stable:Option<weights::StableWeight>, pub w:Vec<i8>,pub scales:Vec<f32>,pub out_features:usize,pub in_features:usize,pub block_size:usize }
 #[derive(Clone)]
-pub struct QuantEmbedding { pub w:Vec<i8>,pub scales:Vec<f32>,pub vocab_size:usize,pub hidden_size:usize,pub block_size:usize }
+pub struct QuantEmbedding { pub stable:Option<weights::StableWeight>, pub w:Vec<i8>,pub scales:Vec<f32>,pub vocab_size:usize,pub hidden_size:usize,pub block_size:usize }
 impl QuantEmbedding {
     pub fn new(w:Vec<i8>,scales:Vec<f32>,vocab_size:usize,hidden_size:usize,block_size:usize)->CResult<Self>{
         let blocks=hidden_size.div_ceil(block_size.max(1));
@@ -22,16 +23,34 @@ impl QuantEmbedding {
             || block_size==0 || scales.len()!=vocab_size*blocks || scales.iter().any(|x|!x.is_finite()||*x<=0.0) {
             return Err(candle_core::Error::Msg("invalid quantised embedding".into()));
         }
-        Ok(Self{w,scales,vocab_size,hidden_size,block_size})
+        Ok(Self{stable:None,w,scales,vocab_size,hidden_size,block_size})
+    }
+    pub fn from_weight(q:QuantWeight)->CResult<Self>{
+        if q.stable.is_none(){return Self::new(q.w,q.scales,q.out_features,q.in_features,q.block_size);}
+        if q.in_features==0||q.block_size!=q.in_features||!q.w.is_empty()||q.scales.len()!=q.out_features||q.scales.iter().any(|x|!x.is_finite()||*x<=0.0){
+            return Err(candle_core::Error::Msg("invalid stable embedding".into()));
+        }
+        Ok(Self{stable:q.stable,w:q.w,scales:q.scales,vocab_size:q.out_features,hidden_size:q.in_features,block_size:q.block_size})
     }
     pub fn lookup(&self,ids:&[u32])->CResult<Tensor>{
         let mut out=Vec::with_capacity(ids.len().saturating_mul(self.hidden_size));
+        let mut seen=std::collections::BTreeMap::<u32,usize>::new();
+        let mut row_buffer=if self.stable.is_some(){vec![0i8;self.hidden_size]}else{Vec::new()};
         for &id in ids {
             let row=id as usize;
             if row>=self.vocab_size{return Err(candle_core::Error::Msg("embedding id out of range".into()));}
             let start=row*self.hidden_size;let blocks=self.hidden_size.div_ceil(self.block_size);
-            out.extend(self.w[start..start+self.hidden_size].iter().enumerate().map(|(i,&v)|v as f32*self.scales[row*blocks+i/self.block_size]));
+            if let Some(source)=self.stable {
+                if let Some(&at)=seen.get(&id){out.extend_from_within(at..at+self.hidden_size);continue;}
+                source.read_bytes(source.offset+start as u64,bytemuck::cast_slice_mut(&mut row_buffer))?;
+                let scale=self.scales[row];
+                seen.insert(id,out.len());
+                out.extend(row_buffer.iter().map(|&v|v as f32*scale));
+            } else {
+                out.extend(self.w[start..start+self.hidden_size].iter().enumerate().map(|(i,&v)|v as f32*self.scales[row*blocks+i/self.block_size]));
+            }
         }
+        weights::observe_heap();
         Tensor::from_vec(out,(ids.len(),self.hidden_size),&Device::Cpu)
     }
 }
@@ -67,7 +86,9 @@ impl Linear {
                 }
             };
             let mut out=vec![0f32;m*q.out_features];
-            if q.block_size<k{let _=verdict_simd::matmul_i8_blocked(&aq,&q.w,&asx,&q.scales,m,k,q.out_features,q.block_size,&mut out);}else{let _=verdict_simd::matmul_i8(&aq,&q.w,&asx,&q.scales,m,k,q.out_features,&mut out);}
+            let mut multiply=|w:&[i8]|{if q.block_size<k{let _=verdict_simd::matmul_i8_blocked(&aq,w,&asx,&q.scales,m,k,q.out_features,q.block_size,&mut out);}else{let _=verdict_simd::matmul_i8(&aq,w,&asx,&q.scales,m,k,q.out_features,&mut out);}};
+            if let Some(source)=q.stable{source.with_weights(q.out_features*k,&mut multiply)?;}else{multiply(&q.w);}
+            weights::observe_heap();
             let mut shape=dims[..dims.len()-1].to_vec();shape.push(q.out_features);
             let y=Tensor::from_vec(out,shape,x.device())?;
             return match &self.bias{Some(b)=>y.broadcast_add(b),None=>Ok(y)};
@@ -360,7 +381,7 @@ mod tests{
     }
     #[test]
     fn quantized_linear_handles_contiguous_offsets_and_strides(){
-        let linear=Linear::new_quantized(QuantWeight{w:vec![1,-2,3,-4,4,3,-2,-1],scales:vec![0.02,0.03],out_features:2,in_features:4,block_size:4},None);
+        let linear=Linear::new_quantized(QuantWeight{stable:None,w:vec![1,-2,3,-4,4,3,-2,-1],scales:vec![0.02,0.03],out_features:2,in_features:4,block_size:4},None);
         let base=Tensor::from_vec((0..16).map(|i|i as f32*0.1-0.4).collect(),(4,4),&Device::Cpu).unwrap();
         let offset=base.narrow(0,1,2).unwrap();
         let copied=Tensor::from_vec(offset.flatten_all().unwrap().to_vec1::<f32>().unwrap(),(2,4),&Device::Cpu).unwrap();
@@ -375,7 +396,7 @@ mod tests{
         let mask=attention_mask(6,Some(4)).unwrap().unwrap().flatten_all().unwrap().to_vec1::<f32>().unwrap();
         for i in 0usize..6{for j in 0usize..6{assert_eq!(mask[i*6+j],if i.abs_diff(j)>4{f32::NEG_INFINITY}else{0.});}}
         let h=8;let t=7;
-        let linear=|o,i|Linear::new_quantized(QuantWeight{w:vec![1;o*i],scales:vec![0.01;o],out_features:o,in_features:i,block_size:i},None);
+        let linear=|o,i|Linear::new_quantized(QuantWeight{stable:None,w:vec![1;o*i],scales:vec![0.01;o],out_features:o,in_features:i,block_size:i},None);
         let layer=EncoderLayer::new(None,Attention::new(linear(3*h,h),linear(h,h),2),
             Norm::new(Tensor::ones(h,candle_core::DType::F32,&Device::Cpu).unwrap(),None,1e-5),linear(2*h,h),linear(h,h),10000.,Some(2));
         let layers=vec![layer.clone(),layer.clone()];

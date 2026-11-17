@@ -1,0 +1,20 @@
+[
+  "encoder.0.qkv.weight",
+  "encoder.0.wi.weight",
+  "encoder.1.qkv.weight",
+  "encoder.1.wi.weight",
+  "encoder.10.qkv.weight",
+  "encoder.10.wi.weight",
+  "encoder.11.qkv.weight",
+  "encoder.11.wi.weight",
+  "encoder.12.qkv.weight",
+  "encoder.12.wi.weight",
+  "encoder.13.qkv.weight",
+  "encoder.13.wi.weight",
+  "encoder.14.qkv.weight",
+  "encoder.14.wi.weight",
+  "encoder.15.qkv.weight",
+  "encoder.15.wi.weight",
+  "encoder.16.qkv.weight",
+  "encoder.16.wi.weight"
+]

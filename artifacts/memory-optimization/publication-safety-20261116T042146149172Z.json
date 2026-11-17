@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "scope": "Publication retry and analysis output only; no Wasm or inference implementation changes",
+  "unit_tests": 35,
+  "python_modes": [
+    "ordinary",
+    "optimized"
+  ],
+  "faults": [
+    "summary replacement",
+    "approval replacement",
+    "before pointer commit",
+    "after pointer commit"
+  ],
+  "retry_without_measurement": true,
+  "retries_preserve_sealed_bytes_and_mtimes": true,
+  "real_evidence_reanalyzed": {
+    "cases": 110,
+    "samples": 3300,
+    "normal_total_bytes": 338536669,
+    "read_only_and_final_cli": true,
+    "explicit_new_output": true,
+    "existing_published_bytes_and_mtimes_unchanged": true
+  },
+  "published_hashes": {
+    "run": "runs/20261116T023020Z-ac9f945d",
+    "manifest_sha256": "98b9e1e04dd4c50e34c5d87fbab0d48f5ba7586c74fce36cf4586c749052166a",
+    "report_sha256": "fc43323aa9a08d38d570511c1d00cc4315e0950efa7f93f01dcc9c2d56d819f2",
+    "summary_sha256": "b4f15e5722303f487921cf6f8afc78252cdb495ebc4902251569da4e62ff2263",
+    "wasm_sha256": "186527a9e07f600169502a3fae0304ac185857d31ccf44e686b764500fecfb5d"
+  },
+  "checked_cli": [
+    {
+      "args": [
+        "tools/memory_compare.py",
+        "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/memory-optimization/runs/20261116T023020Z-ac9f945d/final.json"
+      ],
+      "result": "passed",
+      "stdout": "| candidate | total MB | saved MB | worst instructions | accepted |\n|---|---:|---:|---:|---|\n| legacy | 413.87 | 0.40 | +0.013% | True |\n| selected | 338.63 | 75.64 | +4.940% | True |\n| source | 414.27 | 0.00 | +0.000% | True |\nBest eligible candidate: selected; JSON: not written (read-only)\n"
+    },
+    {
+      "args": [
+        "tools/memory_compare.py",
+        "/Volumes/KINGSTON/ICP/IC-OpenJev/artifacts/memory-optimization/runs/20261116T023020Z-ac9f945d/final.json",
+        "--final"
+      ],
+      "result": "passed",
+      "stdout": "| candidate | total MB | saved MB | worst instructions | accepted |\n|---|---:|---:|---:|---|\n| legacy | 413.87 | 0.40 | +0.013% | True |\n| selected | 338.63 | 75.64 | +4.940% | True |\n| source | 414.27 | 0.00 | +0.000% | True |\nBest eligible candidate: selected; JSON: not written (read-only)\n"
+    }
+  ],
+  "source_sha256": {
+    "tools/memory_run.py": "1843c613e7cafe46b00f5d9d2a78ca3c2f74a240efffee1d1ef469432d220ddb",
+    "tools/memory_compare.py": "0a58fac8d65aeb66a3f446cbc62260f55379560875e24763da25d14d9051063d",
+    "tools/measure_memory.sh": "419cf5b22ea23f9a632fa69c765f318a48bc5a844c8165a93d5adc8abc7fe196",
+    "tests/test_memory_run.py": "fe52e6cfd272bae8262c2918866d59b684b573f202c614869a33cff1eccd95d9"
+  }
+}

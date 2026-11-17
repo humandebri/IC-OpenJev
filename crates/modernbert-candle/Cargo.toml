@@ -7,3 +7,8 @@ license.workspace = true
 candle-core.workspace = true
 verdict-simd.workspace = true
 serde.workspace = true
+
+bytemuck = "=1.25.2"
+
+[features]
+memory-bench = []
