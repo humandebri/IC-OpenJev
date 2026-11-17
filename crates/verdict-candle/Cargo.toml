@@ -11,7 +11,14 @@ hf-tokenizer.workspace = true
 candle-core.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+sha2.workspace = true
 
 [[bin]]
 name = "verdict-infer"
 path = "src/bin/verdict_infer.rs"
+
+[dependencies.bytemuck]
+version = "=1.25.2"
+
+[features]
+memory-bench = ["modernbert-candle/memory-bench"]

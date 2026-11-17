@@ -7,6 +7,8 @@ use crate::{expected_tensors,is_matrix_weight,QuantMap,VerdictConfig,VerdictMode
 use candle_core::{Device,DType,Tensor};
 use ic_laya_core::{hash,BackendKind,Digest,Error,Result};
 use serde::{Deserialize,Serialize};
+use sha2::{Digest as ShaDigest,Sha256};
+use modernbert_candle::weights::{Reader,StableWeight};
 use std::collections::{BTreeMap,BTreeSet};
 
 pub const FORMAT:&str="ic-verdict-int8-pack-v1";
@@ -66,7 +68,7 @@ impl Builder {
                 if w.contains(&i8::MIN){return Err(Error::Numeric);}
                 let scales=bytes[data_len..].chunks_exact(4).map(|b|f32::from_le_bytes([b[0],b[1],b[2],b[3]])).collect::<Vec<_>>();
                 if scales.len()!=rows||scales.iter().any(|v|!v.is_finite()||*v<=0.0){return Err(Error::Numeric);}
-                self.quant.insert(e.name,modernbert_candle::QuantWeight{w,scales,out_features:rows,in_features:cols,block_size:cols});
+                self.quant.insert(e.name,modernbert_candle::QuantWeight{stable:None,w,scales,out_features:rows,in_features:cols,block_size:cols});
             }
             Encoding::F32Le=>{
                 if bytes.chunks_exact(4).any(|b|!f32::from_le_bytes([b[0],b[1],b[2],b[3]]).is_finite()){return Err(Error::Numeric);}
@@ -74,6 +76,39 @@ impl Builder {
                 self.tensors.insert(e.name,tensor);
             }
         }
+        self.next+=1;Ok(())
+    }
+    /// Validate incrementally. Resident weights are filled in their final allocation;
+    /// streamed weights retain only an immutable address and their row scales.
+    pub fn push_reader(&mut self,base:u64,reader:Reader,chunk:usize,stream:bool,window:Option<(u64,usize)>)->Result<()> {
+        if !(4096..=1024*1024).contains(&chunk){return Err(Error::Invalid("warm-up chunk size".into()));}
+        let e=self.next_entry().ok_or(Error::Transition)?.clone();
+        if e.encoding==Encoding::F32Le {
+            let mut bytes=vec![0;e.length as usize];
+            reader(base+e.offset,&mut bytes).map_err(|x|Error::ModelUnavailable(x.to_string()))?;
+            return self.push(&bytes);
+        }
+        let (rows,cols)=(e.shape[0],e.shape[1]);let data_len=rows*cols;
+        let mut weights=if stream{Vec::new()}else{vec![0i8;data_len]};
+        let mut buffer=if stream{vec![0u8;chunk.min(data_len)]}else{Vec::new()};
+        let mut digest=Sha256::new();
+        for at in (0..data_len).step_by(chunk){
+            let n=chunk.min(data_len-at);
+            let bytes=if stream{&mut buffer[..n]}else{bytemuck::cast_slice_mut(&mut weights[at..at+n])};
+            reader(base+e.offset+at as u64,bytes).map_err(|x|Error::ModelUnavailable(x.to_string()))?;
+            digest.update(&*bytes);
+            if bytes.contains(&128){return Err(Error::Numeric);}
+        }
+        let mut bytes=vec![0u8;rows*4];
+        reader(base+e.offset+data_len as u64,&mut bytes).map_err(|x|Error::ModelUnavailable(x.to_string()))?;
+        digest.update(&bytes);
+        let actual:[u8;32]=digest.finalize().into();
+        if actual!=e.sha256{return Err(Error::Invalid("tensor integrity".into()));}
+        let scales:Vec<f32>=bytes.chunks_exact(4).map(|b|f32::from_le_bytes(b.try_into().unwrap())).collect();
+        if scales.iter().any(|x|!x.is_finite()||*x<=0.0){return Err(Error::Numeric);}
+        let (window_offset,window_length)=window.unwrap_or((base+e.offset,data_len));
+        let stable=stream.then_some(StableWeight{offset:base+e.offset,window_offset,window_length,reader});
+        self.quant.insert(e.name,modernbert_candle::QuantWeight{stable,w:weights,scales,out_features:rows,in_features:cols,block_size:cols});
         self.next+=1;Ok(())
     }
     pub fn finish(self)->Result<VerdictModel>{

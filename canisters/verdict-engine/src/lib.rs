@@ -23,6 +23,7 @@ use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::marker::PhantomData;
 mod billing;
+mod memory;
 pub use billing::{CyclesPricing,ExecutionPricing};
 
 #[cfg(target_arch = "wasm32")]
@@ -616,15 +617,21 @@ fn upload_chunk(offset:u64,bytes:Vec<u8>)->Result<u64>{
 #[ic_cdk::update]
 fn start_warmup()->Result<u64>{
     owner()?;
+    #[cfg(feature="memory-bench")]
+    let heap_before=heap_bytes();
     let u=read(|s|s.upload.clone()).ok_or(Error::Transition)?;
     if u.received!=u.model_length+u.tokenizer_length{return Err(Error::Transition);}
+    modernbert_candle::weights::clear_scratch();
     let builder=verdict_candle::pack::Builder::new(&u.manifest)?;
     let mut bytes=vec![0;u.tokenizer_length as usize];
     ic_cdk::stable::stable_read(canister_common::BLOB_BASE+u.model_length,&mut bytes);
     if hash(&bytes)!=builder.manifest.tokenizer_sha256{return Err(Error::BindingMismatch);}
     let tok=hf_tokenizer::HfTokenizer::from_bytes(&bytes,u.special)?;
     let count=builder.manifest.tensors.len() as u64;
-    MODEL.with(|x|*x.borrow_mut()=None);TOKENIZER.with(|x|*x.borrow_mut()=Some(tok));BUILDER.with(|x|*x.borrow_mut()=Some(builder));Ok(count)
+    MODEL.with(|x|*x.borrow_mut()=None);TOKENIZER.with(|x|*x.borrow_mut()=Some(tok));BUILDER.with(|x|*x.borrow_mut()=Some(builder));
+    #[cfg(feature="memory-bench")]
+    memory::tokenizer_growth(heap_before);
+    Ok(count)
 }
 #[ic_cdk::update]
 fn warmup_next()->Result<bool>{
@@ -632,14 +639,27 @@ fn warmup_next()->Result<bool>{
     let done=BUILDER.with(|b|{
         let mut b=b.borrow_mut();let builder=b.as_mut().ok_or(Error::Transition)?;
         if let Some(e)=builder.next_entry().cloned(){
-            let mut bytes=vec![0;e.length as usize];
-            ic_cdk::stable::stable_read(canister_common::BLOB_BASE+e.offset,&mut bytes);
-            builder.push(&bytes)?;
+            let p=memory::policy();
+            if p.mode==0 {
+                let mut bytes=vec![0;e.length as usize];
+                memory::read_pack(canister_common::BLOB_BASE+e.offset,&mut bytes).map_err(|x|Error::ModelUnavailable(x.to_string()))?;
+                builder.push(&bytes)?;
+            }else{
+                let stream=e.encoding==verdict_candle::pack::Encoding::I8RowSymmetric && memory::streamed(&p,&e.name);
+                let window=memory::window(&p,&builder.manifest,&e.name);
+                builder.push_reader(canister_common::BLOB_BASE,memory::read_pack,p.chunk,stream,window)?;
+            }
         }
         Ok::<bool,Error>(builder.next_entry().is_none())
     })?;
     if done {
         let builder=BUILDER.with(|b|b.borrow_mut().take()).ok_or(Error::Transition)?;
+        let p=memory::policy();
+        if p.mode==7 {
+            let largest=builder.manifest.tensors.iter().filter(|e|e.encoding==verdict_candle::pack::Encoding::I8RowSymmetric && e.name!="embeddings.weight" && memory::streamed(&p,&e.name))
+                .map(|e|e.shape[0]*e.shape[1]).max().unwrap_or(0);
+            modernbert_candle::weights::prepare_scratch(largest);
+        }
         let model=mutate(|s|finish_warmup(s,builder))?;
         MODEL.with(|m|*m.borrow_mut()=Some(model));
     }

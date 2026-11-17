@@ -1,5 +1,34 @@
 # OpenJev mainnet deployment
 
+## Memory optimization upgrade (2026-11-17)
+
+- Upgraded the existing `qojfj-6qaaa-aaaam-qjkaq-cai` canister in place with the
+  approved normal Wasm from
+  `artifacts/memory-optimization/runs/20261116T023020Z-ac9f945d/selected.wasm`.
+  The installed module hash is
+  `186527a9e07f600169502a3fae0304ac185857d31ccf44e686b764500fecfb5d`.
+  The previous installed module matched the saved rollback Wasm at
+  `artifacts/memory-optimization/baseline/production.wasm` (SHA-256
+  `337c800eaede4148f961405b936150ff5e523dd48e616ecac0a266691041a6b3`).
+- Reused the existing stable model pack and completed all 142 warm-up calls; no
+  model upload, funding, controller change, or reinstall was performed. `info`
+  reports the original model digest
+  `0757d774c8c44397d189c5b479853897acef8f1e2b55ebf1f5a46969063225e0`
+  and `warmed = true`. The public Candid SHA-256 remains
+  `2c4f385868a8e45a0311e0c4be029bffddb8dc233248c9d7b95779c9dbefb67b`.
+- An anonymous `decide_query` on the same 29-token greeting request returned the
+  same selection (`short`), logits, and probabilities as before the upgrade.
+  Its measured forward instructions changed from 2,763,751,654 to 2,754,514,299.
+  The public query limits and disabled execution pricing were unchanged.
+- Canister status after warm-up and the query: Running; total memory
+  326,348,317 B versus 403,199,557 B before upgrade, a reduction of
+  76,851,240 B (19.06%). Execution balance was 4,949,731,833,256 cycles,
+  versus 4,996,175,052,038 before upgrade. These are live snapshots; the
+  difference includes upgrade, warm-up, queries, and elapsed idle burn.
+- The prior Wasm remains available for rollback, which would require warm-up
+  again. The source and measurement artifacts remain uncommitted in the local
+  `feat/tetris-lightgbm-v2` working tree at the time of this deployment.
+
 ## Public Candid release (2026-09-24)
 
 - The same canister was upgraded with the unchanged model code and a public

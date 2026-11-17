@@ -285,3 +285,41 @@ fn reserved_token_literals_are_rejected_in_prompt_inputs() {
         assert!(got.is_err(), "{field} must be rejected");
     }
 }
+
+thread_local! {static TEST_PACK:std::cell::RefCell<Vec<u8>>=const{std::cell::RefCell::new(Vec::new())};}
+fn test_pack_read(at:u64,bytes:&mut[u8])->candle_core::Result<()>{
+    TEST_PACK.with(|p|{let p=p.borrow();let end=(at as usize).checked_add(bytes.len()).ok_or_else(||candle_core::Error::Msg("overflow".into()))?;
+        let source=p.get(at as usize..end).ok_or_else(||candle_core::Error::Msg("out of bounds".into()))?;bytes.copy_from_slice(source);Ok(())})
+}
+fn reader_fixture()->(pack::Manifest,Vec<u8>){
+    let c=cfg();let w=weights(&c);let mut bytes=Vec::new();let mut entries=Vec::new();
+    for(name,shape)in expected_tensors(&c).unwrap(){let(encoding,data)=pack_payload(&name,&w[&name]);entries.push(pack::TensorEntry{name,shape,encoding,offset:bytes.len() as u64,length:data.len() as u64,sha256:hash(&data)});bytes.extend(data);}
+    (pack::Manifest{format:pack::FORMAT.into(),source_repo:"local-test".into(),source_revision:"test".into(),test_only:true,tokenizer_sha256:[0;32],config:c,total_bytes:bytes.len() as u64,tensors:entries},bytes)
+}
+#[test]
+fn streamed_and_chunked_models_are_bit_identical_at_vocabulary_boundaries(){
+    let(manifest,bytes)=reader_fixture();TEST_PACK.with(|p|*p.borrow_mut()=bytes.clone());
+    let raw=serde_json::to_vec(&manifest).unwrap();let mut original=pack::Builder::new(&raw).unwrap();
+    for e in &manifest.tensors{original.push(&bytes[e.offset as usize..(e.offset+e.length)as usize]).unwrap();}
+    let original=original.finish().unwrap();
+    for chunk in [65536,262144,1048576]{for stream in [false,true]{
+        let mut b=pack::Builder::new(&raw).unwrap();while b.next_entry().is_some(){b.push_reader(0,test_pack_read,chunk,stream,None).unwrap();}
+        let model=b.finish().unwrap();
+        for ids in [vec![1,3,0,3,63,2],vec![1,3,11,11,11,3,11,2]]{
+            let a=original.logits(&ids).unwrap();let b=model.logits(&ids).unwrap();assert_eq!(a.iter().map(|x|x.to_bits()).collect::<Vec<_>>(),b.iter().map(|x|x.to_bits()).collect::<Vec<_>>());
+            assert!(model.logits(&[1,3,64,2]).is_err());
+        }
+    }}
+}
+#[test]
+fn reader_rejects_corruption_invalid_scales_and_incomplete_models(){
+    let(mut manifest,bytes)=reader_fixture();let entry=manifest.tensors.iter().position(|e|e.encoding==pack::Encoding::I8RowSymmetric).unwrap();
+    for failure in ["hash","weight","zero-scale","nan-scale"]{
+        let mut data=bytes.clone();let e=&mut manifest.tensors[entry];let at=e.offset as usize;
+        match failure {"hash"=>data[at]^=1,"weight"=>data[at]=128,"zero-scale"=>data[at+e.shape[0]*e.shape[1]..at+e.shape[0]*e.shape[1]+4].copy_from_slice(&0f32.to_le_bytes()),_=>data[at+e.shape[0]*e.shape[1]..at+e.shape[0]*e.shape[1]+4].copy_from_slice(&f32::NAN.to_le_bytes())}
+        if failure!="hash"{e.sha256=hash(&data[at..at+e.length as usize]);}else{e.sha256=hash(&bytes[at..at+e.length as usize]);}
+        TEST_PACK.with(|p|*p.borrow_mut()=data);let mut b=pack::Builder::new(&serde_json::to_vec(&manifest).unwrap()).unwrap();
+        for _ in 0..entry{b.push_reader(0,test_pack_read,65536,true,None).unwrap();}
+        assert!(b.push_reader(0,test_pack_read,65536,true,None).is_err(),"{failure}");assert!(b.finish().is_err());
+    }
+}
