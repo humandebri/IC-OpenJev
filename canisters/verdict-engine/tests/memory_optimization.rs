@@ -321,18 +321,22 @@ fn stream_names(root: &Path, mode: u8, names_limit: usize) -> Vec<String> {
     }
     names
 }
+struct SetupSpec<'a> {
+    name: &'a str,
+    mode: u8,
+    chunk: u32,
+    wasm: &'a [u8],
+    names_limit: usize,
+}
 fn setup(
     pic: &PocketIc,
     root: &Path,
     owner: Principal,
-    name: &str,
-    mode: u8,
-    chunk: u32,
-    wasm: &[u8],
-    names_limit: usize,
+    spec: SetupSpec<'_>,
     report: &mut Value,
     out: &Path,
 ) -> Run {
+    let SetupSpec { name, mode, chunk, wasm, names_limit } = spec;
     let id = pic.create_canister();
     pic.add_cycles(id, 1_000_000_000_000_000);
     pic.install_canister(id, wasm.to_vec(), Encode!(&owner).unwrap(), None);
@@ -668,14 +672,16 @@ fn memory_comparison() {
             &pic,
             &root,
             owner,
-            parts[0],
-            mode,
-            parts[2].parse().unwrap(),
-            if mode == 255 { &baseline } else { &bench },
-            parts
-                .get(3)
-                .map(|x| x.parse().unwrap())
-                .unwrap_or(usize::MAX),
+            SetupSpec {
+                name: parts[0],
+                mode,
+                chunk: parts[2].parse().unwrap(),
+                wasm: if mode == 255 { &baseline } else { &bench },
+                names_limit: parts
+                    .get(3)
+                    .map(|x| x.parse().unwrap())
+                    .unwrap_or(usize::MAX),
+            },
             &mut report,
             &out,
         );
