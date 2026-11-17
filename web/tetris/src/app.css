@@ -172,7 +172,8 @@ details:not([open])>:not(summary){display:none}
 
 @media(max-width:1000px){
  .stage{grid-template-columns:minmax(0,1fr);justify-items:center}
- .cabinet{position:static}
+ .cabinet{position:static;max-width:100%;grid-template-columns:minmax(0,1fr) 176px}
+ .well{max-width:100%}
  .side{width:100%;max-width:640px}
  .hero{padding-top:12px}
  .results{grid-template-columns:1fr;gap:24px}
