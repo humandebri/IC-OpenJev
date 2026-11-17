@@ -9,8 +9,33 @@
     "test": "vitest run",
     "bench": "tsx scripts/bench.ts",
     "study:inputs": "node --import tsx scripts/input-study.ts",
-    "study:query": "node --import tsx scripts/input-study-query.ts"
+    "study:query": "node --import tsx scripts/input-study-query.ts",
+    "study:placement:data": "node --import tsx scripts/placement-data.ts",
+    "study:placement:tokens": "node --import tsx scripts/placement-token-check.ts",
+    "study:placement:validation": "node --import tsx scripts/placement-study.ts --native",
+    "study:placement:test": "node --import tsx scripts/placement-study.ts --test",
+    "study:placement:ui": "node --import tsx scripts/placement-ui-check.ts",
+    "study:v2:physics": "node --import tsx scripts/v2-physics-check.ts",
+    "study:v2:data": "node --import tsx scripts/v2-data.ts generate",
+    "study:v2:round": "node --import tsx scripts/v2-run-round-live.ts",
+    "study:v2:extra": "node --import tsx scripts/v2-extra.ts",
+    "study:v2:final": "node --import tsx scripts/v2-run-final.ts",
+    "study:v2:quality": "node --import tsx scripts/v2-quality.ts",
+    "study:v2:serve": "node --import tsx scripts/v2-serve.ts"
   },
-  "dependencies": { "@icp-sdk/core": "^5.0.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
-  "devDependencies": { "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "@types/node": "^22.0.0", "typescript": "^5.8.0", "vite": "^6.0.0", "vitest": "^5.0.5", "tsx": "^4.0.0" }
+  "dependencies": {
+    "@icp-sdk/core": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@mizchi/vlmkit": "^0.23.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.0.0",
+    "vitest": "^5.0.5"
+  }
 }

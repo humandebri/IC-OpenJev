@@ -24,6 +24,8 @@ __pycache__/
 /.axtmp/
 # Frontend dependencies, builds, test coverage and compiler caches.
 node_modules/
+/.pnpm-store/
+/.vlmkit/
 /web/**/dist/
 /web/**/coverage/
 *.tsbuildinfo
@@ -40,7 +42,9 @@ yarn-error.log*
 .dev.vars.*
 
 # Browser/Cloudflare local state and generated logs. Small measurement records stay tracked.
-/.playwright-cli/
+.playwright-cli/
+playwright-report/
+test-results/
 .wrangler/
 /artifacts/**/*.log
 
@@ -97,3 +101,47 @@ yarn-error.log*
 /artifacts/tetris-input-study/query-heldout.json
 /artifacts/tetris-outcome-gate/fixtures.json
 /artifacts/tetris-outcome-gate/responses.json
+
+# Placement study: reproducible large raw outputs; small summaries/models are tracked.
+/artifacts/summaries/tetris-search/
+/artifacts/tetris-search/
+/artifacts/tetris-jev-search/
+/artifacts/tetris-jev-confirmation/
+/artifacts/tetris-lgbm-v2/
+/artifacts/tetris-search/data/
+/artifacts/tetris-search/dataset.json
+/artifacts/tetris-search/query-cache/
+/artifacts/tetris-search/validation/*-*.json
+/artifacts/tetris-search/test/*-*.json
+/artifacts/tetris-search/evaluator-*.json
+/artifacts/tetris-search/evaluator-*.txt
+/artifacts/tetris-search/evaluator.json
+/artifacts/tetris-search/local-target.json
+/artifacts/tetris-search/validation-attempt-*/
+/artifacts/tetris-search/query-cache-attempt-*/
+/artifacts/tetris-search/ui/*.png
+/artifacts/tetris-search/test-setup-attempt-*/
+# Jev policy search: raw traces and response cache stay local.
+/artifacts/tetris-jev-search/screen/*-*.json
+/artifacts/tetris-jev-search/validate/*-*.json
+/artifacts/tetris-jev-search/test/*-*.json
+/artifacts/tetris-jev-search/query-cache/
+/artifacts/tetris-jev-search/test-target.json
+/artifacts/tetris-jev-confirmation/test/*-*.json
+/artifacts/tetris-jev-confirmation/query-cache/
+/artifacts/tetris-jev-confirmation/test-target.json
+# LightGBM v2: large training and per-turn evidence stay local.
+/artifacts/tetris-lgbm-v2/groups/
+/artifacts/tetris-lgbm-v2/rows/
+/artifacts/tetris-lgbm-v2/native-cache/
+/artifacts/tetris-lgbm-v2/query-cache/
+/artifacts/tetris-lgbm-v2/episodes/
+/artifacts/tetris-lgbm-v2/dataset-*.npz
+/artifacts/tetris-lgbm-v2/model-candidates/
+/artifacts/tetris-lgbm-v2/work-cache/
+/artifacts/tetris-lgbm-v2/local-target.json
+/artifacts/tetris-lgbm-v2/ui/*.png
+/artifacts/tetris-lgbm-v2/invalid-cache-attempt-*/
+/artifacts/tetris-lgbm-v2/extra-collector.json
+/artifacts/tetris-lgbm-v2/*.tmp
+/artifacts/tetris-lgbm-v2/ui/actual-query.json

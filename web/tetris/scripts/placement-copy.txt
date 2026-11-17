@@ -1,0 +1,5 @@
+What the code and model do
+Browser assistance
+The model receives these short descriptions, not the board or evaluator score, and makes the final choice in one query.
+These are browser code and learned assistance, not capabilities of the 151M model.
+Assistance and decision policy are fixed when a game starts.

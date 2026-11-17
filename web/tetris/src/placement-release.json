@@ -1,0 +1,8 @@
+{
+  "lookahead": true,
+  "learned": false,
+  "default_policy": "lookahead",
+  "verified": true,
+  "evidence_sha256": "53118225040a9eab44ac2640ee25538cf1926756131b066c6ed1d50fdc2da95f",
+  "evaluator_hash": "6bfe215d92e19520c4992b4b214ea1433f7f9e9c5127a520d2a1319b4aaa2266"
+}

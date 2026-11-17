@@ -2,6 +2,21 @@
 
 > Published on 2026-09-24. Deployment details are in [MAINNET.md](MAINNET.md).
 
+## Local implementation update (2026-11-16; not deployed)
+
+Browser-owned `legacy`, `lookahead`, and `learned` assistance policies now share
+the existing generic query endpoint. Legacy reproduces the released behavior
+below. The assisted variants preserve board geometry, search public NEXT and
+use projected features in the same three-field prompt. A separate LightGBM
+evaluator ranks learned candidates; this is disclosed browser assistance, not
+an OpenJev weight change. See [search and evaluation](TETRIS_SEARCH_EVALUATOR.md)
+for frozen seeds, training, authoritative local-query evidence and adoption gates.
+Game logs add policy, candidate version, projected search results, evaluator hash
+and candidate generation time. No production deployment is included.
+
+
+## Released browser behavior (2026-09-24)
+
 The browser owns the 200-cell board, piece sequence, legal-placement search,
 features, candidate selection, animation and next board. The canister does no
 Tetris calculation. For a model turn, the browser calls public `decide_query`
@@ -78,3 +93,9 @@ The `production` keyring alias was unavailable in this shell. Deployment used
 the existing `bridge-seal-log-reader` identity, which resolves to the same
 controller principal recorded in [MAINNET.md](MAINNET.md). Wrangler OAuth was
 available with elevated filesystem access.
+
+## LightGBM v2 / numeric-cost comparison modes
+
+The separately versioned `fixed-cost` and `value-v2` browser policies use two safe, occupancy-distinct placements whenever two exist. They send `Min cost` with `cost N` options: N is the rounded nonnegative score difference from the best candidate. They retain the selected model placement unchanged and issue one query even for one candidate. The older `legacy`, `lookahead`, and v1 `learned` policies above retain their original three-item descriptions.
+
+V2 keeps the fixed public-NEXT response and adds the known two-placement clears exactly once. Separate LightGBM models predict the following 32 placements' residual value and end probability from that response board. They never receive a seed or hidden game future. V2 assets, release decision, 512-placement research harness, held-out rules, and reproduction steps are documented in [TETRIS_LIGHTGBM_V2.md](TETRIS_LIGHTGBM_V2.md). Normal UI runs remain limited to 128 placements. The UI identifies browser assistance separately from Jev's final choice; evaluator-only mode sends no model query.

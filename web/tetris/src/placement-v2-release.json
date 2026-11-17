@@ -1,0 +1,7 @@
+{
+  "adopted": true,
+  "default_policy": "value-v2",
+  "reason": "Passed preregistered held-out and browser gates",
+  "model_sha256": "e03c09b52ef23407038cfe84ae92549815fda45d358454d5b8c3bc98fbb445b6",
+  "evidence_sha256": "05ff20b2df84d32072f0f106725fa74334e576563dea651227af82391d276b95"
+}

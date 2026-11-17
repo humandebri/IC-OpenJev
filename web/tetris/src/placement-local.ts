@@ -1,4 +1,5 @@
 import type {Candidate,Game,Pose} from './placement-api';
+import {improvedCandidates,projectedRequest,searchPlacements,searchRecommendation,type Evaluator} from './placement-search';
 
 export const RULES='placement-v1-normalized-cw-no-kicks-7bag-query-feature-cost-v1';
 export const MAX_TURNS=128;
@@ -104,10 +105,14 @@ export function decisionRequest(options:Candidate[]){
   options:options.map((c,i)=>({id:String(i),text:`${rank(c.holes,options.map(v=>v.holes))} holes,${rank(c.height,options.map(v=>v.height))} height,${rank(maxLines-c.lines,options.map(v=>maxLines-v.lines))} missed`}))};
 }
 export const renderPrompt=(request:ReturnType<typeof decisionRequest>)=>request.options.map(o=>`<<LABEL>>${o.text}`).join('')+`<<SEP>>${request.state}`;
-export function prepareTurn(game:Game){
+export function prepareTurn(game:Game,evaluator?:Evaluator){
  if(game.over||game.turn>=MAX_TURNS)throw new Error('Run complete');
  const piece=pieceAt(game.seed,game.turn),next=pieceAt(game.seed,game.turn+1);
- const all=placements(game.board,piece),candidates=diverseCandidates(all);
+ const policy=game.policy??'legacy';
+ const all=placements(game.board,piece);
+ const analyzed=policy==='legacy'?undefined:searchPlacements(game.board,piece,next,all,evaluator,policy==='learned');
+ const candidates=analyzed?improvedCandidates(analyzed):diverseCandidates(all);
  if(!candidates.length)throw new Error('No legal placements');
- return {piece,next,legal_count:all.length,candidates,recommended:recommend(candidates),request:decisionRequest(candidates)};
+ return {piece,next,legal_count:all.length,candidates,recommended:analyzed?searchRecommendation(candidates):recommend(candidates),request:analyzed?projectedRequest(candidates):decisionRequest(candidates),policy,
+  rules:policy==='legacy'?RULES:`placement-v1-normalized-cw-no-kicks-7bag-query-${policy}-v1`};
 }

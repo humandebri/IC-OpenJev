@@ -1,0 +1,4 @@
+# Keep generated trained JSON models and test fixtures collapsible in PRs.
+web/tetris/src/fixtures/** linguist-generated=true
+web/tetris/public/tetris-evaluator.json linguist-generated=true
+web/tetris/public/tetris-value-v2.json linguist-generated=true
