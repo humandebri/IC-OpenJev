@@ -26,7 +26,7 @@ type Tally={contested:number;cheaper:number};
 
 function friendlyError(e:unknown){
  const text=String(e instanceof Error?e.message:e).replace(/^Error:\s*/,'');
- if(/LightGBM v2 unavailable/.test(text))return 'LightGBM v2 unavailable — the evaluator could not be verified. Switch the shortlist to “Fixed search” in Settings to play without it.';
+ if(/LightGBM v2 unavailable/.test(text))return 'LightGBM v2 unavailable — the evaluator could not be verified. Reload the page to try loading it again.';
  if(/Model unavailable|token limit/.test(text))return 'The model on the canister is not available right now. Try “Evaluator only” in Settings to play without it.';
  if(/frozen Jev/.test(text))return 'The canister is serving a different model than this demo was validated with.';
  if(/frozen|top up|out of cycles/i.test(text))return 'The canister is paused (out of cycles), so the model can’t be asked right now. Choose “Evaluator only” in Settings to keep playing in your browser.';
@@ -48,9 +48,9 @@ function App(){
  const [error,setError]=useState('');
  const [elapsed,setElapsed]=useState(0);
  const [tally,setTally]=useState<Tally>({contested:0,cheaper:0});
- const [seed,setSeed]=useState(184);
+ const seed=184;
  const [mode,setMode]=useState(0);
- const [policy,setPolicy]=useState<PlacementPolicy>(DEFAULT_POLICY);
+ const policy=DEFAULT_POLICY;
  const host=import.meta.env.VITE_IC_HOST||'https://icp-api.io';
  const canister=import.meta.env.VITE_CANISTER_ID||'';
  const busy=phase!=='idle';
@@ -145,17 +145,7 @@ function App(){
          <button role="radio" tabIndex={mode===1?0:-1} aria-checked={mode===1} disabled={busy} onClick={()=>setMode(1)}>Evaluator only</button>
         </div>
        </fieldset>
-       <label>Shortlist<select aria-label="Shortlist" value={policy} disabled={busy} onChange={e=>setPolicy(e.target.value as PlacementPolicy)}>
-        <option value="value-v2" disabled={!!client&&!client.availability.v2}>LightGBM v2</option>
-        <option value="fixed-cost">Fixed search (baseline)</option>
-        <option value="lookahead">Lookahead search (four candidates)</option>
-        <option value="learned" disabled={!!client&&!client.availability.v1}>LightGBM v1 (experimental)</option>
-        <option value="legacy">Legacy heuristic</option>
-       </select></label>
-       <label>Seed<input aria-label="Seed" type="number" inputMode="numeric" value={seed} disabled={busy} onChange={e=>setSeed(Number(e.target.value))}/></label>
       </div>
-      <p className="hint">Applies to the next game. Same seed, same pieces.</p>
-      {!usesNumericCosts(policy)&&<p className="hint">This retained policy offers up to four placements and sends hole, height and missed-clear descriptions.</p>}
      </details>
      </div>
      </div>

@@ -24,7 +24,7 @@ try{
   if(failure==='stalled'){await stalledStarted;await page.clock.fastForward(30_000);}
   const start=page.getByRole('button',{name:'Start game',exact:false});
   if(failure==='approved'){
-   await page.waitForFunction(()=>!(document.querySelector('option[value="value-v2"]') as HTMLOptionElement)?.disabled);assert(await start.isEnabled());
+   await page.waitForFunction(()=>!(document.querySelector('.primary') as HTMLButtonElement)?.disabled);assert(await start.isEnabled());
   }else{
    await page.getByRole('alert').waitFor();assert.match(await page.getByRole('alert').innerText(),/LightGBM v2 unavailable/);assert(await start.isDisabled());
    assert.equal(await page.locator('.secondary').count(),0);if(failure==='unapproved')assert.equal(modelRequests,0);
@@ -32,7 +32,10 @@ try{
    await page.screenshot({path:`${directory}/release-guard-${failure}-390.png`,fullPage:true});
   }
   await page.getByText('Settings',{exact:true}).click();await page.getByRole('radio',{name:'Evaluator only',exact:true}).click();
-  if(failure!=='approved')await page.getByLabel('Shortlist',{exact:true}).selectOption('fixed-cost');
+  if(failure!=='approved'){
+   assert(await start.isDisabled());assert.match(await page.getByRole('alert').innerText(),/Reload the page/);assert.equal(await page.getByLabel('Shortlist',{exact:true}).count(),0);assert.deepEqual(errors,[]);assert.equal(api.length,0);
+   results.push({case:failure,passed:true,blocked_before_start:true,fallback_started:false,model_requests:modelRequests,canister_calls:api.length});await page.close();continue;
+  }
   assert(await start.isEnabled());assert.equal(await page.getByRole('alert').count(),0);await start.click();await page.getByRole('button',{name:'Pause',exact:false}).click();
   await page.getByRole('button',{name:'Step once',exact:true}).click();await page.waitForFunction(()=>!(document.querySelector('.secondary button') as HTMLButtonElement)?.disabled);
   await page.locator('.pipeline').getByText(new RegExp(`^${failure==='approved'?'LightGBM v2':'Fixed search'} ·`)).waitFor();
@@ -46,7 +49,7 @@ try{
   page.on('pageerror',e=>errors.push(String(e)));await page.route('**/api/**',route=>{api.push(route.request().url());return route.abort();});
   await page.route('**/src/placement-v2-release.json*',route=>route.fulfill({contentType:'application/javascript',body:`export default ${JSON.stringify({...approved,adopted:false,default_policy:policy})};`}));
   await page.goto(process.env.UI_URL||'http://127.0.0.1:5179/');await page.getByText('Settings',{exact:true}).click();
-  assert.equal(await page.getByLabel('Shortlist',{exact:true}).inputValue(),policy);
+  assert.equal(await page.getByLabel('Shortlist',{exact:true}).count(),0);assert((await page.locator('.pipeline').innerText()).includes(`${POLICY_NAMES[policy]} shortlists`));
   await page.getByRole('radio',{name:'Evaluator only',exact:true}).click();await page.getByRole('button',{name:'Start game',exact:false}).click();await page.getByRole('button',{name:'Pause',exact:false}).click();
   await page.getByRole('button',{name:'Step once',exact:true}).click();await page.waitForFunction(()=>!(document.querySelector('.secondary button') as HTMLButtonElement)?.disabled);
   await page.locator('.pipeline').getByText(new RegExp(`^${POLICY_NAMES[policy]} ·`)).waitFor();
