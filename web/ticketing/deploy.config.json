@@ -1,0 +1,11 @@
+{
+  "accountId": "9029b5f9de5b2e820eaf4ed562bcb0e7",
+  "worker": {
+    "name": "openjev-ticketing",
+    "compatibilityDate": "2026-11-19",
+    "workersDev": false,
+    "previewUrls": false,
+    "domains": ["ticketing.kinic.xyz"],
+    "assets": { "notFoundHandling": "single-page-application" }
+  }
+}

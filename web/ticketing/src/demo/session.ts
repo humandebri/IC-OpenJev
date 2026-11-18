@@ -1,7 +1,8 @@
 import { ModelChangedError, type Reply, type Status, type Task } from '../model';
 
-type Client = { status: Status; decide(task: Task, text: string): Promise<Reply> };
-export type TaskState = { phase: 'idle' | 'pending' } | { phase: 'success'; reply: Reply } | { phase: 'error'; error: unknown };
+export type DemoReply = Omit<Reply, 'logits'>;
+type Client = { status: Status; decide(task: Task, text: string): Promise<DemoReply> };
+export type TaskState = { phase: 'idle' | 'pending' } | { phase: 'success'; reply: DemoReply } | { phase: 'error'; error: unknown };
 export type DemoState = {
   input: string;
   connection: { phase: 'idle' | 'connecting' | 'stale' } | { phase: 'connected'; status: Status } | { phase: 'error' };
