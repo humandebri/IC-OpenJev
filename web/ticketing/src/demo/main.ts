@@ -25,14 +25,12 @@ const samples = corpus.development.slice(0, 8);
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.innerHTML = `
 <header class="wrap top">
-  <div class="brand"><span class="logo" aria-hidden="true"></span>openJev <span class="muted">· 日本語デモ</span></div>
+  <div class="brand"><span class="logo" aria-hidden="true"></span>ModernBERT-Ja <span class="muted">· チケット分類</span></div>
   <span id="conn" class="pill" role="status"><i></i><span>接続確認中…</span></span>
 </header>
 <div class="wrap hero">
   <h1>日本語チケット判定</h1>
-  <p class="lede">社内問い合わせを日本語のままopenJevに渡し、<b>担当部署</b>と<b>優先度</b>を選ばせます。翻訳やキーワード補正はしていません。</p>
-  <div class="banner" role="note"><span class="banner-icon" aria-hidden="true">!</span><div><strong>判定は参考情報です</strong>
-    日本語モデルが部署と優先度を提案します。最終的な判断は担当者が確認してください。</div></div>
+  <p class="lede">日本語の社内問い合わせから、<b>担当部署</b>と<b>優先度</b>を判定します。</p>
 </div>
 
 <main class="wrap">
@@ -54,10 +52,10 @@ app.innerHTML = `
   </section>
 
   <section aria-labelledby="about-h"><h2 id="about-h">このデモについて</h2>
-    <p class="hint small">日本語向けの130Mモデルが、一度の推論で部署と優先度を提案します。表示するスコアはモデル内の候補の重みで、正答率ではありません。</p>
+    <p class="hint small">使用モデルは <a href="https://huggingface.co/sbintuitions/modernbert-ja-130m" target="_blank" rel="noopener noreferrer">sbintuitions/modernbert-ja-130m</a> です。部署・優先度の分類向けに追加学習したINT8量子化版を使用し、一度の推論で両方を判定します。</p>
     <p class="hint small">入力と結果はこの画面に保存しません。推論はInternet Computer上の公開APIで実行されます。</p></section>
 </main>
-<footer class="wrap"><p>openJev · 日本語チケット判定デモ。表示のスコアは校正済みの正答率ではありません。</p></footer>`;
+<footer class="wrap"><p>ModernBERT-Ja · 日本語チケット分類。表示のスコアは校正済みの正答率ではありません。</p></footer>`;
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const text = $<HTMLTextAreaElement>('text'), go = $<HTMLButtonElement>('go'), out = $('out'), conn = $('conn'), count = $('count');
@@ -109,7 +107,7 @@ function renderState(state: DemoState) {
   const connection = state.connection;
   if (connection.phase === 'connected') {
     const id = hex(connection.status.model);
-    setPill('ok', `日本語モデルに接続済み · ${id.slice(0, 8)}`, `model ${id}`);
+    setPill('ok', `ModernBERT-Ja · 接続済み`, `model ${id}`);
     $('limit').textContent = `${connection.status.max_tokens}トークン`;
   } else if (connection.phase === 'stale') setPill('warn', 'モデル更新を検知（接続情報を再確認します）');
   else if (connection.phase === 'error') setPill('warn', '接続できません（判定時に再接続）');
