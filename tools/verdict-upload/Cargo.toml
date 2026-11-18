@@ -22,3 +22,9 @@ candid = "0.10"
 serde.workspace = true
 ic-agent = "0.49"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+
+[dev-dependencies]
+ed25519-dalek = { version = "2.2", features = ["pem"] }
+k256 = { version = "0.13", features = ["pem"] }
+p256 = { version = "0.13", features = ["pem"] }
+tempfile = "3"

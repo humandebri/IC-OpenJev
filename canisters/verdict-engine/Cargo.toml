@@ -34,6 +34,8 @@ rand_chacha = { version = "0.9", default-features = false }
 [dev-dependencies]
 pocket-ic = "=15.0.0"
 ic-agent = "0.49"
+k256 = { version = "0.13", features = ["pem"] }
+tempfile = "3"
 wat = "=1.257.1"
 serde_json.workspace = true
 

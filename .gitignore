@@ -41,6 +41,9 @@ yarn-error.log*
 .dev.vars
 .dev.vars.*
 
+# Private-key encodings are generated in temporary directories by signing tests.
+*.pem
+
 # Browser/Cloudflare local state and generated logs. Small measurement records stay tracked.
 .playwright-cli/
 playwright-report/
