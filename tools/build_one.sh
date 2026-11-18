@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-package="${1:?usage: tools/build_one.sh decision-engine|verdict-engine|executor|mock-ledger}"
-case "$package" in decision-engine|verdict-engine|executor|mock-ledger) ;; *) echo "unsupported package" >&2; exit 2;; esac
+package="${1:?usage: tools/build_one.sh decision-engine|verdict-engine|ticketing-engine|executor|mock-ledger}"
+case "$package" in decision-engine|verdict-engine|ticketing-engine|executor|mock-ledger) ;; *) echo "unsupported package" >&2; exit 2;; esac
 command -v cargo >/dev/null || { echo 'cargo is required; Rust builds were not verified in the delivery environment.' >&2; exit 1; }
 mkdir -p build
 run() { cargo "$@"; }
@@ -19,7 +19,7 @@ target_dir="$(run metadata --no-deps --format-version 1 | "${PYTHON:-python3}" -
 wasm="$target_dir/wasm32-unknown-unknown/release/$artifact.wasm"
 test -f "$wasm" || { echo "expected Wasm artifact not found: $wasm" >&2; exit 1; }
 cp "$wasm" "build/$package.wasm"
-if [[ "$package" == verdict-engine ]]; then
+if [[ "$package" == verdict-engine || "$package" == ticketing-engine ]]; then
   "${PYTHON:-python3}" tools/attach_candid.py embed "build/$package.wasm" "build/$package.did"
 fi
 echo "Built build/$package.wasm and .did; no deployment performed."

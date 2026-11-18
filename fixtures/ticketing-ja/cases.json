@@ -1,0 +1,223 @@
+{
+  "description": "Synthetic Japanese internal tickets. Labels fixed before inference. HR owns payroll and social insurance; Finance owns expenses, invoices, payments and tax. High means immediate broad business interruption or deadline today; low means future planning; normal means other routine requests.",
+  "development": [
+    {
+      "id": "development-01",
+      "text": "VPNにつながりません",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "development-02",
+      "text": "来月使う端末の相談です",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "development-03",
+      "text": "全社のネットが停止し業務できません",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "development-04",
+      "text": "給与明細が見つかりません",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "development-05",
+      "text": "来年の育休制度を教えて",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "development-06",
+      "text": "本日締切の入社手続きが全員できません",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "development-07",
+      "text": "経費精算の方法を教えて",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "development-08",
+      "text": "来月の請求書の書式を相談したい",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "development-09",
+      "text": "本日締切の全社送金が停止しています",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "development-10",
+      "text": "会議室の予約方法を教えて",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "development-11",
+      "text": "来月の備品購入を相談したい",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "development-12",
+      "text": "正面入口が壊れ全員入館できません",
+      "department": "admin",
+      "priority": "high"
+    }
+  ],
+  "evaluation": [
+    {
+      "id": "evaluation-01",
+      "text": "来月のパソコン購入を相談したい",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-02",
+      "text": "来年度のソフト導入について相談したい",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-03",
+      "text": "自分のメールが受信できません",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-04",
+      "text": "プリンターの設定方法を教えて",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-05",
+      "text": "全社員がログインできず業務停止です",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-06",
+      "text": "本日締切の全社業務システムが停止中",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-07",
+      "text": "来年の有給休暇の制度を知りたい",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-08",
+      "text": "半年後の育休取得を相談したい",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-09",
+      "text": "住所変更の手続き方法を教えて",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-10",
+      "text": "給与の控除内容を確認したい",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-11",
+      "text": "本日締切の全員の社会保険申請ができません",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-12",
+      "text": "本日締切の全社給与計算が停止しています",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-13",
+      "text": "来月の経費精算について相談したい",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-14",
+      "text": "来年度の請求書様式を相談したい",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-15",
+      "text": "出張費の精算方法を教えて",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-16",
+      "text": "取引先の請求書の提出先を教えて",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-17",
+      "text": "本日締切の全社支払い処理が停止中",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-18",
+      "text": "本日が納期限の納税処理ができません",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-19",
+      "text": "来月の名刺発注を相談したい",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-20",
+      "text": "来年度のオフィス備品を相談したい",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "evaluation-21",
+      "text": "会議室の鍵の借り方を教えて",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-22",
+      "text": "文房具の補充をお願いします",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "evaluation-23",
+      "text": "入口の鍵が故障し全社員が入館できません",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "evaluation-24",
+      "text": "本日開催の全社会議の会場が使えません",
+      "department": "admin",
+      "priority": "high"
+    }
+  ]
+}

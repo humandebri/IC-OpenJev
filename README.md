@@ -8,6 +8,12 @@
 
 外部アプリからの公開queryは[Public model query guide](docs/PUBLIC_MODEL_QUERY.md)を参照してください。英語、日本語の順で掲載しています。
 
+日本語の社内チケット判定は[デモUI・検証ツールと実行手順](web/ticketing/README.md)、[実測結果と公開保留の理由](docs/TICKETING_DEMO_JA.md)を参照してください。
+
+日本語向けモデルの追加学習による予備比較は [ModernBERT-Ja 70M / 130Mの比較結果](docs/TICKETING_MODEL_COMPARISON.md) を参照してください。既存の推論canisterやUIのモデルは差し替えていません。
+
+130Mの専用backend・ローカルcanisterとINT8変換は[軽量化の実装と検証結果](docs/TICKETING_130M_OPTIMIZATION.md)を参照してください。判定1件の変化はユーザーが許容し、[既存本番canisterへの同居準備](docs/TICKETING_COHOST_PREPARATION.md)を進めました。本番へのdeployは行っていません。
+
 ## 外部アプリからの利用と料金
 
 IC-Verdictは、文章と選択肢を受け取り、モデルが選んだ結果とスコアを返す推論APIです。別のcanisterから呼び出す場合は、サイクルを添付して推論updateを利用できます。支払いはサイクルのみで、KINICやICPなどのICRCトークン払いには対応していません。

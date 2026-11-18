@@ -1,5 +1,6 @@
 [package]
 name = "verdict-upload"
+default-run = "verdict-upload"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -7,10 +8,16 @@ license.workspace = true
 [[bin]]
 name = "verdict-upload"
 path = "src/main.rs"
+[[bin]]
+name = "ticketing-upload"
+path = "src/ticketing.rs"
 
 [dependencies]
 ic-laya-core.workspace = true
 verdict-candle.workspace = true
+ticketing-candle = { path = "../../crates/ticketing-candle" }
+ticketing-runtime = { path = "../../crates/ticketing-runtime" }
+serde_json.workspace = true
 candid = "0.10"
 serde.workspace = true
 ic-agent = "0.49"

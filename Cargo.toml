@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/ic-laya-core", "crates/modernbert-candle", "crates/verdict-candle", "crates/verdict-simd", "crates/hf-tokenizer", "crates/canister-common", "canisters/decision-engine", "canisters/verdict-engine", "canisters/executor", "canisters/mock-ledger", "tools/verdict-upload", "tools/verdict-pack"]
+members = ["crates/ic-laya-core", "crates/modernbert-candle", "crates/verdict-candle", "crates/verdict-simd", "crates/hf-tokenizer", "crates/canister-common", "crates/ticketing-candle", "crates/ticketing-runtime", "canisters/ticketing-engine", "canisters/decision-engine", "canisters/verdict-engine", "canisters/executor", "canisters/mock-ledger", "tools/verdict-upload", "tools/verdict-pack"]
 default-members = ["crates/ic-laya-core"]
 
 [workspace.package]

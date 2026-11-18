@@ -15,6 +15,11 @@
 # which only exists after the engine canister is created, so it cannot be
 # written here truthfully.
 canisters:
+  - name: ticketing-engine
+    build:
+      steps:
+        - type: script
+          command: echo "use tools/build_one.sh; this step only satisfies the manifest"
   - name: decision-engine
     build:
       steps:

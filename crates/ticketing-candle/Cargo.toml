@@ -1,0 +1,18 @@
+[package]
+name = "ticketing-candle"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+modernbert-candle.workspace = true
+candle-core.workspace = true
+ic-laya-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tokenizers.workspace = true
+
+[[bin]]
+name = "ticketing-infer"
+path = "src/bin/infer.rs"

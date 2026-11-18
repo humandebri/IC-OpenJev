@@ -1,0 +1,1233 @@
+{
+  "description": "Synthetic pilot, not enterprise data. Train includes the original 12 development cases plus 120 templated cases. Validation and test written separately; no test-based tuning. Fixed routing policy: payroll/social insurance/employee records -> HR; expenses/invoices/payments/tax -> Finance; office facilities/physical access -> Admin; computers/software/connectivity -> IT. High: immediate business interruption or deadline today; low: explicit future planning; otherwise normal. Test set is a small convenience sample and not independently annotated.",
+  "train": [
+    {
+      "id": "original-development-01",
+      "text": "VPNにつながりません",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "original-development-02",
+      "text": "来月使う端末の相談です",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "original-development-03",
+      "text": "全社のネットが停止し業務できません",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "original-development-04",
+      "text": "給与明細が見つかりません",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "original-development-05",
+      "text": "来年の育休制度を教えて",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "original-development-06",
+      "text": "本日締切の入社手続きが全員できません",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "original-development-07",
+      "text": "経費精算の方法を教えて",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "original-development-08",
+      "text": "来月の請求書の書式を相談したい",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "original-development-09",
+      "text": "本日締切の全社送金が停止しています",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "original-development-10",
+      "text": "会議室の予約方法を教えて",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "original-development-11",
+      "text": "来月の備品購入を相談したい",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "original-development-12",
+      "text": "正面入口が壊れ全員入館できません",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-00-low",
+      "text": "VPNの接続設定について、半年後の利用に向けて相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-00-normal",
+      "text": "VPNの接続設定のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-00-high",
+      "text": "VPNの接続設定の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-01-low",
+      "text": "来年度の準備として社用パソコンの初期設定の案内をいただけますか。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-01-normal",
+      "text": "私個人の社用パソコンの初期設定について確認をお願いします。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-01-high",
+      "text": "社用パソコンの初期設定が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-02-low",
+      "text": "メールソフトの設定について、半年後の利用に向けて相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-02-normal",
+      "text": "メールソフトの設定のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-02-high",
+      "text": "メールソフトの設定の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-03-low",
+      "text": "来年度の準備として共有フォルダーのアクセス権の案内をいただけますか。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-03-normal",
+      "text": "私個人の共有フォルダーのアクセス権について確認をお願いします。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-03-high",
+      "text": "共有フォルダーのアクセス権が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-04-low",
+      "text": "業務アプリのアカウントについて、半年後の利用に向けて相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-04-normal",
+      "text": "業務アプリのアカウントのやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-04-high",
+      "text": "業務アプリのアカウントの処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-05-low",
+      "text": "来年度の準備として社内ネットワークの接続の案内をいただけますか。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-05-normal",
+      "text": "私個人の社内ネットワークの接続について確認をお願いします。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-05-high",
+      "text": "社内ネットワークの接続が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-06-low",
+      "text": "プリンターのドライバーについて、半年後の利用に向けて相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-06-normal",
+      "text": "プリンターのドライバーのやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-06-high",
+      "text": "プリンターのドライバーの処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-07-low",
+      "text": "来年度の準備として社内システムへのログインの案内をいただけますか。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-07-normal",
+      "text": "私個人の社内システムへのログインについて確認をお願いします。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-07-high",
+      "text": "社内システムへのログインが進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-08-low",
+      "text": "オンライン会議ソフトの設定について、半年後の利用に向けて相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-08-normal",
+      "text": "オンライン会議ソフトの設定のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-08-high",
+      "text": "オンライン会議ソフトの設定の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-it-09-low",
+      "text": "来年度の準備として会社の端末の修理の案内をいただけますか。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "train-it-09-normal",
+      "text": "私個人の会社の端末の修理について確認をお願いします。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "train-it-09-high",
+      "text": "会社の端末の修理が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-00-low",
+      "text": "給与明細の内容について、半年後の利用に向けて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-00-normal",
+      "text": "給与明細の内容のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-00-high",
+      "text": "給与明細の内容の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-01-low",
+      "text": "来年度の準備として有給休暇の申請の案内をいただけますか。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-01-normal",
+      "text": "私個人の有給休暇の申請について確認をお願いします。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-01-high",
+      "text": "有給休暇の申請が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-02-low",
+      "text": "育児休業の手続きについて、半年後の利用に向けて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-02-normal",
+      "text": "育児休業の手続きのやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-02-high",
+      "text": "育児休業の手続きの処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-03-low",
+      "text": "来年度の準備として社員の住所変更届の案内をいただけますか。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-03-normal",
+      "text": "私個人の社員の住所変更届について確認をお願いします。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-03-high",
+      "text": "社員の住所変更届が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-04-low",
+      "text": "入社書類の提出について、半年後の利用に向けて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-04-normal",
+      "text": "入社書類の提出のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-04-high",
+      "text": "入社書類の提出の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-05-low",
+      "text": "来年度の準備として退職手続きの書類の案内をいただけますか。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-05-normal",
+      "text": "私個人の退職手続きの書類について確認をお願いします。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-05-high",
+      "text": "退職手続きの書類が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-06-low",
+      "text": "社会保険への加入について、半年後の利用に向けて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-06-normal",
+      "text": "社会保険への加入のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-06-high",
+      "text": "社会保険への加入の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-07-low",
+      "text": "来年度の準備として扶養家族の登録の案内をいただけますか。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-07-normal",
+      "text": "私個人の扶養家族の登録について確認をお願いします。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-07-high",
+      "text": "扶養家族の登録が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-08-low",
+      "text": "勤怠記録の修正について、半年後の利用に向けて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-08-normal",
+      "text": "勤怠記録の修正のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-08-high",
+      "text": "勤怠記録の修正の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-hr-09-low",
+      "text": "来年度の準備として健康保険証の再発行の案内をいただけますか。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "train-hr-09-normal",
+      "text": "私個人の健康保険証の再発行について確認をお願いします。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "train-hr-09-high",
+      "text": "健康保険証の再発行が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-00-low",
+      "text": "出張旅費の精算について、半年後の利用に向けて相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-00-normal",
+      "text": "出張旅費の精算のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-00-high",
+      "text": "出張旅費の精算の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-01-low",
+      "text": "来年度の準備として取引先への支払いの案内をいただけますか。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-01-normal",
+      "text": "私個人の取引先への支払いについて確認をお願いします。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-01-high",
+      "text": "取引先への支払いが進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-02-low",
+      "text": "請求書の提出について、半年後の利用に向けて相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-02-normal",
+      "text": "請求書の提出のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-02-high",
+      "text": "請求書の提出の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-03-low",
+      "text": "来年度の準備として経費の領収書の扱いの案内をいただけますか。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-03-normal",
+      "text": "私個人の経費の領収書の扱いについて確認をお願いします。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-03-high",
+      "text": "経費の領収書の扱いが進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-04-low",
+      "text": "納税の手続きについて、半年後の利用に向けて相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-04-normal",
+      "text": "納税の手続きのやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-04-high",
+      "text": "納税の手続きの処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-05-low",
+      "text": "来年度の準備として法人カードの利用明細の案内をいただけますか。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-05-normal",
+      "text": "私個人の法人カードの利用明細について確認をお願いします。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-05-high",
+      "text": "法人カードの利用明細が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-06-low",
+      "text": "売上の入金確認について、半年後の利用に向けて相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-06-normal",
+      "text": "売上の入金確認のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-06-high",
+      "text": "売上の入金確認の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-07-low",
+      "text": "来年度の準備として経費の勘定科目の案内をいただけますか。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-07-normal",
+      "text": "私個人の経費の勘定科目について確認をお願いします。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-07-high",
+      "text": "経費の勘定科目が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-08-low",
+      "text": "請求金額の照合について、半年後の利用に向けて相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-08-normal",
+      "text": "請求金額の照合のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-08-high",
+      "text": "請求金額の照合の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-finance-09-low",
+      "text": "来年度の準備として立替金の返金の案内をいただけますか。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "train-finance-09-normal",
+      "text": "私個人の立替金の返金について確認をお願いします。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "train-finance-09-high",
+      "text": "立替金の返金が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-00-low",
+      "text": "会議室の設備について、半年後の利用に向けて相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-00-normal",
+      "text": "会議室の設備のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-00-high",
+      "text": "会議室の設備の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-01-low",
+      "text": "来年度の準備としてオフィスの備品補充の案内をいただけますか。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-01-normal",
+      "text": "私個人のオフィスの備品補充について確認をお願いします。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-01-high",
+      "text": "オフィスの備品補充が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-02-low",
+      "text": "名刺の発注について、半年後の利用に向けて相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-02-normal",
+      "text": "名刺の発注のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-02-high",
+      "text": "名刺の発注の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-03-low",
+      "text": "来年度の準備として入館証の発行の案内をいただけますか。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-03-normal",
+      "text": "私個人の入館証の発行について確認をお願いします。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-03-high",
+      "text": "入館証の発行が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-04-low",
+      "text": "事務所の空調設備について、半年後の利用に向けて相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-04-normal",
+      "text": "事務所の空調設備のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-04-high",
+      "text": "事務所の空調設備の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-05-low",
+      "text": "来年度の準備として受付の鍵の管理の案内をいただけますか。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-05-normal",
+      "text": "私個人の受付の鍵の管理について確認をお願いします。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-05-high",
+      "text": "受付の鍵の管理が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-06-low",
+      "text": "社内郵便の配布について、半年後の利用に向けて相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-06-normal",
+      "text": "社内郵便の配布のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-06-high",
+      "text": "社内郵便の配布の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-07-low",
+      "text": "来年度の準備として会議室の予約の案内をいただけますか。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-07-normal",
+      "text": "私個人の会議室の予約について確認をお願いします。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-07-high",
+      "text": "会議室の予約が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-08-low",
+      "text": "応接室の利用について、半年後の利用に向けて相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-08-normal",
+      "text": "応接室の利用のやり方が分からないため、担当の方に教えていただきたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-08-high",
+      "text": "応接室の利用の処理が止まり、全社員の業務ができません。至急対応をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "train-admin-09-low",
+      "text": "来年度の準備として事務所の清掃手配の案内をいただけますか。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "train-admin-09-normal",
+      "text": "私個人の事務所の清掃手配について確認をお願いします。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "train-admin-09-high",
+      "text": "事務所の清掃手配が進まず、本日中の締め切りに間に合いません。すぐに確認をお願いします。",
+      "department": "admin",
+      "priority": "high"
+    }
+  ],
+  "validation": [
+    {
+      "id": "validation-it-0",
+      "text": "来年導入する予定のセキュリティソフトについて情報が欲しいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "validation-it-1",
+      "text": "次年度に配るノートPCの仕様について打ち合わせたいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "validation-it-2",
+      "text": "私のパソコンで画面の解像度を変更する方法が分かりません。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-it-3",
+      "text": "社用スマートフォンでメールを読むにはどう設定しますか。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-it-4",
+      "text": "全員の端末がサーバーに接続できず、出荷業務が中断しています。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "validation-it-5",
+      "text": "締め切りが今日のシステム登録がエラーでできず、復旧が必要です。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "validation-hr-0",
+      "text": "半年後の介護休業を見据えて、申請に必要な書類を知りたいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "validation-hr-1",
+      "text": "来年入社する社員向けの雇用手続きについて相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "validation-hr-2",
+      "text": "結婚したので社員情報の名字を変えたいです。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-hr-3",
+      "text": "勤怠の打刻漏れを訂正する手順を教えてください。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-hr-4",
+      "text": "今日までに必要な全社員の給与承認ができず、担当者の対応が必要です。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "validation-hr-5",
+      "text": "本日が提出期限の従業員の保険資格届が不備で受理されません。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "validation-finance-0",
+      "text": "次の四半期から始まる経費予算の管理方法について相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "validation-finance-1",
+      "text": "来年度に使う見積書の会計上の扱いを事前に確認したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "validation-finance-2",
+      "text": "交通費の領収書がない場合の精算手順を教えてください。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-finance-3",
+      "text": "取引先から届いた請求書をどこへ回せばよいですか。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-finance-4",
+      "text": "今日納付すべき税金の振込データに誤りがあり、決済できません。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "validation-finance-5",
+      "text": "本日が支払期限ですが、すべての取引先への送金が保留になっています。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "validation-admin-0",
+      "text": "翌年度の事務所のレイアウト変更について相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "validation-admin-1",
+      "text": "半年後に開催する社内行事の会場備品を検討したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "validation-admin-2",
+      "text": "会社宛ての宅配便を受け取る窓口を教えてください。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-admin-3",
+      "text": "会議用の机と椅子を借りたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-admin-4",
+      "text": "社員用入口が開かず全員が建物に入れないため、すぐに対応してください。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "validation-admin-5",
+      "text": "本日予定の全社員説明会で使用する会場の電源が故障しました。",
+      "department": "admin",
+      "priority": "high"
+    }
+  ],
+  "test": [
+    {
+      "id": "test-it-00",
+      "text": "次期に利用を予定しているクラウドストレージの導入要件を相談させてください。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "test-it-01",
+      "text": "今は支障ありませんが、来春のPC更新に備えて必要な性能を確認したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "test-it-02",
+      "text": "自分だけ社内Wi-Fiにつながりにくいです。調べ方を教えてください。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "test-it-03",
+      "text": "業務用のパスワードを忘れたので再設定の方法を知りたいです。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "test-it-04",
+      "text": "基幹システムの障害で各拠点の受注がすべて止まっています。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "test-it-05",
+      "text": "今日の申請期限まであと一時間ですが、業務システムが起動しません。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "test-it-06",
+      "text": "来月実施するオンライン研修の接続テストについて、余裕を持って相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "test-it-07",
+      "text": "急ぎません。数か月先の部署増員に備え、端末の増設計画を相談したいです。",
+      "department": "it",
+      "priority": "low"
+    },
+    {
+      "id": "test-it-08",
+      "text": "メールの自動転送を設定する手順を案内してください。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "test-it-09",
+      "text": "自分のPCで添付ファイルが開けません。ほかの社員は開けています。",
+      "department": "it",
+      "priority": "normal"
+    },
+    {
+      "id": "test-it-10",
+      "text": "拠点間の通信が落ちており、全社で商品を発送できない状態です。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "test-it-11",
+      "text": "今日提出が必要な報告書をアップロードできず、締め切り直前です。",
+      "department": "it",
+      "priority": "high"
+    },
+    {
+      "id": "test-hr-00",
+      "text": "いずれ親の介護が必要になるため、来年度の休職制度を前もって知りたいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "test-hr-01",
+      "text": "半年後の入籍に合わせた従業員情報の変更について、準備事項を教えてください。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "test-hr-02",
+      "text": "給与明細に載っている手当の内訳を教えていただけますか。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "test-hr-03",
+      "text": "勤務時間の申告を訂正したいのですが、どの書類を出しますか。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "test-hr-04",
+      "text": "本日締め切りの全社員分の勤怠承認が止まり、給与計算へ進めません。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "test-hr-05",
+      "text": "今日が提出最終日の従業員の社会保険の加入届に不備が見つかりました。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "test-hr-06",
+      "text": "来年の採用で入社する人たちの雇用契約書について、事前に相談したいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "test-hr-07",
+      "text": "今すぐではありませんが、来年度から使う休暇申請のルールを知りたいです。",
+      "department": "hr",
+      "priority": "low"
+    },
+    {
+      "id": "test-hr-08",
+      "text": "引っ越したので会社に登録している住所の変更先を教えてください。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "test-hr-09",
+      "text": "健康保険の扶養に家族を追加するには何が必要ですか。",
+      "department": "hr",
+      "priority": "normal"
+    },
+    {
+      "id": "test-hr-10",
+      "text": "今日中に確定しなければならない全社員の給与額が未承認のままです。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "test-hr-11",
+      "text": "本日が法定提出期限の従業員資格の変更届を受理してもらえません。",
+      "department": "hr",
+      "priority": "high"
+    },
+    {
+      "id": "test-finance-00",
+      "text": "来期に海外出張を予定しているので、外貨精算の取り扱いを先に相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "test-finance-01",
+      "text": "来年度の新しい事業で使う会計コードを、今のうちに検討したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "test-finance-02",
+      "text": "タクシー代を立て替えました。精算に必要な証憑を教えてください。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "test-finance-03",
+      "text": "顧客から届いた入金の消し込み先が分かりません。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "test-finance-04",
+      "text": "本日納期限の税金を納付できず、銀行の受付終了時刻が迫っています。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "test-finance-05",
+      "text": "すべての仕入先への決済が止まり、本日中の支払約束を守れません。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "test-finance-06",
+      "text": "急ぐ案件ではありません。来年度に切り替える請求書の書式を相談したいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "test-finance-07",
+      "text": "数か月先に使う出張旅費の予算の立て方を教えていただきたいです。",
+      "department": "finance",
+      "priority": "low"
+    },
+    {
+      "id": "test-finance-08",
+      "text": "取引先の請求金額と発注額が違う場合、誰に確認すればよいですか。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "test-finance-09",
+      "text": "社用カードの利用を経費に計上する流れを教えてください。",
+      "department": "finance",
+      "priority": "normal"
+    },
+    {
+      "id": "test-finance-10",
+      "text": "全取引先への振込が本日分だけ未処理になっており、至急の確認が必要です。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "test-finance-11",
+      "text": "今日が締め日ですが、会社の納税データにエラーがあり送信できません。",
+      "department": "finance",
+      "priority": "high"
+    },
+    {
+      "id": "test-admin-00",
+      "text": "来年度のオフィス移転を見据え、什器の搬入について相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "test-admin-01",
+      "text": "数か月先の来客イベントに向けて、受付と会議室の手配を検討したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "test-admin-02",
+      "text": "自席の文房具がなくなったので、補充品の保管場所を教えてください。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "test-admin-03",
+      "text": "社内便の発送場所と集荷時刻を知りたいです。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "test-admin-04",
+      "text": "事務所の入退館ゲートが故障し、社員全員が外で待っています。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "test-admin-05",
+      "text": "今日開催する全社集会の会場が水漏れで使用できなくなりました。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "test-admin-06",
+      "text": "急ぎではありません。来春に配る名刺の発注計画を相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "test-admin-07",
+      "text": "半年後の事務所改装で必要な空調設備の点検について相談したいです。",
+      "department": "admin",
+      "priority": "low"
+    },
+    {
+      "id": "test-admin-08",
+      "text": "お客様用の駐車スペースを予約する方法を教えてください。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "test-admin-09",
+      "text": "新入社員用の入館カードをどこで受け取ればよいですか。",
+      "department": "admin",
+      "priority": "normal"
+    },
+    {
+      "id": "test-admin-10",
+      "text": "正面玄関の扉が開かず本日の全社員の入館ができない状態です。",
+      "department": "admin",
+      "priority": "high"
+    },
+    {
+      "id": "test-admin-11",
+      "text": "本日予定の役員会で使う大会議室の照明がすべて消えてしまいました。",
+      "department": "admin",
+      "priority": "high"
+    }
+  ]
+}
