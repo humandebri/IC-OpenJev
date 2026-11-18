@@ -145,3 +145,8 @@ test-results/
 /artifacts/tetris-lgbm-v2/extra-collector.json
 /artifacts/tetris-lgbm-v2/*.tmp
 /artifacts/tetris-lgbm-v2/ui/actual-query.json
+
+# Japanese ticketing: keep raw experiment results and workstation settings local.
+# Reproducible inputs/tools and reviewed summaries in docs/ remain tracked.
+/artifacts/ticketing-ja/
+/.claude/

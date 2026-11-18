@@ -1,0 +1,28 @@
+{
+  "name": "openjev-ticketing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0 || >=26.0.0",
+    "pnpm": "11.25.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "study:dev": "tsx scripts/study.ts development",
+    "study:evaluate": "tsx scripts/study.ts evaluation",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": { "@icp-sdk/core": "^5.0.0" },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0",
+    "vite": "^8.3.8",
+    "vitest": "^5.0.5"
+  }
+}

@@ -5,7 +5,7 @@
 #[unsafe(no_mangle)]
 pub extern "C" fn check() -> u32 {
     let mut cases = 0;
-    for k in [8, 40, 768, 1152] {
+    for k in [8, 40, 512, 768, 1152, 2048] {
         for m in (1..=17).chain([31, 32, 33]).chain(39..=56).chain([63, 64, 65]) {
             for n in [1, 3, 4, 5, 7, 8, 9, 15, 16, 17, 23, 24, 25, 31, 32, 33, 63, 64, 65, 96] {
                 for pattern in 0..3 {

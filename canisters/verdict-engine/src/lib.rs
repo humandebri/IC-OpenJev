@@ -24,6 +24,8 @@ use std::collections::BTreeMap;
 use std::marker::PhantomData;
 mod billing;
 mod memory;
+mod ticketing;
+pub use ticketing::{TicketingInfo,TicketingQueryLimits,TicketReply,TicketingStorage};
 pub use billing::{CyclesPricing,ExecutionPricing};
 
 #[cfg(target_arch = "wasm32")]
@@ -98,6 +100,7 @@ struct LegacyGame { id:u32, owner:Principal, nonce:u64, seed:u32, mode:u8, board
 struct ModelSnapshot { version:u32, state:Persistent, execution_pricing:Option<ExecutionPricing> }
 fn save_snapshot(s:&Persistent) {
     canister_common::persist_or_trap(&ModelSnapshot{version:4,state:s.clone(),execution_pricing:billing::get()});
+    ticketing::persist().unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
 }
 #[cfg(test)]
 mod snapshot_migration_tests {
@@ -196,6 +199,7 @@ fn init(owner:Principal){
     if owner==Principal::anonymous() || owner==Principal::management_canister(){ic_cdk::trap("invalid owner");}
     let s=Persistent{owner,active_model:[0;32],upload:None,callers:BTreeMap::new(),workflow:EngineState::new([0;32]),max_input_tokens:MAX_INPUT_TOKENS,
         cost_fixed:COST_FIXED,cost_per_token:COST_PER_TOKEN,budget:UPDATE_BUDGET};
+    ticketing::init(owner);
     save_snapshot(&s);STATE.with(|x|*x.borrow_mut()=Some(s));
 }
 #[ic_cdk::pre_upgrade]
@@ -231,6 +235,8 @@ fn post_upgrade(){
         Ok(Persistent{owner:old.owner,active_model:old.active_model,upload:old.upload,callers:old.callers,workflow,
             max_input_tokens:old.max_input_tokens,cost_fixed:old.cost_fixed,cost_per_token:old.cost_per_token,budget:old.budget})
     }).unwrap_or_else(|e|ic_cdk::trap(e.to_string()))};
+    ticketing::restore(s.owner,s.upload.as_ref().map(|u|u.model_length+u.tokenizer_length).unwrap_or(0))
+        .unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
     MODEL.with(|x|*x.borrow_mut()=None);BUILDER.with(|x|*x.borrow_mut()=None);TOKENIZER.with(|x|*x.borrow_mut()=None);
     STATE.with(|x|*x.borrow_mut()=Some(s));
 }
@@ -592,6 +598,7 @@ fn begin_upload(manifest:Vec<u8>,tokenizer_length:u64,special:SpecialTokens)->Re
     let m=verdict_candle::pack::Manifest::parse(&manifest)?;
     if m.config.cls_token_id!=special.cls {return Err(Error::BindingMismatch);}
     if tokenizer_length==0 || tokenizer_length>32*1024*1024{return Err(Error::TooLong);}
+    ticketing::guard_legacy_upload(m.total_bytes+tokenizer_length)?;
     let bundle=hash(&manifest);
     MODEL.with(|x|*x.borrow_mut()=None);BUILDER.with(|x|*x.borrow_mut()=None);TOKENIZER.with(|x|*x.borrow_mut()=None);
     mutate(|s|{s.upload=Some(Upload{manifest,tokenizer_length,model_length:m.total_bytes,received:0,special});Ok(bundle)})

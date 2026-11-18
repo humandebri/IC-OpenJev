@@ -253,6 +253,12 @@ pub fn matmul_i8(a: &[i16], w: &[i8], sx: &[f32], sw: &[f32], m: usize, k: usize
             // SAFETY: see the module-level note; `k.is_multiple_of(8)` keeps every 8-wide load
             // inside one row and all pointers come from slices checked above.
             match k {
+                // ModernBERT-Ja-130M contracts over hidden=512 / intermediate=2048.
+                // Reuse the exact integer tile already checked for openJev widths.
+                512 => unsafe {
+                    if n.is_multiple_of(16) { matmul_i8_simd_tile::<512,16,16>(a, w, sx, sw, m, n, out) }
+                    else { matmul_i8_simd_tile::<512,16,8>(a, w, sx, sw, m, n, out) }
+                },
                 768 => unsafe {
                     if n.is_multiple_of(16) { matmul_i8_simd_tile::<768,16,16>(a, w, sx, sw, m, n, out) }
                     else { matmul_i8_simd_tile::<768,16,8>(a, w, sx, sw, m, n, out) }
@@ -260,6 +266,10 @@ pub fn matmul_i8(a: &[i16], w: &[i8], sx: &[f32], sw: &[f32], m: usize, k: usize
                 1152 => unsafe {
                     if n.is_multiple_of(16) { matmul_i8_simd_tile::<1152,16,16>(a, w, sx, sw, m, n, out) }
                     else { matmul_i8_simd_tile::<1152,16,8>(a, w, sx, sw, m, n, out) }
+                },
+                2048 => unsafe {
+                    if n.is_multiple_of(16) { matmul_i8_simd_tile::<2048,16,16>(a, w, sx, sw, m, n, out) }
+                    else { matmul_i8_simd_tile::<2048,16,8>(a, w, sx, sw, m, n, out) }
                 },
                 _ => unsafe { matmul_i8_simd(a, w, sx, sw, m, k, n, out) },
             }
@@ -790,7 +800,7 @@ mod tests {
 
     #[test]
     fn model_width_tiles_and_tails_match_i64_exactly() {
-        for k in [768,1152] {
+        for k in [512,768,1152,2048] {
             for m in [1,2,3,4,5,6,7,8,9,15,16,17,39,40,41,47,48,49] {
                 for n in [1,3,4,5,7,8,9] {
                     let a:Vec<i16>=(0..m*k).map(|i|match i%5 {0=>8192,1=>-8192,_=>(i%16385) as i16-8192}).collect();

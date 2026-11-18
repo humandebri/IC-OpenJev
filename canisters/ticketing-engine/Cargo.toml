@@ -1,0 +1,27 @@
+[package]
+name = "ticketing-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+[lib]
+crate-type = ["cdylib", "rlib"]
+[[example]]
+name = "ticketing-engine-export"
+path = "examples/export.rs"
+[dependencies]
+ticketing-candle = { path = "../../crates/ticketing-candle" }
+ticketing-runtime = { path = "../../crates/ticketing-runtime" }
+modernbert-candle.workspace = true
+canister-common.workspace = true
+ic-laya-core.workspace = true
+ic-cdk.workspace = true
+candid.workspace = true
+serde.workspace = true
+sha2.workspace = true
+candle-core.workspace = true
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.3", default-features = false }
+rand_chacha = { version = "0.9", default-features = false }
+[dev-dependencies]
+pocket-ic = "=15.0.0"
+serde_json.workspace = true
