@@ -26,7 +26,7 @@ scale、正規化、bias、部署・優先度headはFP32のまま保持する。
 
 ## 精度と移植の確認
 
-記録は [native.json](../artifacts/ticketing-ja/optimization/native.json)。
+記録は `artifacts/ticketing-ja/optimization/native.json`（ローカル生成物）。
 日本語・英数字・全半角・改行・絵文字・特殊文字・特殊トークン表記と入力長境界を含め、PythonとRustのtoken IDが一致した。
 Rust FP32とPython FP32の最大logit差は`2.193450927734375e-5`。
 
@@ -78,7 +78,7 @@ stable領域は既存`canister-common`と同様に先頭64MiBをsnapshot用に�
 
 ## ローカルcanisterの測定
 
-最終記録は [local.json](../artifacts/ticketing-ja/optimization/local.json)。
+最終記録は `artifacts/ticketing-ja/optimization/local.json`（ローカル生成物）。
 使い捨てPocketIC 15 application subnetで測定し、終了時にサーバーとcanisterを破棄する。
 precision gateが不合格のため、結果の状態は`measured_not_approved`となる。
 
@@ -102,7 +102,7 @@ stableの内訳にはINT8重み、tokenizer 6,724,873 bytes、予約領域64MiB�
 validation24件とtest48件の全72件をqueryで処理し、native INT8と全ラベルが一致した。
 最大確率差は約0.00117。FP32の誤差閾値をINT8の一致条件として扱わず、既存のINT8 golden検証と同様に確率差を別途報告する。
 初期の`1e-4`による比較で失敗した試行も`local-parity-diagnostic.json`と`local-optimized.json`に保持している。
-独立したWasmカーネル試験は14,760ケースでi64参照計算と出力bitが一致した（[記録](../artifacts/ticketing-ja/optimization/wasm-kernels.json)）。
+独立したWasmカーネル試験は14,760ケースでi64参照計算と出力bitが一致した（`artifacts/ticketing-ja/optimization/wasm-kernels.json`（ローカル生成物））。
 既存幅768・1152の検証も含む。
 
 未ロード時・空入力・長さ上限超過・不正manifest・不完全upload・offset飛び・管理APIの権限違反を確認した。

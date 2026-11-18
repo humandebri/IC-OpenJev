@@ -56,7 +56,7 @@ ICPで使うには、別途tokenizer・モデル構造・分類ヘッドの対�
 
 ## 再現と記録
 
-入力：[固定データ](../fixtures/ticketing-ja/comparison/cases.json)。全epochの検証値、全テスト予測、source revision・ファイルハッシュ、学習時間、レイテンシは[実行記録](../artifacts/ticketing-ja/model-comparison/20261118T012521Z-bc177d61/report.json)に保存しました。モデルファイルと学習済みcheckpointはGit対象外の `models/ticketing-ja/` に保存しています。
+入力：[固定データ](../fixtures/ticketing-ja/comparison/cases.json)。全epochの検証値、全テスト予測、source revision・ファイルハッシュ、学習時間、レイテンシは`artifacts/ticketing-ja/model-comparison/20261118T012521Z-bc177d61/report.json`（ローカル生成物）に保存しました。モデルファイルと学習済みcheckpointはGit対象外の `models/ticketing-ja/` に保存しています。
 
 ```sh
 uv venv .venv/ticketing-comparison --python 3.11

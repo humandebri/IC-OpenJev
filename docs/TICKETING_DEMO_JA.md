@@ -25,7 +25,7 @@
 
 `web/ticketing/src/model.ts` にAPIクライアントと応答検証、`web/ticketing/scripts/study.ts` に実測と合否判定を実装しました。調整用の入力・実装ハッシュと一致しない評価は拒否し、評価不合格では終了コード2を返します。
 
-実行手順は [検証実装のREADME](../web/ticketing/README.md)、入力は [cases.json](../fixtures/ticketing-ja/cases.json)、全評価結果は [evaluation.json](../artifacts/ticketing-ja/evaluation.json) にあります。比較した調整用結果も同じartifactディレクトリに保持しています。入力ファイルの移動時にバイト列は変更していません。
+実行手順は [検証実装のREADME](../web/ticketing/README.md)、入力は [cases.json](../fixtures/ticketing-ja/cases.json)、全評価結果は `artifacts/ticketing-ja/evaluation.json`（ローカル生成物） にあります。比較した調整用結果も同じartifactディレクトリに保持しています。入力ファイルの移動時にバイト列は変更していません。
 
 検証基盤の修正後は、実行ごとのフォルダに形式バージョン2の記録を保存し、評価時に指定した調整結果とのモデル・入力・コード・依存関係の一致を確認します。上記の旧記録4件は読み取り用に保持し、新しい評価の調整結果には使用しません。基盤修正に伴う本番APIの再評価は行っておらず、本レポートの8/24件・9/24件という結果と公開保留の判断はそのままです。
 

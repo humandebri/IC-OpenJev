@@ -4,7 +4,7 @@
 **この作業は準備とローカル検証まで。本番のupgrade・upload、UIの接続先変更は実行していない。**
 
 INT8による部署判定1件の変化（47/48→46/48）は、2026-11-18のユーザー指示「精度は問題ない範囲です」により許容された。
-元の厳密一致ゲートの`rejected`記録は保持し、このpackに対する採用判断を[precision-acceptance.json](../artifacts/ticketing-ja/cohost/precision-acceptance.json)に別途記録する。
+元の厳密一致ゲートの`rejected`記録は保持し、このpackに対する採用判断を`artifacts/ticketing-ja/cohost/precision-acceptance.json`（ローカル生成物）に別途記録する。
 
 ## 準備物と確認結果
 
@@ -24,7 +24,7 @@ INT8による部署判定1件の変化（47/48→46/48）は、2026-11-18のユ�
 | `readiness.json` / `manifest.json` / `SHA256SUMS` | 判断状態とファイル整合性 |
 
 記録のある本番module hashは`186527a9e07f600169502a3fae0304ac185857d31ccf44e686b764500fecfb5d`。
-候補Wasmのhashはbundleの`readiness.json`と[ローカル検証記録](../artifacts/ticketing-ja/cohost/local.json)を参照する。
+候補Wasmのhashはbundleの`readiness.json`と`artifacts/ticketing-ja/cohost/local.json`（ローカル生成物）を参照する。
 `didc check`で本番Candidに対する後方互換性を確認する。
 
 使い捨てPocketIC 15のapplication subnet上で、本番と同じWasm・151M packから次を確認した。

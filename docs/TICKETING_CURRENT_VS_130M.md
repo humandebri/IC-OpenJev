@@ -50,7 +50,7 @@ openJevは現在の公開queryと同じ重み・tokenizer・質問文・候補�
 
 ## 記録と再実行
 
-[全96判定と比較結果](../artifacts/ticketing-ja/current-vs-130m/2026-11-18T01-59-58-120Z-04ed6c9e-cf15-4e05-adcf-e0fbcb92044f/report.json) / [70M・130Mの学習比較](TICKETING_MODEL_COMPARISON.md) / [固定入力](../fixtures/ticketing-ja/comparison/cases.json)
+`artifacts/ticketing-ja/current-vs-130m/2026-11-18T01-59-58-120Z-04ed6c9e-cf15-4e05-adcf-e0fbcb92044f/report.json`（ローカル生成物） / [70M・130Mの学習比較](TICKETING_MODEL_COMPARISON.md) / [固定入力](../fixtures/ticketing-ja/comparison/cases.json)
 
 ```sh
 cargo build --release --locked --offline -p verdict-candle --bin ticketing_probe
