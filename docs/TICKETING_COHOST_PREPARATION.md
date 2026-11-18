@@ -8,7 +8,7 @@ INT8による部署判定1件の変化（47/48→46/48）は、2026-11-18のユ�
 
 ## 準備物と確認結果
 
-配備用bundleは`build/ticketing-cohost-prep-20261118-r2/`。旧`ticketing-cohost-prep-20261118/`はレビュー前の記録として保持し、配備には使わない。
+配備用bundleは`build/ticketing-cohost-prep-20261118-r3/`。旧`ticketing-cohost-prep-20261118/`と`ticketing-cohost-prep-20261118-r2/`は履歴として保持し、配備には使わない。r3にはsecp256k1対応のupload CLIを含める。
 形式バージョン2では、コピーしたWasm・CLI・重みを検証記録と照合してから、完成したディレクトリをatomic renameで公開する。
 並行ビルドで元ファイルが変わっても、未検証のコピーは公開しない。`--check`もreadiness・検証記録・実ファイルの一致を確認し、旧形式は再生成を要求する。
 
@@ -71,10 +71,10 @@ stable memoryの割当はrollbackやモデル解除では縮まらない。
 
 ## 配備する際の手順（この準備作業では未実行）
 
-配備の明示的な依頼を受けてから、以下を実行する。`COHOST_OWNER_PEM`は運用者が既に管理しているEd25519 owner鍵のパスで、bundleには運用秘密鍵を含めない。検証ソースの鍵は公開fixtureで、本番identityではない。
+配備の明示的な依頼を受けてから、以下を実行する。`COHOST_OWNER_PEM`は運用者が既に管理しているEd25519またはsecp256k1 owner鍵のパスで、bundleには運用秘密鍵を含めない。検証用の鍵は公開の固定値からテスト実行時に生成し、一時ディレクトリだけに保存する。本番identityではなく、PEMファイルはリポジトリに含めない。
 
 ```sh
-COHOST_BUNDLE="$PWD/build/ticketing-cohost-prep-20261118-r2"
+COHOST_BUNDLE="$PWD/build/ticketing-cohost-prep-20261118-r3"
 COHOST_CANISTER=qojfj-6qaaa-aaaam-qjkaq-cai
 COHOST_OWNER_PEM=/secure/path/to/owner.pem
 
@@ -145,18 +145,22 @@ icp canister call "$COHOST_CANISTER" classify_ticket '("接続できません")'
 ```sh
 cargo build --release --locked --offline -p ticketing-candle --bin ticketing-infer
 .venv/ticketing-comparison/bin/python tools/optimize_ticketing_model.py validate \
-  --report artifacts/ticketing-ja/cohost/native.json
+  --report artifacts/ticketing-ja/cohost/secp256k1/native.json
 # 元の厳密一致条件によるexit 2は記録する。採用判断はprecision-acceptance.jsonで別に管理する。
 bash tools/build_one.sh verdict-engine
 cargo build --release --locked --offline -p verdict-upload --bins
 POCKET_IC_BIN=/path/to/pocket-ic-15 \
+COHOST_OUT=artifacts/ticketing-ja/cohost/secp256k1/local.json \
 cargo test --release --locked --offline -p verdict-engine --test ticketing_cohost \
   cohost_upgrade_and_rollback -- --ignored --nocapture
 python3 tools/prepare_ticketing_cohost.py \
-  --inputs build/ticketing-cohost-inputs-20261118-r2
+  --inputs build/ticketing-cohost-inputs-20261118-r2 \
+  --evidence artifacts/ticketing-ja/cohost/secp256k1
 python3 tools/prepare_ticketing_cohost.py --check
 ```
 
 検証JSONとbundleは上書きを拒否する。再実行では`--report`と`COHOST_OUT`で新しい記録先を指定し、最終採用する記録を明示的に揃えてから、`--out`で未使用の配備先ディレクトリを指定する。
 本番のstatus・Candid・一致する旧Wasmは事前に取得し、`--inputs`で入力ディレクトリを指定する。出力先は作成済みディレクトリと兼用しない。
 作成済みbundleの検査は`--check --out <bundle>`で行える。
+
+本番`production` identityはsecp256k1（PKCS#8）です。upload CLIはEd25519およびsecp256k1（PKCS#8 / SEC1）に対応し、読み込んだ鍵のPrincipalを配備前に照合します。公開のscalar 42から実行時に生成した鍵を使うPocketICテストで、両方のCLIの署名付きHTTP操作を検証します。

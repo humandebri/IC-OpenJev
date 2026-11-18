@@ -1,6 +1,6 @@
 //! Exact live-module upgrade, independent model uploads, cohost queries, rollback.
 use candid::{CandidType, Decode, Encode, Principal};
-use ic_agent::{identity::BasicIdentity, Identity};
+use ic_agent::{identity::Secp256k1Identity, Identity};
 use ic_laya_core::{
     hash, hex, CompiledSchema, Error, OptionDef, Primitive, Result, Schema, SpecialTokens,
 };
@@ -18,15 +18,9 @@ use verdict_engine::{
 };
 #[path = "../../test-support/pocket_server.rs"]
 mod pocket_server;
+#[path = "../../test-support/signing.rs"]
+mod test_signing;
 const PREP: &str = "build/ticketing-cohost-prep-20261118";
-// Public fixture seed [42;32], scoped to a disposable local test canister.
-const TEST_OWNER_PEM:&str="-----BEGIN PRIVATE KEY-----\nMC4CAQAwBQYDK2VwBCIEICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq\n-----END PRIVATE KEY-----\n";
-struct TestKey(PathBuf);
-impl Drop for TestKey {
-    fn drop(&mut self) {
-        let _ = fs::remove_file(&self.0);
-    }
-}
 fn root() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR"))
         .join("../..")
@@ -263,6 +257,9 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
         "crates/ticketing-candle/src/lib.rs",
         "crates/verdict-simd/src/lib.rs",
         "tools/verdict-upload/src/ticketing.rs",
+        "tools/verdict-upload/src/main.rs",
+        "tools/verdict-upload/src/signing.rs",
+        "canisters/test-support/signing.rs",
         "canisters/verdict-engine/tests/ticketing_cohost.rs",
     ] {
         sources.insert(
@@ -306,7 +303,8 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
         .with_server_url(server.url.parse().unwrap())
         .with_application_subnet()
         .build();
-    let owner = BasicIdentity::from_raw_key(&[42; 32]).sender().unwrap();
+    let owner_pem = test_signing::secp256k1_pkcs8();
+    let owner = Secp256k1Identity::from_pem(owner_pem.as_bytes()).unwrap().sender().unwrap();
     let caller = Principal::self_authenticating(b"cohost-client");
     let id = pic.create_canister();
     pic.add_cycles(id, 10_000_000_000_000_000);
@@ -443,11 +441,17 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
     warm(&pic, id, owner, false);
     same_legacy(&original, &legacy(&pic, id));
     // Exercise the actual signed HTTP upload CLI, resuming the partial upload.
-    let key = TestKey(
-        std::env::temp_dir().join(format!("cohost-public-test-key-{}.pem", std::process::id())),
-    );
-    fs::write(&key.0, TEST_OWNER_PEM).unwrap();
+    let key_dir = tempfile::tempdir().unwrap();
+    let key = key_dir.path().join("owner.pem");
+    fs::write(&key, &owner_pem).unwrap();
     let gateway = pic.make_live(None);
+    let legacy_cli = std::process::Command::new(root.join("target/release/verdict-upload"))
+        .args(["--url", gateway.as_str(), "--canister", &id.to_text(), "--pem"])
+        .arg(&key)
+        .args(["--warm-only", "--cls", "50281", "--sep", "50282", "--mask", "50284", "--pad", "50283"])
+        .output().unwrap();
+    report["legacy_upload_cli"] = json!({"success":legacy_cli.status.success(),"binary_sha256":hex(&hash(&fs::read(root.join("target/release/verdict-upload")).unwrap()))});
+    assert!(legacy_cli.status.success(), "legacy CLI failed: {}", String::from_utf8_lossy(&legacy_cli.stderr));
     let output = std::process::Command::new(root.join("target/release/ticketing-upload"))
         .arg("--pack")
         .arg(&jp)
@@ -458,7 +462,7 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
             &id.to_text(),
             "--pem",
         ])
-        .arg(&key.0)
+        .arg(&key)
         .args([
             "--expected-legacy-model",
             &hex(&before.model),

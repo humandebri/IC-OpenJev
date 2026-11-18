@@ -1,6 +1,7 @@
 //! Default is offline validation. Remote mutation requires --upload or --warm-only.
 use candid::{CandidType, Decode, Encode, Principal};
-use ic_agent::{identity::BasicIdentity, Agent};
+mod signing;
+use ic_agent::Agent;
 use ic_laya_core::{hash, hex, Digest, Error};
 use serde::Deserialize;
 use std::{
@@ -161,11 +162,10 @@ async fn run(a: Args) -> Result<()> {
     if !local && !url.starts_with("https://") {
         return Err("remote endpoint requires HTTPS".into());
     }
-    let identity = BasicIdentity::from_pem_file(a.pem.ok_or("--pem is required")?)
-        .map_err(|e| e.to_string())?;
+    let identity = signing::from_pem_file(a.pem.ok_or("--pem is required")?)?;
     let agent = Agent::builder()
         .with_url(url)
-        .with_identity(identity)
+        .with_boxed_identity(identity)
         .build()
         .map_err(|e| e.to_string())?;
     if local {

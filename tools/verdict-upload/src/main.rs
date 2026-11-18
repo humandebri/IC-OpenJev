@@ -15,8 +15,8 @@
 //! The identity must be the canister's owner: `begin_upload`, `upload_chunk` and
 //! the warm-up calls are owner-only.
 mod paid;
+mod signing;
 use candid::{Decode, Encode, Principal};
-use ic_agent::identity::BasicIdentity;
 use ic_agent::Agent;
 use ic_laya_core::SpecialTokens;
 use std::io::{Read, Seek, SeekFrom};
@@ -287,9 +287,8 @@ async fn main() {
 
 async fn run() -> Result<(), String> {
     let args = parse_args()?;
-    let identity = BasicIdentity::from_pem_file(&args.pem).map_err(|e| format!("pem: {e}"))?;
+    let identity = signing::from_pem_file(&args.pem)?;
     if args.print_principal {
-        use ic_agent::Identity;
         println!("{}", identity.sender().map_err(|e| format!("sender: {e}"))?);
         return Ok(());
     }
@@ -326,7 +325,7 @@ async fn run() -> Result<(), String> {
 
     let agent = Agent::builder()
         .with_url(&args.url)
-        .with_identity(identity)
+        .with_boxed_identity(identity)
         .build()
         .map_err(|e| format!("agent: {e}"))?;
     if args.url.starts_with("http://") {

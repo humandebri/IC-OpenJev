@@ -56,6 +56,7 @@ class BundleFreezeTests(unittest.TestCase):
         self.write(self.evidence/'local.json', dict(state='passed', query_limit=65,
             rollback_overlap_recovery=dict(passed=True),
             upload_cli=dict(success=True, binary_sha256=module.sha(self.root/'target/release/ticketing-upload')),
+            legacy_upload_cli=dict(success=True, binary_sha256=module.sha(self.root/'target/release/verdict-upload')),
             source_hashes={'code.rs': module.sha(self.root/'code.rs')},
             hashes=dict(candidate_wasm=hashlib.sha256(self.good_wasm).hexdigest(),
                 live_reference_wasm=status['module_hash'][2:], legacy_manifest=legacy, ticketing_manifest=pack_hash)))
@@ -145,3 +146,15 @@ class BundleFreezeTests(unittest.TestCase):
         self.write(self.out/'manifest.json', dict(format_version=1, files={}))
         with self.assertRaisesRegex(ValueError, 'regenerate'):
             module.check(self.out)
+
+    def test_explicit_evidence_directory_overrides_the_default(self):
+        with patch.object(module, 'ROOT', self.root), patch.object(module, 'EVIDENCE', self.root/'missing'), \
+             patch.object(module.subprocess, 'run'), contextlib.redirect_stdout(__import__('io').StringIO()):
+            module.prepare(self.out, self.inputs, self.evidence)
+        self.assertTrue((self.out/'verification/local.json').is_file())
+
+    def test_unverified_legacy_uploader_cannot_enter_a_new_bundle(self):
+        (self.root/'target/release/verdict-upload').write_bytes(b'untested legacy uploader')
+        with self.assertRaisesRegex(ValueError, 'Legacy uploader differs'):
+            self.prepare()
+        self.assertFalse(self.out.exists())

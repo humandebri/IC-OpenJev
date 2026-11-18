@@ -13,9 +13,9 @@ from attach_candid import metadata_content
 from local_integration import decode_blobs
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT/'build/ticketing-cohost-prep-20261118-r2'
+DEFAULT = ROOT/'build/ticketing-cohost-prep-20261118-r3'
 DEFAULT_INPUTS = ROOT/'build/ticketing-cohost-prep-20261118'
-EVIDENCE = ROOT/'artifacts/ticketing-ja/cohost'
+EVIDENCE = ROOT/'artifacts/ticketing-ja/cohost/secp256k1'
 FORMAT_VERSION = 2
 INPUT_FILES = (
     'mainnet-before-status.json', 'mainnet-after-preparation-status.json',
@@ -96,6 +96,10 @@ def verify_payload(out):
         raise ValueError('Rollback overlap recovery test missing')
     require_hash(out/'verdict-engine.wasm', local['hashes']['candidate_wasm'], 'Candidate')
     require_hash(out/'tools/ticketing-upload', local['upload_cli']['binary_sha256'], 'Uploader')
+    if 'legacy_upload_cli' in local:
+        if not local['legacy_upload_cli']['success']:
+            raise ValueError('Legacy uploader test incomplete')
+        require_hash(out/'tools/verdict-upload', local['legacy_upload_cli']['binary_sha256'], 'Legacy uploader')
     require_hash(out/'production-reference.wasm', status['module_hash'].removeprefix('0x'), 'Rollback')
     if local['hashes']['live_reference_wasm'] != status['module_hash'].removeprefix('0x'):
         raise ValueError('Local test used a different rollback module')
@@ -144,8 +148,9 @@ def copy(source, target):
     shutil.copy2(source, target)
 
 
-def prepare(out, inputs=None):
+def prepare(out, inputs=None, evidence=None):
     inputs = inputs or DEFAULT_INPUTS
+    evidence = evidence or EVIDENCE
     if out.exists():
         raise FileExistsError('Output already exists; choose a new bundle or use --check')
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -161,9 +166,9 @@ def prepare(out, inputs=None):
             ROOT/'build/verdict-engine.did': 'verdict-engine.did',
             ROOT/'target/release/ticketing-upload': 'tools/ticketing-upload',
             ROOT/'target/release/verdict-upload': 'tools/verdict-upload',
-            EVIDENCE/'local.json': 'verification/local.json',
-            EVIDENCE/'native.json': 'verification/native.json',
-            EVIDENCE/'precision-acceptance.json': 'precision-acceptance.json',
+            evidence/'local.json': 'verification/local.json',
+            evidence/'native.json': 'verification/native.json',
+            evidence/'precision-acceptance.json': 'precision-acceptance.json',
             ROOT/'docs/TICKETING_COHOST_PREPARATION.md': 'DEPLOYMENT.md',
             Path(__file__): 'source/tools/prepare_ticketing_cohost.py',
         }
@@ -175,6 +180,8 @@ def prepare(out, inputs=None):
             name = relative(source)
             copy(ROOT/name, stage/'source'/name)
         local, native, status, pack_hash, principal = verify_payload(stage)
+        if not local.get('legacy_upload_cli', {}).get('success'):
+            raise ValueError('Legacy uploader verification required for new bundles')
         subprocess.run(['didc', 'check', str(stage/'verdict-engine.did'), str(stage/'mainnet-before.did')], check=True)
         subprocess.run([str(stage/'tools/ticketing-upload'), '--pack', str(stage/'ticketing-pack'), '--check-only'], check=True)
         write(stage/'readiness.json', dict(state='prepared', deployed=False,
@@ -204,11 +211,12 @@ def main():
     p.add_argument('--out', type=Path, default=DEFAULT)
     p.add_argument('--inputs', type=Path, default=DEFAULT_INPUTS)
     p.add_argument('--check', action='store_true')
+    p.add_argument('--evidence', type=Path, default=EVIDENCE)
     args = p.parse_args()
     if args.check:
         check(args.out)
     else:
-        prepare(args.out, args.inputs)
+        prepare(args.out, args.inputs, args.evidence)
 
 
 if __name__=='__main__': main()
