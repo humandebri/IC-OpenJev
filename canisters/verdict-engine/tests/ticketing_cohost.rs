@@ -14,7 +14,7 @@ use std::{
 };
 use verdict_engine::{
     DecideReply, DecideRequest, EngineInfo, ExecutionPricing, OptionSpec, QueryLimits, TicketReply,
-    TicketingInfo, TicketingQueryLimits, TicketingStorage,
+    TicketingInfo, TicketingQueryLimits, TicketingStorage, RoutingInfo, RoutingReply,
 };
 #[path = "../../test-support/pocket_server.rs"]
 mod pocket_server;
@@ -254,6 +254,8 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
         "canisters/verdict-engine/src/lib.rs",
         "canisters/verdict-engine/src/ticketing.rs",
         "crates/ticketing-runtime/src/lib.rs",
+        "crates/ticketing-runtime/src/it_routing.rs",
+        "canisters/verdict-engine/src/it_routing.rs",
         "crates/ticketing-candle/src/lib.rs",
         "crates/verdict-simd/src/lib.rs",
         "tools/verdict-upload/src/ticketing.rs",
@@ -570,6 +572,33 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
     assert_eq!(predictions.len(), 72);
     report["ticketing_predictions"] = json!(predictions);
     save(out, report);
+    let mut routing_before: Option<RoutingReply> = None;
+    if let Ok(path)=std::env::var("IT_ROUTING_HEAD") {
+        let path=root.join(path);let head=fs::read(&path).unwrap();
+        let denied=Decode!(&raw(&pic,id,Principal::anonymous(),"it_routing_set_head",Encode!(&head).unwrap()),Result<[u8;32]>).unwrap();
+        assert!(matches!(denied,Err(Error::Unauthorized)));
+        let digest=update::<[u8;32]>(&pic,id,owner,"it_routing_set_head",Encode!(&head).unwrap());assert_eq!(digest,hash(&head));
+        let info:RoutingInfo=query(&pic,id,"it_routing_info",Encode!().unwrap());assert!(info.ready);assert!(!info.validated);
+        let corpus:Value=serde_json::from_slice(&fs::read(root.join("fixtures/ticketing-ja/it-routing/cases.json")).unwrap()).unwrap();
+        let cases:Vec<_>=["validation","test"].iter().flat_map(|s|corpus[*s].as_array().unwrap().iter()).collect();
+        let payload=cases.iter().map(|r|serde_json::json!({"text":r["text"]}).to_string()+"\n").collect::<String>();
+        use std::io::Write;
+        let mut child=std::process::Command::new(root.join("target/release/it-routing-infer")).arg(&jp).arg(&path).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped()).spawn().unwrap();
+        child.stdin.as_mut().unwrap().write_all(payload.as_bytes()).unwrap();drop(child.stdin.take());let output=child.wait_with_output().unwrap();assert!(output.status.success());
+        let expected:Vec<Value>=String::from_utf8(output.stdout).unwrap().lines().map(|l|serde_json::from_str(l).unwrap()).collect();assert_eq!(expected.len(),72);
+        let mut rows=Vec::new();
+        for (case,native) in cases.iter().zip(expected) {
+            let text=case["text"].as_str().unwrap().to_string();
+            let reply=query::<Result<RoutingReply>>(&pic,id,"route_it_ticket",Encode!(&text).unwrap()).unwrap();
+            assert_eq!(reply.result.queue.selected,native["result"]["queue"]["selected"]);assert_eq!(reply.result.priority.selected,native["result"]["priority"]["selected"]);
+            assert_eq!(reply.result.decision,"review");assert!(reply.result.review_reasons.contains(&"validation_failed".to_string()));
+            assert!(reply.measured_instructions<4_500_000_000);
+            rows.push(serde_json::json!({"id":case["id"],"reply":reply}));
+        }
+        routing_before=Some(query::<Result<RoutingReply>>(&pic,id,"route_it_ticket",Encode!(&"VPNにつながりません".to_string()).unwrap()).unwrap());
+        report["it_routing"]=serde_json::json!({"head":hex(&digest),"rows":rows,"unvalidated_head_always_requires_review":true});save(out,report);
+    }
+
     let denied = Decode!(
         &raw(
             &pic,
@@ -638,6 +667,11 @@ fn run(root: &Path, out: &Path, report: &mut Value) {
         jp_before.priority.probabilities,
         jp_after.priority.probabilities
     );
+    if let Some(before)=&routing_before {
+        let after=query::<Result<RoutingReply>>(&pic,id,"route_it_ticket",Encode!(&"VPNにつながりません".to_string()).unwrap()).unwrap();
+        assert_eq!(before.model,after.model);assert_eq!(before.result.queue.probabilities,after.result.queue.probabilities);assert_eq!(before.result.priority.probabilities,after.result.priority.probabilities);
+        report["it_routing"]["persisted_through_upgrade_rollback_forward"]=json!(true);
+    }
     report["after_rollback_and_forward"] = json!({"legacy":query::<EngineInfo>(&pic,id,"info",Encode!().unwrap()),"ticketing":query::<TicketingInfo>(&pic,id,"ticketing_info",Encode!().unwrap())});
     // The old Wasm does not know about Japanese storage reservations. Exercise
     // a real overlapping write there, then ensure forward upgrade remains usable.

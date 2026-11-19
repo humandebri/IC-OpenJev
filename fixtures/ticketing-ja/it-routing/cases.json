@@ -1,0 +1,1017 @@
+{
+  "description": "Synthetic IT triage pilot, not enterprise data. Four queues: account (identity/access, including VPN access permission), device (hardware/software), network (connectivity, including VPN transport), review (security, non-IT, multiple queues, underspecified). Priority: high means current business interruption or deadline today; low explicitly future planning; normal otherwise. Frozen encoder and old heads are unchanged. Separate validation selects heads and review thresholds; test is never used for selection.",
+  "train": [
+    {
+      "id": "train-account-0-low",
+      "text": "来月から使う勤怠システムの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-0-normal",
+      "text": "勤怠システムのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-0-high",
+      "text": "勤怠システムで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-1-low",
+      "text": "来月から使う社内ポータルの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-1-normal",
+      "text": "社内ポータルのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-1-high",
+      "text": "社内ポータルで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-2-low",
+      "text": "来月から使うメールアカウントの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-2-normal",
+      "text": "メールアカウントのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-2-high",
+      "text": "メールアカウントで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-3-low",
+      "text": "来月から使う人事システムの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-3-normal",
+      "text": "人事システムのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-3-high",
+      "text": "人事システムで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-4-low",
+      "text": "来月から使うチャットの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-4-normal",
+      "text": "チャットのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-4-high",
+      "text": "チャットで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-5-low",
+      "text": "来月から使う会計システムの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-5-normal",
+      "text": "会計システムのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-5-high",
+      "text": "会計システムで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-6-low",
+      "text": "来月から使う社内Wikiの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-6-normal",
+      "text": "社内Wikiのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-6-high",
+      "text": "社内Wikiで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-account-7-low",
+      "text": "来月から使う打刻アプリの利用権限を申請する方法を知りたいです。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "train-account-7-normal",
+      "text": "打刻アプリのパスワードを忘れたため、再設定をお願いします。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "train-account-7-high",
+      "text": "打刻アプリで全員のアカウントがロックされ、業務が停止しています。至急解除をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-0-low",
+      "text": "来月導入を予定している業務用PCについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-0-normal",
+      "text": "業務用PCが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-0-high",
+      "text": "業務用PCが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-1-low",
+      "text": "来月導入を予定しているノートパソコンについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-1-normal",
+      "text": "ノートパソコンが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-1-high",
+      "text": "ノートパソコンが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-2-low",
+      "text": "来月導入を予定している社用スマートフォンについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-2-normal",
+      "text": "社用スマートフォンが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-2-high",
+      "text": "社用スマートフォンが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-3-low",
+      "text": "来月導入を予定している社内プリンターについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-3-normal",
+      "text": "社内プリンターが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-3-high",
+      "text": "社内プリンターが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-4-low",
+      "text": "来月導入を予定しているビデオ会議用カメラについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-4-normal",
+      "text": "ビデオ会議用カメラが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-4-high",
+      "text": "ビデオ会議用カメラが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-5-low",
+      "text": "来月導入を予定している外付けモニターについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-5-normal",
+      "text": "外付けモニターが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-5-high",
+      "text": "外付けモニターが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-6-low",
+      "text": "来月導入を予定しているPDF編集ソフトについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-6-normal",
+      "text": "PDF編集ソフトが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-6-high",
+      "text": "PDF編集ソフトが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-device-7-low",
+      "text": "来月導入を予定している表計算ソフトについて相談したいです。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "train-device-7-normal",
+      "text": "表計算ソフトが起動時にエラーになります。修理か再インストールをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "train-device-7-high",
+      "text": "表計算ソフトが故障し、本日期限の仕事を進められません。至急復旧をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-0-low",
+      "text": "来月予定している社内Wi-Fiの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-0-normal",
+      "text": "社内Wi-Fiの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-0-high",
+      "text": "社内Wi-Fiが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-1-low",
+      "text": "来月予定しているVPNの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-1-normal",
+      "text": "VPNの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-1-high",
+      "text": "VPNが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-2-low",
+      "text": "来月予定している拠点間ネットワークの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-2-normal",
+      "text": "拠点間ネットワークの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-2-high",
+      "text": "拠点間ネットワークが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-3-low",
+      "text": "来月予定している社内LANの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-3-normal",
+      "text": "社内LANの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-3-high",
+      "text": "社内LANが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-4-low",
+      "text": "来月予定しているDNSの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-4-normal",
+      "text": "DNSの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-4-high",
+      "text": "DNSが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-5-low",
+      "text": "来月予定している無線LANの構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-5-normal",
+      "text": "無線LANの接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-5-high",
+      "text": "無線LANが全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-6-low",
+      "text": "来月予定しているリモート接続回線の構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-6-normal",
+      "text": "リモート接続回線の接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-6-high",
+      "text": "リモート接続回線が全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-network-7-low",
+      "text": "来月予定しているインターネット回線の構成変更について相談したいです。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "train-network-7-normal",
+      "text": "インターネット回線の接続が不安定なので、回線を調べてほしいです。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "train-network-7-high",
+      "text": "インターネット回線が全社で切断され、業務が停止しています。至急ネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-0-low",
+      "text": "来年の育児休業制度を教えてください。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-1-low",
+      "text": "来月の経費精算の仕組みを相談したいです。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-2-low",
+      "text": "来年度の会議室の予約方法について質問です。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-3-low",
+      "text": "来月実施する不審メール訓練の案内を作りたいです。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-4-low",
+      "text": "今後の問い合わせ先を相談したいが、対象はまだ決まっていません。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-5-low",
+      "text": "来月にパスワード変更とPC修理の両方を頼みたいです。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-6-low",
+      "text": "来期にVPN構成変更と端末購入の両方を計画しています。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-7-low",
+      "text": "来年の入館カード更新を総務に相談したいです。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "train-review-0-normal",
+      "text": "給与明細の控除額について確認したいです。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-1-normal",
+      "text": "出張費の領収書を経理へ提出したいです。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-2-normal",
+      "text": "会議室の空調が効かないので総務に相談したいです。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-3-normal",
+      "text": "不審なメールが届いたのでセキュリティ担当に確認してほしいです。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-4-normal",
+      "text": "困っているので何とかしてください。詳しい状況はまだ書けません。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-5-normal",
+      "text": "アカウントの再設定とパソコンの修理を同時にお願いします。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-6-normal",
+      "text": "VPN接続の不調とソフトのインストールについて一緒に相談したいです。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-7-normal",
+      "text": "入館カードをなくしたため、総務で再発行をお願いします。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "train-review-0-high",
+      "text": "本日期限の給与振込が止まっています。人事へ至急連絡したいです。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-1-high",
+      "text": "本日中に必要な請求書の金額が間違っています。経理で至急訂正してください。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-2-high",
+      "text": "会議室で漏水が発生し、本日の会議が開催できません。緊急の設備対応が必要です。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-3-high",
+      "text": "機密情報が外部へ漏れた疑いがあり、至急セキュリティ対応が必要です。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-4-high",
+      "text": "緊急です。業務ができませんが、何が原因かはまだ分かりません。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-5-high",
+      "text": "PCの故障と全社ネットワーク停止の両方が起きています。至急それぞれの担当者が必要です。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-6-high",
+      "text": "アカウントを乗っ取られた疑いがあり、直ちにセキュリティ担当へ引き継ぎたいです。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "train-review-7-high",
+      "text": "本日期限の仕事が止まっています。アカウント解除と端末修理の両方を至急お願いします。",
+      "queue": "review",
+      "priority": "high"
+    }
+  ],
+  "validation": [
+    {
+      "id": "validation-account-low-0",
+      "text": "来月入社する人にメールの閲覧権限を付ける手順を教えて。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "validation-account-low-1",
+      "text": "来年度の社内システム利用者の登録方法を相談したい。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "validation-account-normal-0",
+      "text": "二段階認証の電話番号が古いため、登録を変更してほしい。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-account-normal-1",
+      "text": "VPNの接続権限を新しい利用者に付与してください。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-account-high-0",
+      "text": "全員のログインが拒否されて仕事が止まっています。急いで認証を復旧してください。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "validation-account-high-1",
+      "text": "今日締切の処理が、IDのロックで進められません。すぐに解除してください。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "validation-device-low-0",
+      "text": "来月買うノートPCの機種を相談したい。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "validation-device-low-1",
+      "text": "来年度に導入する画像編集アプリについて相談したい。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "validation-device-normal-0",
+      "text": "ブラウザーを起動すると異常終了します。入れ直しをお願いします。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-device-normal-1",
+      "text": "キーボードの一部が反応しません。交換をお願いできますか。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-device-high-0",
+      "text": "パソコンが起動せず、今日の納品作業が止まっています。緊急で修理をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "validation-device-high-1",
+      "text": "本日必要な印刷が機器の故障でできません。至急プリンターを復旧してください。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "validation-network-low-0",
+      "text": "来月オフィスの無線アクセスポイントを増やす相談です。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "validation-network-low-1",
+      "text": "来年度のリモート接続回線の構成を見直したい。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "validation-network-normal-0",
+      "text": "Wi-Fiの電波が弱く、時々接続が切れます。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-network-normal-1",
+      "text": "社外からVPNに接続すると通信が途中で切れます。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-network-high-0",
+      "text": "全社員がインターネットに出られず、業務停止中です。至急回線を調べてください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "validation-network-high-1",
+      "text": "DNS障害で社内サービスすべてに接続できません。緊急復旧が必要です。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "validation-review-low-0",
+      "text": "来年の福利厚生制度について質問があります。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "validation-review-low-1",
+      "text": "来月、ID変更とWi-Fi増設をまとめて依頼したいです。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "validation-review-normal-0",
+      "text": "不審な添付ファイルを受信しました。安全か調べてください。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-review-normal-1",
+      "text": "とにかく困っています。内容はまだ整理できていません。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "validation-review-high-0",
+      "text": "情報漏えいの可能性があります。直ちにセキュリティへ報告したい。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "validation-review-high-1",
+      "text": "今日の給与振込が処理できません。人事・経理の緊急対応をお願いします。",
+      "queue": "review",
+      "priority": "high"
+    }
+  ],
+  "test": [
+    {
+      "id": "test-account-low-0",
+      "text": "来期使う業務アプリのアクセス許可を事前に申請したい。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "test-account-low-1",
+      "text": "来月の異動に向けて共有フォルダーの閲覧権限を相談したい。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "test-account-low-2",
+      "text": "来年度に入社する社員のユーザーID発行手順を知りたい。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "test-account-low-3",
+      "text": "来月から使うサービスの多要素認証設定について教えて。",
+      "queue": "account",
+      "priority": "low"
+    },
+    {
+      "id": "test-account-normal-0",
+      "text": "社内サイトのパスワードを再発行してもらえますか。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "test-account-normal-1",
+      "text": "認証アプリを機種変更したので、登録先を更新したい。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "test-account-normal-2",
+      "text": "回線は正常ですが、ログイン時に権限不足と表示されます。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "test-account-normal-3",
+      "text": "VPNを利用するためのアクセス権限を追加してください。",
+      "queue": "account",
+      "priority": "normal"
+    },
+    {
+      "id": "test-account-high-0",
+      "text": "認証サーバーの問題で全員がログインできず、業務停止しています。すぐ対応してください。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "test-account-high-1",
+      "text": "今日提出する書類を開けません。ユーザーIDのロックを至急解除してほしい。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "test-account-high-2",
+      "text": "全社のアカウントが一斉に無効化されました。緊急復旧をお願いします。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "test-account-high-3",
+      "text": "本日期限の作業が権限不足で止まっています。至急アクセス許可を修正してください。",
+      "queue": "account",
+      "priority": "high"
+    },
+    {
+      "id": "test-device-low-0",
+      "text": "来月のパソコン入れ替えに向けて、推奨機種を相談したい。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "test-device-low-1",
+      "text": "来年度の会議用マイク導入について問い合わせたい。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "test-device-low-2",
+      "text": "来月使い始める図面ソフトのインストール方法を教えて。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "test-device-low-3",
+      "text": "来期の業務用スマートフォン購入を相談したい。",
+      "queue": "device",
+      "priority": "low"
+    },
+    {
+      "id": "test-device-normal-0",
+      "text": "ノートPCの画面がちらつきます。修理をお願いしたい。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "test-device-normal-1",
+      "text": "プリンターで紙詰まりを繰り返します。機器を点検してください。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "test-device-normal-2",
+      "text": "アプリを更新したら起動しなくなりました。再インストールをお願いしたい。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "test-device-normal-3",
+      "text": "会議用のカメラがパソコンに認識されません。設定を調べてください。",
+      "queue": "device",
+      "priority": "normal"
+    },
+    {
+      "id": "test-device-high-0",
+      "text": "PCの電源が入らず、本日の出荷指示を出せません。至急代替機が必要です。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "test-device-high-1",
+      "text": "本日締切の資料作成が、表計算アプリの故障で止まっています。緊急対応をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "test-device-high-2",
+      "text": "今日使う会議室の映像機器が故障しました。今すぐ交換してください。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "test-device-high-3",
+      "text": "端末の故障で本日期限の申請を送れません。至急修理をお願いします。",
+      "queue": "device",
+      "priority": "high"
+    },
+    {
+      "id": "test-network-low-0",
+      "text": "来月、拠点のネットワーク配線を変更したいので相談したい。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "test-network-low-1",
+      "text": "来期のVPN回線の増強方法を教えてください。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "test-network-low-2",
+      "text": "来年度のオフィスWi-Fi更新計画について相談したい。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "test-network-low-3",
+      "text": "来月追加するネットワーク機器の接続構成を相談したい。",
+      "queue": "network",
+      "priority": "low"
+    },
+    {
+      "id": "test-network-normal-0",
+      "text": "社内LANにつなぐと通信速度が低下します。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "test-network-normal-1",
+      "text": "無線接続が数分おきに切れるので、電波環境を調べたい。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "test-network-normal-2",
+      "text": "VPNの認証は成功しますが、通信が途中で切れます。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "test-network-normal-3",
+      "text": "複数の端末で名前解決が遅くなっています。DNSを調べてください。",
+      "queue": "network",
+      "priority": "normal"
+    },
+    {
+      "id": "test-network-high-0",
+      "text": "拠点全体の通信回線が断線し、業務が止まっています。緊急復旧をお願いします。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "test-network-high-1",
+      "text": "社内LAN障害で全部署がシステムを使えません。至急対応してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "test-network-high-2",
+      "text": "全社のWi-Fiが停止しました。今すぐネットワークを復旧してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "test-network-high-3",
+      "text": "DNSが応答せず全社員の仕事が止まっています。至急直してください。",
+      "queue": "network",
+      "priority": "high"
+    },
+    {
+      "id": "test-review-low-0",
+      "text": "来月の住宅手当の支給条件を人事に確認したい。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "test-review-low-1",
+      "text": "来年度のオフィス備品の購入ルールを教えてください。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "test-review-low-2",
+      "text": "来月アカウント登録とネットワーク工事の二つを同時に頼みたい。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "test-review-low-3",
+      "text": "来期のセキュリティ教育計画について相談したい。",
+      "queue": "review",
+      "priority": "low"
+    },
+    {
+      "id": "test-review-normal-0",
+      "text": "誤った金額の請求書を受け取ったので経理に確認したい。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "test-review-normal-1",
+      "text": "不審なログイン通知を受け取りました。セキュリティ調査をお願いします。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "test-review-normal-2",
+      "text": "問題があります。どの機器やサービスのことかはまだ分かりません。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "test-review-normal-3",
+      "text": "PC修理とVPN接続不調の両方を一度にお願いしたい。",
+      "queue": "review",
+      "priority": "normal"
+    },
+    {
+      "id": "test-review-high-0",
+      "text": "顧客データを誤送信した可能性があります。セキュリティへ至急連絡してください。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "test-review-high-1",
+      "text": "本日期限の支払いが請求ミスで止まっています。経理の緊急対応が必要です。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "test-review-high-2",
+      "text": "全社で端末故障とID認証障害が同時発生しています。別々の担当へ至急引き継いでください。",
+      "queue": "review",
+      "priority": "high"
+    },
+    {
+      "id": "test-review-high-3",
+      "text": "社員証を紛失して建物に入れず、本日の業務が止まっています。総務に緊急対応を依頼します。",
+      "queue": "review",
+      "priority": "high"
+    }
+  ]
+}

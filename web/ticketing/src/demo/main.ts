@@ -5,6 +5,9 @@ import { connectTicketing } from '../ticketing-model';
 import { labels } from './results';
 import { createDemoSession, type DemoReply, type DemoState, type TaskState } from './session';
 
+if (new URLSearchParams(location.search).get('view') !== 'department') {
+  void import('../it-routing/page');
+} else {
 const taskNames: Record<Task, string> = { department: '担当部署', priority: '優先度' };
 const taskList: Task[] = ['department', 'priority'];
 const MAX_CHARS = 200;
@@ -145,3 +148,5 @@ out.addEventListener('click', event => {
   if (task === 'department' || task === 'priority') void session.retry(task);
 });
 void session.ensureConnection().catch(() => { /* The connection error is shown by renderState. */ });
+
+}
