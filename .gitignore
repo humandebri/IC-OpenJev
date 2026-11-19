@@ -49,6 +49,7 @@ yarn-error.log*
 playwright-report/
 test-results/
 .wrangler/
+.cloudflare/
 /artifacts/**/*.log
 
 # Generated locally when a delivery needs a checksum list.

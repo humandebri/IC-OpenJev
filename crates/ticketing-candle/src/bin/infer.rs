@@ -7,9 +7,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     let dir = Path::new(
         args.first()
-            .ok_or("usage: ticketing-infer PACK [--reference-f32]")?,
+            .ok_or("usage: ticketing-infer PACK [--reference-f32] [--features]")?,
     );
-    let allow = args.get(1).is_some_and(|s| s == "--reference-f32");
+    let allow = args.iter().skip(1).any(|s| s == "--reference-f32");
+    let features = args.iter().skip(1).any(|s| s == "--features");
     let model = pack::load_directory(dir, allow)?;
     let manifest = pack::Manifest::parse(&std::fs::read(dir.join("manifest.json"))?, allow)?;
     let bytes = std::fs::read(dir.join("tokenizer.json"))?;
@@ -23,6 +24,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let result = (|| -> ic_laya_core::Result<_> {
             let ids = tok.encode(v["text"].as_str().unwrap_or(""))?;
             let start = std::time::Instant::now();
+            if features {
+                let values = model.features(&ids)?;
+                return Ok(serde_json::json!({"ids":ids,"features":values}));
+            }
             let (d, p) = model.logits(&ids)?;
             Ok(
                 serde_json::json!({"ids":ids,"department":d,"priority":p,"elapsed_ms":start.elapsed().as_secs_f64()*1000.}),

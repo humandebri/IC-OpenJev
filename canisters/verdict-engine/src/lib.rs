@@ -25,6 +25,8 @@ use std::marker::PhantomData;
 mod billing;
 mod memory;
 mod ticketing;
+mod it_routing;
+pub use it_routing::{RoutingInfo,RoutingReply};
 pub use ticketing::{TicketingInfo,TicketingQueryLimits,TicketReply,TicketingStorage};
 pub use billing::{CyclesPricing,ExecutionPricing};
 
@@ -101,6 +103,7 @@ struct ModelSnapshot { version:u32, state:Persistent, execution_pricing:Option<E
 fn save_snapshot(s:&Persistent) {
     canister_common::persist_or_trap(&ModelSnapshot{version:4,state:s.clone(),execution_pricing:billing::get()});
     ticketing::persist().unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
+    it_routing::persist().unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
 }
 #[cfg(test)]
 mod snapshot_migration_tests {
@@ -237,6 +240,7 @@ fn post_upgrade(){
     }).unwrap_or_else(|e|ic_cdk::trap(e.to_string()))};
     ticketing::restore(s.owner,s.upload.as_ref().map(|u|u.model_length+u.tokenizer_length).unwrap_or(0))
         .unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
+    it_routing::restore().unwrap_or_else(|e|ic_cdk::trap(e.to_string()));
     MODEL.with(|x|*x.borrow_mut()=None);BUILDER.with(|x|*x.borrow_mut()=None);TOKENIZER.with(|x|*x.borrow_mut()=None);
     STATE.with(|x|*x.borrow_mut()=Some(s));
 }

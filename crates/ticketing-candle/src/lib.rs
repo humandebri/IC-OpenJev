@@ -134,7 +134,7 @@ impl Model {
             priority,
         })
     }
-    pub fn logits(&self, ids: &[u32]) -> Result<(Vec<f32>, Vec<f32>)> {
+    fn pooled(&self, ids: &[u32]) -> Result<Tensor> {
         if !(2..=MAX_TOKENS).contains(&ids.len())
             || ids[0] != 1
             || ids[ids.len() - 1] != 2
@@ -160,24 +160,24 @@ impl Model {
                 )?;
             }
             let first = self.final_norm.forward(&x)?.narrow(0, 0, 1)?;
-            let d = self
-                .department
-                .forward(&first)?
-                .flatten_all()?
-                .to_vec1::<f32>()?;
-            let p = self
-                .priority
-                .forward(&first)?
-                .flatten_all()?
-                .to_vec1::<f32>()?;
-            Ok((d, p))
+            Ok(first)
         };
-        let (d, p) = run().map_err(model_error)?;
-        if d.iter().chain(&p).any(|x| !x.is_finite()) {
-            return Err(Error::Numeric);
-        }
-        Ok((d, p))
+        run().map_err(model_error)
     }
+    /// Exact frozen encoder output used to train additive routing heads.
+    pub fn features(&self, ids: &[u32]) -> Result<Vec<f32>> {
+        let values = self.pooled(ids)?.flatten_all().and_then(|t| t.to_vec1::<f32>()).map_err(model_error)?;
+        if values.iter().any(|v| !v.is_finite()) { return Err(Error::Numeric); }
+        Ok(values)
+    }
+    pub fn logits(&self, ids: &[u32]) -> Result<(Vec<f32>, Vec<f32>)> {
+        let first = self.pooled(ids)?;
+        let d = self.department.forward(&first).and_then(|t| t.flatten_all()).and_then(|t| t.to_vec1::<f32>()).map_err(model_error)?;
+        let p = self.priority.forward(&first).and_then(|t| t.flatten_all()).and_then(|t| t.to_vec1::<f32>()).map_err(model_error)?;
+        if d.iter().chain(&p).any(|x| !x.is_finite()) { return Err(Error::Numeric); }
+        Ok((d,p))
+    }
+
 }
 
 pub struct Tokenizer(tokenizers::Tokenizer);

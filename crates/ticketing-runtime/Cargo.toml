@@ -12,3 +12,8 @@ ic-cdk.workspace = true
 candid.workspace = true
 serde.workspace = true
 candle-core.workspace = true
+serde_json.workspace = true
+
+[[bin]]
+name = "it-routing-infer"
+path = "src/bin/it_routing_infer.rs"

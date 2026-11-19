@@ -1,4 +1,5 @@
 //! Reusable ticket classifier runtime; hosts own Candid hooks and snapshot placement.
+pub mod it_routing;
 use candid::{CandidType, Principal};
 use ic_laya_core::{hash, Digest, Error, Result};
 use serde::{Deserialize, Serialize};
@@ -329,6 +330,19 @@ pub fn benchmark(text: String) -> Result<Reply> {
     owner()?;
     infer(text, 128)
 }
+/// Apply an independent IT head without changing either original classification head.
+pub fn route_it(text: String, head: &it_routing::Head) -> Result<(it_routing::Prediction, u32)> {
+    if ic_cdk::api::in_replicated_execution() { return Err(Error::Denied("routing requires a non-replicated query".into())); }
+    let info = info();
+    head.validate(info.model)?;
+    let limit = read(|s| s.max_query_tokens as usize);
+    if limit == 0 { return Err(Error::Capacity); }
+    let ids = TOKENIZER.with(|t| t.borrow().as_ref().ok_or(Error::ModelUnavailable("warm-up required".into()))?.encode(&text))?;
+    if ids.len() > limit { return Err(Error::TooLong); }
+    let features = MODEL.with(|m| m.borrow().as_ref().ok_or(Error::ModelUnavailable("warm-up required".into()))?.features(&ids))?;
+    Ok((head.predict(&features)?, ids.len() as u32))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -11,6 +11,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
+    "build:deploy": "pnpm run build && tsx scripts/prepare-deploy.ts",
+    "deploy:check": "cf deploy --prebuilt --dry-run --mode production --profile kinic-production",
+    "deploy": "cf deploy --prebuilt --mode production --profile kinic-production",
     "preview": "vite preview --host 127.0.0.1",
     "study:dev": "tsx scripts/study.ts development",
     "study:evaluate": "tsx scripts/study.ts evaluation",

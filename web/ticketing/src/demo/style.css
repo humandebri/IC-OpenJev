@@ -1,11 +1,11 @@
 :root {
-  --bg: #f4f3ee; --surface: #ffffff; --sunken: #f9f8f5; --ink: #1c1d1a; --muted: #62645d; --faint: #9a9c95; --line: #e1e0d9;
+  --bg: #f4f3ee; --surface: #ffffff; --sunken: #f9f8f5; --ink: #1c1d1a; --muted: #62645d; --faint: #62645d; --line: #e1e0d9;
   --accent: #2f6b4f; --on-accent: #ffffff; --accent-soft: #e3efe8; --ng: #a2412b; --ng-soft: #f8e7e1; --warn: #8a5a00; --warn-soft: #fbf0d9;
   --shadow: 0 1px 2px rgb(0 0 0 / .04), 0 4px 16px rgb(0 0 0 / .04);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #111310; --surface: #1a1d19; --sunken: #151814; --ink: #e9eae4; --muted: #a2a59c; --faint: #6c7068; --line: #2e322c;
+  :root { --bg: #111310; --surface: #1a1d19; --sunken: #151814; --ink: #e9eae4; --muted: #a2a59c; --faint: #a2a59c; --line: #2e322c;
     --accent: #8fd1ae; --on-accent: #10231a; --accent-soft: #1d3127; --ng: #f0937b; --ng-soft: #3a221c; --warn: #f2c46b; --warn-soft: #352b16;
     --shadow: none; color-scheme: dark; }
 }
@@ -38,10 +38,6 @@ h2 { font-size: 19px; margin: 0; }
 h3 { font-size: 15px; margin: 0; }
 .lede { color: var(--muted); margin: 0 0 20px; max-width: 40em; }
 .lede b { color: var(--ink); font-weight: 600; }
-.banner { display: flex; gap: 12px; align-items: flex-start; background: var(--warn-soft); padding: 12px 16px; border-radius: 10px; font-size: 14px; }
-.banner strong { color: var(--warn); margin-right: 6px; }
-.banner-icon { flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%; background: var(--warn); color: var(--warn-soft);
-  font-weight: 800; font-size: 13px; display: grid; place-items: center; }
 
 /* sections */
 section { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin: 20px 0; box-shadow: var(--shadow); }
@@ -55,9 +51,11 @@ section { background: var(--surface); border: 1px solid var(--line); border-radi
 
 /* input */
 .input { border: 1px solid var(--line); border-radius: 12px; background: var(--sunken); transition: border-color .15s; }
-.input:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.input:focus-within { border-color: var(--accent); }
 textarea { display: block; width: 100%; font: inherit; font-size: 18px; padding: 14px 16px 4px; border: 0; background: transparent;
   color: var(--ink); resize: none; outline: none; }
+/* The surrounding input group supplies the focus border. */
+.input textarea:focus-visible { outline: none; }
 textarea::placeholder { color: var(--faint); }
 .input-foot { display: flex; justify-content: space-between; align-items: center; padding: 6px 8px 8px 16px; }
 .count { font-size: 12px; color: var(--faint); font-variant-numeric: tabular-nums; }

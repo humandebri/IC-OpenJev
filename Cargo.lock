@@ -3709,6 +3709,7 @@ dependencies = [
  "ic-laya-core",
  "modernbert-candle",
  "serde",
+ "serde_json",
  "ticketing-candle",
 ]
 
